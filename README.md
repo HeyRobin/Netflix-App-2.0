@@ -1,7 +1,7 @@
-##### NETFLIX
-##### STATISTIX
-________________________
-# EEN PROJECT VAN:
+#                                                                    NETFLIX
+#                                                                   STATISTIX
+                                                             ________________________
+#### EEN PROJECT VAN:
 - Robin La Rondelle
 - Jac Sebregts
 - Sander Postma
