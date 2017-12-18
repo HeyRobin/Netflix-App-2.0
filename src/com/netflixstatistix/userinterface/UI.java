@@ -7,7 +7,6 @@ import java.awt.*;
 
 public class UI implements Runnable {
 
-
     // For testing purposes only
     public String user = "Bas";                                                                     //<< TESTING SETTING
 
@@ -44,7 +43,6 @@ public class UI implements Runnable {
 
         createComponents(frame.getContentPane());
 
-
         // For testing purposes set loggedIn to true                                                //<< TESTING SETTING
         loggedIn = false;
 
@@ -57,13 +55,11 @@ public class UI implements Runnable {
         pane.setLayout(new BorderLayout());
 
 
-//MENU
+        //MENU
         // build the menu bar container
         JMenuBar topMenuBar = new JMenuBar();
 
-        // ///////////////////////////////// //
-        // Build the account menu            //
-        // ///////////////////////////////// //
+        // Build the account menu
         accountMenu = new JMenu("Account");
 
         // login
@@ -76,9 +72,7 @@ public class UI implements Runnable {
         logoutMenuItem.setEnabled(!loggedIn);                                                       //<< TESTING SETTING
         accountMenu.add(logoutMenuItem);
 
-        // ///////////////////////////////// //
-        // Build the data menu               //
-        // ///////////////////////////////// //
+        // Build the data menu
         dataMenu = new JMenu("Gegevens");
 
         // Refresh gegevens
@@ -89,14 +83,10 @@ public class UI implements Runnable {
         topMenuBar.add(accountMenu);
         topMenuBar.add(dataMenu);
 
-
-
-        // ///////////////////////////////// //
-        // Build the info menu               //
-        // ///////////////////////////////// //
+        // Build the info menu
         infoMenu = new JMenu("Info");
 
-        // avans website
+        // Avans website
         avansItemMenu = new JMenuItem("Avans website");
         infoMenu.add(avansItemMenu);
 
@@ -119,12 +109,7 @@ public class UI implements Runnable {
         label2.setBorder(grey);
         pane.add(label2, BorderLayout.CENTER);
 
-
-        // ///////////////////////////////// //
-        // Build the left menu               //
-        // ///////////////////////////////// //
-
-
+        // Build the left menu
         // User Dropdown Menu
         JPanel userContainer = new JPanel(new BorderLayout());
 
@@ -141,7 +126,6 @@ public class UI implements Runnable {
         userSubContainer.add(greeting);
 
         userContainer.add(userSubContainer, BorderLayout.SOUTH);
-
 
         // TV-Show Selector
         JPanel showSubContainer = new JPanel(new GridBagLayout());
@@ -182,7 +166,6 @@ public class UI implements Runnable {
         showSubContainer.add(show9, gbc);
         showSubContainer.add(selector, gbc);
 
-
         JPanel westContainer = new JPanel(new BorderLayout());
         westContainer.setBorder(grey);
         westContainer.add(userContainer, BorderLayout.NORTH);
@@ -190,14 +173,7 @@ public class UI implements Runnable {
 
         pane.add(westContainer, BorderLayout.WEST);
 
-
-
-
-
-        // ///////////////////////////////// //
-        // Build the credits menu            //
-        // ///////////////////////////////// //
-
+        // Build the credits menu
         JPanel creditsContainer = new JPanel(new BorderLayout());
         creditsContainer.setBorder(new EmptyBorder(3, 10, 3, 10));
         JLabel creditsAppVersion = new JLabel("Netflix Statistix versie " + appDetails.getVersion(), JLabel.LEFT);
@@ -205,7 +181,6 @@ public class UI implements Runnable {
         creditsContainer.add(creditsAppVersion, BorderLayout.WEST);
         creditsContainer.add(credits, BorderLayout.EAST);
         pane.add(creditsContainer, BorderLayout.SOUTH);
-
 
 //END GUI
     }
