@@ -4,16 +4,23 @@ import com.netflixstatistix.connections.DatabaseConnection;
 import com.netflixstatistix.userinterface.UI;
 
 import javax.swing.SwingUtilities;
+import java.sql.ResultSet;
 
 public class Main {
     public static void main(String[] args) {
 
-        DatabaseConnection.connect();
+DatabaseConnection con = new DatabaseConnection();
 
+ResultSet rs = con.getData("SELECT * FROM Abonnee");
+try {
+    while (rs.next()) {
 
-        DatabaseConnection.disconnect();
+        System.out.println(rs.getString(1));
+    }
 
-        SwingUtilities.invokeLater(new UI());
+}catch(Exception e) {
+            System.out.println("fout");
+        }
 
 
     }
