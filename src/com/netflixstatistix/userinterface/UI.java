@@ -1,11 +1,18 @@
 package com.netflixstatistix.userinterface;
 
+import com.netflixstatistix.connections.DatabaseConnection;
+import jdk.nashorn.internal.runtime.regexp.joni.Warnings;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.sql.ResultSet;
 
 public class UI implements Runnable {
+
+    //DB
+    DatabaseConnection con;
 
     // For testing purposes only
     public String user = "Bas";                                                                     //<< TESTING SETTING
@@ -51,6 +58,8 @@ public class UI implements Runnable {
     }
 
     private void createComponents(Container container) {
+
+
         Container pane = frame.getContentPane();
         pane.setLayout(new BorderLayout());
 
@@ -113,7 +122,7 @@ public class UI implements Runnable {
         // User Dropdown Menu
         JPanel userContainer = new JPanel(new BorderLayout());
 
-        String[] userArray = {"Bas", "Tom", "Robin", "Jac"};
+        String[] userArray = {"Sander", "Robin", "Jac"};
         JComboBox usersDropdown = new JComboBox(userArray);
         usersDropdown.setSelectedIndex(0);
         userContainer.add(usersDropdown, BorderLayout.NORTH);
@@ -133,6 +142,9 @@ public class UI implements Runnable {
         gbc.weightx = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = GridBagConstraints.REMAINDER;
+
+
+
 
         JButton show1 = new JButton("Serie 1");
         show1.setMargin(new Insets(5, 0, 5, 0));

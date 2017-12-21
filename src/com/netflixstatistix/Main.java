@@ -11,17 +11,20 @@ public class Main {
 
 DatabaseConnection con = new DatabaseConnection();
 
-ResultSet rs = con.getData("SELECT * FROM Abonnee");
-try {
-    while (rs.next()) {
+Abonnee ab = new Abonnee(5285824);
+        System.out.println("Aantal; profielen in arraylist" + ab.getProfielen().size());
 
-        System.out.println(rs.getString(1));
-    }
+        for (Profiel profiel:ab.getProfielen()
+             ) {
+            System.out.println(profiel.getProfielNaam());
 
-}catch(Exception e) {
-            System.out.println("fout");
         }
 
 
+        System.out.println(ab.getHuisNr());
+
+
+        UI ui = new UI();
+        ui.run();
     }
 }
