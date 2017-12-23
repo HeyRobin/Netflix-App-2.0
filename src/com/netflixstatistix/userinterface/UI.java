@@ -1,5 +1,7 @@
 package com.netflixstatistix.userinterface;
 
+import com.netflixstatistix.connections.DatabaseFetcher;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -41,6 +43,9 @@ public class UI implements Runnable {
     private JButton buttonUntergang;
     private JButton buttonHelaas;
     private JButton buttonACO;
+
+    //Initializes the Database Fetcher
+    private DatabaseFetcher dbf = new DatabaseFetcher();
 
     @Override
     public void run() {
@@ -241,54 +246,81 @@ public class UI implements Runnable {
                 //First enable previous disabled button, then disable current button
                 setAllButtonsEnabled();
                 buttonSherlock.setEnabled(false);
+
+                //Get data from database
+                dbf.getInformationAboutSherlock();
+
             } else if (e.getSource() == buttonBB)   {
                 information.setText("Breaking Bad");
                 setAllButtonsEnabled();
                 buttonBB.setEnabled(false);
+                dbf.getInformationAboutBreakingBad();
+
             } else if (e.getSource() == buttonFargo)    {
                 information.setText("Fargo");
                 setAllButtonsEnabled();
                 buttonFargo.setEnabled(false);
+                dbf.getInformationAboutFargo();
+
             } else if ((e.getSource() == buttonTLOB)) {
                 information.setText("The Life Of Brian");
                 setAllButtonsEnabled();
                 buttonTLOB.setEnabled(false);
+                dbf.getInformationAboutTLOB();
+
             } else if (e.getSource() == buttonPF)   {
                 information.setText("Pupl Fiction");
                 setAllButtonsEnabled();
                 buttonPF.setEnabled(false);
+                dbf.getInformationAboutPF();
+
             } else if (e.getSource() == buttonPruim)    {
                 information.setText("Vieze porno");
                 setAllButtonsEnabled();
                 buttonPruim.setEnabled(false);
+                dbf.getInformationAboutPruim();
+
             } else if (e.getSource() == buttonRD)   {
                 information.setText("Resevoir Dogs");
                 setAllButtonsEnabled();
                 buttonRD.setEnabled(false);
+                dbf.getInformationAboutRD();
+
             } else if (e.getSource() == buttonGBU)  {
                 information.setText("The Good, The Bad, The Ugly");
                 setAllButtonsEnabled();
                 buttonGBU.setEnabled(false);
+                dbf.getInformationAboutGBU();
+
             } else if (e.getSource() == buttonAWD)  {
                 information.setText("Dracula");
                 setAllButtonsEnabled();
                 buttonAWD.setEnabled(false);
+                dbf.getInformationAboutAWD();
+
             } else if (e.getSource() == buttonOber) {
                 information.setText("Ober");
                 setAllButtonsEnabled();
                 buttonOber.setEnabled(false);
+                dbf.getInformationAboutOber();
+
             } else if (e.getSource() == buttonUntergang)    {
                 information.setText("Der Untergang");
                 setAllButtonsEnabled();
                 buttonUntergang.setEnabled(false);
+                dbf.getInformationAboutUntergang();
+
             } else if (e.getSource() == buttonHelaas)   {
                 information.setText("De Helaasheid Der Dingen");
                 setAllButtonsEnabled();
                 buttonHelaas.setEnabled(false);
+                dbf.getInformationAboutHelaas();
+
             } else if (e.getSource() == buttonACO)  {
                 information.setText("A Clockwork Orange");
                 setAllButtonsEnabled();
                 buttonACO.setEnabled(false);
+                dbf.getInformationAboutACO();
             }
         }
 

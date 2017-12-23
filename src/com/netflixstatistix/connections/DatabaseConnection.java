@@ -16,9 +16,7 @@ public class DatabaseConnection {
     private Statement stmt = null;
     private ResultSet rs = null;
 
-    public DatabaseConnection() {
-
-    }
+    public DatabaseConnection() { }
 
     public ResultSet getData(String SQL) {
         try {
