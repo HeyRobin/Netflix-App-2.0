@@ -3,10 +3,10 @@ package com.netflixstatistix.userinterface;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import javax.swing.tree.FixedHeightLayoutCache;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 
 public class UI implements Runnable {
 
@@ -14,11 +14,15 @@ public class UI implements Runnable {
     private AppDetails appDetails = new AppDetails();
     private TimeKeeper timeKeeper = new TimeKeeper();
 
-    // Don't Copy Yourself
     private final Border grey = BorderFactory.createLineBorder(Color.lightGray);
 
     // Creating JFrame which acts as main container.
     private JFrame frame;
+
+    private JComboBox usersDropdown;
+
+    //Creating the greeting label
+    private JLabel greeting;
 
     //Creating JLabel variable for the right menu to display data
     private JLabel information;
@@ -111,16 +115,23 @@ public class UI implements Runnable {
         //User Dropdown Menu
         JPanel userContainer = new JPanel(new BorderLayout());
 
-        String[] userArray = {"Sander", "Robin", "Jac"};        //NAMEN VAN PROFIELEN VAN ABONNEMENT HIER.
-        JComboBox usersDropdown = new JComboBox(userArray);
+        //PlaceHolder. Profiles of Subscription.
+        String[] userArray = {"Sander", "Robin", "Jac"};
+        usersDropdown = new JComboBox(userArray);
         usersDropdown.setSelectedIndex(0);
         userContainer.add(usersDropdown, BorderLayout.NORTH);
 
         // UserDetails Menu
         JPanel userSubContainer = new JPanel(new BorderLayout());
         userSubContainer.setBorder(new EmptyBorder(20, 20, 20, 20));
-        JLabel greeting = new JLabel(timeKeeper.greeting() + " " + usersDropdown.getSelectedItem(), JLabel.CENTER);
+
+        //Formatting the greetins Label
+        greeting = new JLabel(timeKeeper.greeting() + " " + userArray[usersDropdown.getSelectedIndex()], JLabel.CENTER);
         greeting.setFont(new Font("Arial", Font.PLAIN, 18));
+
+        ItemListener il = new ItemListener();
+        usersDropdown.addItemListener(il);
+
         userSubContainer.add(greeting);
 
         userContainer.add(userSubContainer, BorderLayout.SOUTH);
@@ -223,61 +234,67 @@ public class UI implements Runnable {
 
             //Determine the source of the action performed
             if (e.getSource() == buttonSherlock)    {
-                information = new JLabel("Sherlock Holmes", JLabel.CENTER);
+
+                //Placeholder
+                information.setText("Sherlock Holmes");
+
+                //First enable previous disabled button, then disable current button
                 setAllButtonsEnabled();
                 buttonSherlock.setEnabled(false);
             } else if (e.getSource() == buttonBB)   {
-                information.setText("Breaking Bad");// = new JLabel("Breaking Bad", JLabel.CENTER);
+                information.setText("Breaking Bad");
                 setAllButtonsEnabled();
                 buttonBB.setEnabled(false);
             } else if (e.getSource() == buttonFargo)    {
-                information = new JLabel("Fargo", JLabel.CENTER);
+                information.setText("Fargo");
                 setAllButtonsEnabled();
                 buttonFargo.setEnabled(false);
             } else if ((e.getSource() == buttonTLOB)) {
-                information = new JLabel("The Life Of Brian", JLabel.CENTER);
+                information.setText("The Life Of Brian");
                 setAllButtonsEnabled();
                 buttonTLOB.setEnabled(false);
             } else if (e.getSource() == buttonPF)   {
-                information = new JLabel("Pulp Fiction", JLabel.CENTER);
+                information.setText("Pupl Fiction");
                 setAllButtonsEnabled();
                 buttonPF.setEnabled(false);
             } else if (e.getSource() == buttonPruim)    {
-                information = new JLabel("Vieze porno", JLabel.CENTER);
+                information.setText("Vieze porno");
                 setAllButtonsEnabled();
                 buttonPruim.setEnabled(false);
             } else if (e.getSource() == buttonRD)   {
-                information = new JLabel("Resevoir Dogs", JLabel.CENTER);
+                information.setText("Resevoir Dogs");
                 setAllButtonsEnabled();
                 buttonRD.setEnabled(false);
             } else if (e.getSource() == buttonGBU)  {
-                information = new JLabel("The Good, The Bad, The Ugly", JLabel.CENTER);
+                information.setText("The Good, The Bad, The Ugly");
                 setAllButtonsEnabled();
                 buttonGBU.setEnabled(false);
             } else if (e.getSource() == buttonAWD)  {
-                information = new JLabel("Dracula", JLabel.CENTER);
+                information.setText("Dracula");
                 setAllButtonsEnabled();
                 buttonAWD.setEnabled(false);
             } else if (e.getSource() == buttonOber) {
-                information = new JLabel("Ober", JLabel.CENTER);
+                information.setText("Ober");
                 setAllButtonsEnabled();
                 buttonOber.setEnabled(false);
             } else if (e.getSource() == buttonUntergang)    {
-                information = new JLabel("Der Untergang", JLabel.CENTER);
+                information.setText("Der Untergang");
                 setAllButtonsEnabled();
                 buttonUntergang.setEnabled(false);
             } else if (e.getSource() == buttonHelaas)   {
-                information = new JLabel("De Helaasheid der dingen", JLabel.CENTER);
+                information.setText("De Helaasheid Der Dingen");
                 setAllButtonsEnabled();
                 buttonHelaas.setEnabled(false);
             } else if (e.getSource() == buttonACO)  {
-                information = new JLabel("A Clockwork Orange", JLabel.CENTER);
+                information.setText("A Clockwork Orange");
                 setAllButtonsEnabled();
                 buttonACO.setEnabled(false);
             }
         }
 
         private void setAllButtonsEnabled()  {
+
+            //Sets all the buttons to enabled
             buttonSherlock.setEnabled(true);
             buttonBB.setEnabled(true);
             buttonFargo.setEnabled(true);
@@ -291,6 +308,16 @@ public class UI implements Runnable {
             buttonUntergang.setEnabled(true);
             buttonHelaas.setEnabled(true);
             buttonACO.setEnabled(true);
+        }
+    }
+
+    private class ItemListener implements java.awt.event.ItemListener {
+
+        @Override
+        public void itemStateChanged(ItemEvent e) {
+
+            //Changes text of label greeting when profile is changed
+            greeting.setText(timeKeeper.greeting() + " " + usersDropdown.getSelectedItem());
         }
     }
 }
