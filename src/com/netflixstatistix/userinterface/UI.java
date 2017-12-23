@@ -1,19 +1,12 @@
 package com.netflixstatistix.userinterface;
 
-import com.netflixstatistix.connections.DatabaseConnection;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
 
-/*
-    Pas alle objectnamen aan, aangezien Bas hoogstwaarschijnlijk dezelfde namen zal gebruiken.
-    Dit in verband met plagiaat.
- */
+public class UI implements Runnable {
 
-public class UI implements Runnable /*, ActionListener */ {
     // Initializing different classes
     private AppDetails appDetails = new AppDetails();
     private TimeKeeper timeKeeper = new TimeKeeper();
@@ -23,83 +16,78 @@ public class UI implements Runnable /*, ActionListener */ {
 
     // Creating JFrame which acts as main container.
     private JFrame frame;
-    private JMenuBar topMenuBar;
-    private JMenu accountMenu;
-    private JMenuItem loginMenuItem;
-    private JMenuItem logoutMenuItem;
-    private JMenu infoMenu;
-    private JMenuItem avansItemMenu;
-    private JMenuItem aboutItemMenu;
 
-    private boolean loggedIn;
 
     @Override
     public void run() {
-        this.frame = new JFrame("Netflix Statistix");
-        this.frame.setPreferredSize(new Dimension(800, 800));
-        this.frame.setMinimumSize(new Dimension(650, 500));
+
+        //Title of UI
+        this.frame = new JFrame("Netflix Statistix Version " + new AppDetails().getVersion());
+
+        //Shaping the UI
+        this.frame.setSize(new Dimension(800, 800));
+        this.frame.setMinimumSize(new Dimension(650, 650));
         this.frame.setResizable(true);
 
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        //Set action when closed
+        this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        createComponents(frame.getContentPane());
+        //Fills the UI
+        createComponents(this.frame.getContentPane());
 
-        // For testing purposes set loggedIn to true                                                //<< TESTING SETTING
-        loggedIn = false;
+        this.frame.pack();
 
-        frame.pack();
-        frame.setVisible(true);
+        //Centers the window relative to the screen
+        this.frame.setLocationRelativeTo(null);
+        this.frame.setVisible(true);
     }
 
     private void createComponents(Container container) {
 
-        Container pane = frame.getContentPane();
-        pane.setLayout(new BorderLayout());
-
-//TOPMENU
-        // build the menu bar container
+//Top Menu Bar
+        // Initiates the top menu bar
         JMenuBar topMenuBar = new JMenuBar();
 
-        // Build the account menu
-        accountMenu = new JMenu("Account");
+        // Menu for Account
+        JMenu accountMenu = new JMenu("Account");
 
-        // login
-        loginMenuItem = new JMenuItem("Inloggen");
-        loginMenuItem.setEnabled(loggedIn);                                                         //<< TESTING SETTING
+        //Items for Menu Account
+        JMenuItem loginMenuItem = new JMenuItem("Inloggen");
+        JMenuItem logoutMenuItem = new JMenuItem("Afmelden");
+
+        //Add Items to Menu Account
         accountMenu.add(loginMenuItem);
-
-        // logout
-        logoutMenuItem = new JMenuItem("Afmelden");
-        logoutMenuItem.setEnabled(!loggedIn);                                                       //<< TESTING SETTING
         accountMenu.add(logoutMenuItem);
 
-        // Build the info menu
-        infoMenu = new JMenu("Info");
+        // Menu for Info
+        JMenu infoMenu = new JMenu("Info");
 
-        // Avans website
-        avansItemMenu = new JMenuItem("Avans website");
+        //Items for Menu Info
+        JMenuItem avansItemMenu = new JMenuItem("Avans website");
+        JMenuItem aboutItemMenu = new JMenuItem("Over deze app");
+
+        //Add items to Menu Info
         infoMenu.add(avansItemMenu);
-
-        // about the app
-        aboutItemMenu = new JMenuItem("Over deze app");
         infoMenu.add(aboutItemMenu);
 
-        // add menus to menubar
+        // Add Account-menu and Info-Menu to the top menu bar
         topMenuBar.add(accountMenu);
         topMenuBar.add(infoMenu);
 
-        frame.setJMenuBar(topMenuBar);
-//END TOPMENU
+        // Set JMenuBar for this frame
+        this.frame.setJMenuBar(topMenuBar);
 
-//GUI
-    //Right Menu
+        Container pane = frame.getContentPane();
+        pane.setLayout(new BorderLayout());
+
+//Right Menu
         //Greeting
         JLabel label1 = new JLabel(timeKeeper.greeting(), JLabel.CENTER);
         label1.setFont(new Font("Arial", Font.BOLD, 36));
         label1.setBorder(grey);
         pane.add(label1, BorderLayout.CENTER);
 
-    //left menu
+//left menu
         //User Dropdown Menu
         JPanel userContainer = new JPanel(new BorderLayout());
 
@@ -127,9 +115,6 @@ public class UI implements Runnable /*, ActionListener */ {
         //SERIES
         JButton show1 = new JButton("Sherlock");
         show1.setMargin(new Insets(5, 0, 5, 0));
-
-        //Commando om Sherlock te weergeven
-        show1.setActionCommand("showSherlock");
         JButton show2 = new JButton("Breaking Bad");
         show2.setMargin(new Insets(5, 0, 5, 0));
         JButton show3 = new JButton("Fargo");
@@ -148,6 +133,14 @@ public class UI implements Runnable /*, ActionListener */ {
         show8.setMargin(new Insets(5, 0, 5, 0));
         JButton show9 = new JButton("Andy Warhol's Dracula");
         show9.setMargin(new Insets(5, 0, 5, 0));
+        JButton show10 = new JButton("Ober");
+        show9.setMargin(new Insets(5, 0, 5, 0));
+        JButton show11 = new JButton("Der Untergang");
+        show9.setMargin(new Insets(5, 0, 5, 0));
+        JButton show12 = new JButton("De helaasheid der dingen");
+        show9.setMargin(new Insets(5, 0, 5, 0));
+        JButton show13 = new JButton("A Clockwork Orange");
+        show9.setMargin(new Insets(5, 0, 5, 0));
 
         showSubContainer.add(show1, gbc);
         showSubContainer.add(show2, gbc);
@@ -158,6 +151,10 @@ public class UI implements Runnable /*, ActionListener */ {
         showSubContainer.add(show7, gbc);
         showSubContainer.add(show8, gbc);
         showSubContainer.add(show9, gbc);
+        showSubContainer.add(show10, gbc);
+        showSubContainer.add(show11, gbc);
+        showSubContainer.add(show12, gbc);
+        showSubContainer.add(show13, gbc);
 
         JPanel westContainer = new JPanel(new BorderLayout());
         westContainer.setBorder(grey);
@@ -166,26 +163,20 @@ public class UI implements Runnable /*, ActionListener */ {
 
         pane.add(westContainer, BorderLayout.WEST);
 
-        // Build the credits menu
+//Credits Bar bottom
+        //Create panel for labels
         JPanel creditsContainer = new JPanel(new BorderLayout());
         creditsContainer.setBorder(new EmptyBorder(3, 10, 3, 10));
+
+        //Create Labels with information
         JLabel creditsAppVersion = new JLabel("Netflix Statistix versie " + appDetails.getVersion(), JLabel.LEFT);
         JLabel credits = new JLabel("Informatica 2017 - Klas E - " + appDetails.getAuthors(), JLabel.RIGHT);
+
+        //Add labels to the container
         creditsContainer.add(creditsAppVersion, BorderLayout.WEST);
         creditsContainer.add(credits, BorderLayout.EAST);
+
+        //add container to pane
         pane.add(creditsContainer, BorderLayout.SOUTH);
-
-//END GUI
     }
-
-    public JFrame getFrame() {
-        return frame;
-    }
-
-//    @Override
-//    public void actionPerformed(ActionEvent e) {
-//        if ("showSherlock".equals(e.getActionCommand()))    {
-//
-//        }
-//    }
 }
