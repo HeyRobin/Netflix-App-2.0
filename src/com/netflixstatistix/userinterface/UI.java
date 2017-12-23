@@ -3,7 +3,10 @@ package com.netflixstatistix.userinterface;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import javax.swing.tree.FixedHeightLayoutCache;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class UI implements Runnable {
 
@@ -11,12 +14,29 @@ public class UI implements Runnable {
     private AppDetails appDetails = new AppDetails();
     private TimeKeeper timeKeeper = new TimeKeeper();
 
-    // Makkelijke variabele voor grijze achtergrond
-    private Border grey = BorderFactory.createLineBorder(Color.lightGray);
+    // Don't Copy Yourself
+    private final Border grey = BorderFactory.createLineBorder(Color.lightGray);
 
     // Creating JFrame which acts as main container.
     private JFrame frame;
 
+    //Creating JLabel variable for the right menu to display data
+    private JLabel information;
+
+    //Buttons for the shows
+    private JButton buttonSherlock;
+    private JButton buttonBB;
+    private JButton buttonFargo;
+    private JButton buttonTLOB;
+    private JButton buttonPF;
+    private JButton buttonPruim;
+    private JButton buttonRD;
+    private JButton buttonGBU;
+    private JButton buttonAWD;
+    private JButton buttonOber;
+    private JButton buttonUntergang;
+    private JButton buttonHelaas;
+    private JButton buttonACO;
 
     @Override
     public void run() {
@@ -82,10 +102,10 @@ public class UI implements Runnable {
 
 //Right Menu
         //Greeting
-        JLabel label1 = new JLabel(timeKeeper.greeting(), JLabel.CENTER);
-        label1.setFont(new Font("Arial", Font.BOLD, 36));
-        label1.setBorder(grey);
-        pane.add(label1, BorderLayout.CENTER);
+        information = new JLabel(timeKeeper.greeting(), JLabel.CENTER);
+        information.setFont(new Font("Arial", Font.BOLD, 36));
+        information.setBorder(grey);
+        pane.add(information, BorderLayout.CENTER);
 
 //left menu
         //User Dropdown Menu
@@ -112,49 +132,65 @@ public class UI implements Runnable {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = GridBagConstraints.REMAINDER;
 
+        //Initializes ButtonListener
+        ButtonListener bl = new ButtonListener();
+
         //SERIES
-        JButton show1 = new JButton("Sherlock");
-        show1.setMargin(new Insets(5, 0, 5, 0));
-        JButton show2 = new JButton("Breaking Bad");
-        show2.setMargin(new Insets(5, 0, 5, 0));
-        JButton show3 = new JButton("Fargo");
-        show3.setMargin(new Insets(5, 0, 5, 0));
+        buttonSherlock= new JButton("Sherlock");
+        buttonSherlock.setMargin(new Insets(5, 0, 5, 0));
+        buttonSherlock.addActionListener(bl);
+        buttonBB = new JButton("Breaking Bad");
+        buttonBB.setMargin(new Insets(5, 0, 5, 0));
+        buttonBB.addActionListener(bl);
+        buttonFargo = new JButton("Fargo");
+        buttonFargo.setMargin(new Insets(5, 0, 5, 0));
+        buttonFargo.addActionListener(bl);
 
         //FILMS
-        JButton show4 = new JButton("The Life Of Brian");
-        show4.setMargin(new Insets(5, 0, 5, 0));
-        JButton show5 = new JButton("Pulp Fiction");
-        show5.setMargin(new Insets(5, 0, 5, 0));
-        JButton show6 = new JButton("Pruimenbloesem");
-        show6.setMargin(new Insets(5, 0, 5, 0));
-        JButton show7 = new JButton("Reservoir Dogs");
-        show7.setMargin(new Insets(5, 0, 5, 0));
-        JButton show8 = new JButton("The Good, the Bad and the Ugly");
-        show8.setMargin(new Insets(5, 0, 5, 0));
-        JButton show9 = new JButton("Andy Warhol's Dracula");
-        show9.setMargin(new Insets(5, 0, 5, 0));
-        JButton show10 = new JButton("Ober");
-        show9.setMargin(new Insets(5, 0, 5, 0));
-        JButton show11 = new JButton("Der Untergang");
-        show9.setMargin(new Insets(5, 0, 5, 0));
-        JButton show12 = new JButton("De helaasheid der dingen");
-        show9.setMargin(new Insets(5, 0, 5, 0));
-        JButton show13 = new JButton("A Clockwork Orange");
-        show9.setMargin(new Insets(5, 0, 5, 0));
+        buttonTLOB = new JButton("The Life Of Brian");
+        buttonTLOB.setMargin(new Insets(5, 0, 5, 0));
+        buttonTLOB.addActionListener(bl);
+        buttonPF = new JButton("Pulp Fiction");
+        buttonPF.setMargin(new Insets(5, 0, 5, 0));
+        buttonPF.addActionListener(bl);
+        buttonPruim = new JButton("Pruimenbloesem");
+        buttonPruim.setMargin(new Insets(5, 0, 5, 0));
+        buttonPruim.addActionListener(bl);
+        buttonRD = new JButton("Reservoir Dogs");
+        buttonRD.setMargin(new Insets(5, 0, 5, 0));
+        buttonRD.addActionListener(bl);
+        buttonGBU = new JButton("The Good, the Bad and the Ugly");
+        buttonGBU.setMargin(new Insets(5, 0, 5, 0));
+        buttonGBU.addActionListener(bl);
+        buttonAWD = new JButton("Andy Warhol's Dracula");
+        buttonAWD.setMargin(new Insets(5, 0, 5, 0));
+        buttonAWD.addActionListener(bl);
+        buttonOber = new JButton("Ober");
+        buttonOber.setMargin(new Insets(5, 0, 5, 0));
+        buttonOber.addActionListener(bl);
+        buttonUntergang = new JButton("Der Untergang");
+        buttonUntergang.setMargin(new Insets(5, 0, 5, 0));
+        buttonUntergang.addActionListener(bl);
+        buttonHelaas = new JButton("De helaasheid der dingen");
+        buttonHelaas.setMargin(new Insets(5, 0, 5, 0));
+        buttonHelaas.addActionListener(bl);
+        buttonACO = new JButton("A Clockwork Orange");
+        buttonACO.setMargin(new Insets(5, 0, 5, 0));
+        buttonACO.addActionListener(bl);
 
-        showSubContainer.add(show1, gbc);
-        showSubContainer.add(show2, gbc);
-        showSubContainer.add(show3, gbc);
-        showSubContainer.add(show4, gbc);
-        showSubContainer.add(show5, gbc);
-        showSubContainer.add(show6, gbc);
-        showSubContainer.add(show7, gbc);
-        showSubContainer.add(show8, gbc);
-        showSubContainer.add(show9, gbc);
-        showSubContainer.add(show10, gbc);
-        showSubContainer.add(show11, gbc);
-        showSubContainer.add(show12, gbc);
-        showSubContainer.add(show13, gbc);
+        showSubContainer.add(buttonSherlock, gbc);
+        showSubContainer.add(buttonBB, gbc);
+        showSubContainer.add(buttonFargo, gbc);
+        showSubContainer.add(buttonTLOB, gbc);
+        showSubContainer.add(buttonPF, gbc);
+        showSubContainer.add(buttonPruim, gbc);
+        showSubContainer.add(buttonRD, gbc);
+        showSubContainer.add(buttonGBU, gbc);
+        showSubContainer.add(buttonAWD, gbc);
+        showSubContainer.add(buttonOber, gbc);
+        showSubContainer.add(buttonUntergang, gbc);
+        showSubContainer.add(buttonHelaas, gbc);
+        showSubContainer.add(buttonACO, gbc);
 
         JPanel westContainer = new JPanel(new BorderLayout());
         westContainer.setBorder(grey);
@@ -178,5 +214,83 @@ public class UI implements Runnable {
 
         //add container to pane
         pane.add(creditsContainer, BorderLayout.SOUTH);
+    }
+
+    private class ButtonListener implements ActionListener   {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            //Determine the source of the action performed
+            if (e.getSource() == buttonSherlock)    {
+                information = new JLabel("Sherlock Holmes", JLabel.CENTER);
+                setAllButtonsEnabled();
+                buttonSherlock.setEnabled(false);
+            } else if (e.getSource() == buttonBB)   {
+                information.setText("Breaking Bad");// = new JLabel("Breaking Bad", JLabel.CENTER);
+                setAllButtonsEnabled();
+                buttonBB.setEnabled(false);
+            } else if (e.getSource() == buttonFargo)    {
+                information = new JLabel("Fargo", JLabel.CENTER);
+                setAllButtonsEnabled();
+                buttonFargo.setEnabled(false);
+            } else if ((e.getSource() == buttonTLOB)) {
+                information = new JLabel("The Life Of Brian", JLabel.CENTER);
+                setAllButtonsEnabled();
+                buttonTLOB.setEnabled(false);
+            } else if (e.getSource() == buttonPF)   {
+                information = new JLabel("Pulp Fiction", JLabel.CENTER);
+                setAllButtonsEnabled();
+                buttonPF.setEnabled(false);
+            } else if (e.getSource() == buttonPruim)    {
+                information = new JLabel("Vieze porno", JLabel.CENTER);
+                setAllButtonsEnabled();
+                buttonPruim.setEnabled(false);
+            } else if (e.getSource() == buttonRD)   {
+                information = new JLabel("Resevoir Dogs", JLabel.CENTER);
+                setAllButtonsEnabled();
+                buttonRD.setEnabled(false);
+            } else if (e.getSource() == buttonGBU)  {
+                information = new JLabel("The Good, The Bad, The Ugly", JLabel.CENTER);
+                setAllButtonsEnabled();
+                buttonGBU.setEnabled(false);
+            } else if (e.getSource() == buttonAWD)  {
+                information = new JLabel("Dracula", JLabel.CENTER);
+                setAllButtonsEnabled();
+                buttonAWD.setEnabled(false);
+            } else if (e.getSource() == buttonOber) {
+                information = new JLabel("Ober", JLabel.CENTER);
+                setAllButtonsEnabled();
+                buttonOber.setEnabled(false);
+            } else if (e.getSource() == buttonUntergang)    {
+                information = new JLabel("Der Untergang", JLabel.CENTER);
+                setAllButtonsEnabled();
+                buttonUntergang.setEnabled(false);
+            } else if (e.getSource() == buttonHelaas)   {
+                information = new JLabel("De Helaasheid der dingen", JLabel.CENTER);
+                setAllButtonsEnabled();
+                buttonHelaas.setEnabled(false);
+            } else if (e.getSource() == buttonACO)  {
+                information = new JLabel("A Clockwork Orange", JLabel.CENTER);
+                setAllButtonsEnabled();
+                buttonACO.setEnabled(false);
+            }
+        }
+
+        private void setAllButtonsEnabled()  {
+            buttonSherlock.setEnabled(true);
+            buttonBB.setEnabled(true);
+            buttonFargo.setEnabled(true);
+            buttonTLOB.setEnabled(true);
+            buttonPF.setEnabled(true);
+            buttonPruim.setEnabled(true);
+            buttonRD.setEnabled(true);
+            buttonGBU.setEnabled(true);
+            buttonAWD.setEnabled(true);
+            buttonOber.setEnabled(true);
+            buttonUntergang.setEnabled(true);
+            buttonHelaas.setEnabled(true);
+            buttonACO.setEnabled(true);
+        }
     }
 }
