@@ -1,8 +1,6 @@
 package com.netflixstatistix.userinterface;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
 
 public class TimeKeeper {
 
