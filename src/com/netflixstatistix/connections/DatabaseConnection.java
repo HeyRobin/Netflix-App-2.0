@@ -10,7 +10,7 @@ public class DatabaseConnection {
     final int serverPort = 6667;
     final String dbUserName = "sa";
     final String dbPassword = "MarlBoroq17";
-    final String databaseName = "NetflixStatistix";
+    final String databaseName = "NFS";
     final String connectionUrl = "jdbc:sqlserver://" + serverAdres + ":" + serverPort + ";databaseName=" + databaseName + ";user=" + dbUserName + ";password=" + dbPassword;
     private Connection con = null;
     private Statement stmt = null;
