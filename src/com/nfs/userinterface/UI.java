@@ -30,19 +30,19 @@ public class UI implements Runnable {
     private JLabel information;
 
     //Buttons for the shows
-    private JButton buttonSherlock;
-    private JButton buttonBB;
-    private JButton buttonFargo;
-    private JButton buttonTLOB;
-    private JButton buttonPF;
-    private JButton buttonPruim;
-    private JButton buttonRD;
-    private JButton buttonGBU;
-    private JButton buttonAWD;
-    private JButton buttonOber;
-    private JButton buttonUntergang;
-    private JButton buttonHelaas;
-    private JButton buttonACO;
+    private JButton btnSHER;
+    private JButton btnBREA;
+    private JButton btnFARG;
+    private JButton btnTLOB;
+    private JButton btnPULP;
+    private JButton btnPRUI;
+    private JButton btnDOGS;
+    private JButton btnGOOD;
+    private JButton btnDRAC;
+    private JButton btnOBER;
+    private JButton btnUNTE;
+    private JButton btnHELA;
+    private JButton btnACLO;
 
     //Initializes the Database Fetcher
     private DatabaseFetcher dbf = new DatabaseFetcher();
@@ -88,20 +88,7 @@ public class UI implements Runnable {
         accountMenu.add(loginMenuItem);
         accountMenu.add(logoutMenuItem);
 
-        // Menu for Info
-        JMenu infoMenu = new JMenu("Info");
-
-        //Items for Menu Info
-        JMenuItem avansItemMenu = new JMenuItem("Avans website");
-        JMenuItem aboutItemMenu = new JMenuItem("Over deze app");
-
-        //Add items to Menu Info
-        infoMenu.add(avansItemMenu);
-        infoMenu.add(aboutItemMenu);
-
-        // Add Account-menu and Info-Menu to the top menu bar
         topMenuBar.add(accountMenu);
-        topMenuBar.add(infoMenu);
 
         // Set JMenuBar for this frame
         this.frame.setJMenuBar(topMenuBar);
@@ -152,61 +139,61 @@ public class UI implements Runnable {
         ButtonListener bl = new ButtonListener();
 
         //SERIES
-        buttonSherlock= new JButton("Sherlock");
-        buttonSherlock.setMargin(new Insets(5, 0, 5, 0));
-        buttonSherlock.addActionListener(bl);
-        buttonBB = new JButton("Breaking Bad");
-        buttonBB.setMargin(new Insets(5, 0, 5, 0));
-        buttonBB.addActionListener(bl);
-        buttonFargo = new JButton("Fargo");
-        buttonFargo.setMargin(new Insets(5, 0, 5, 0));
-        buttonFargo.addActionListener(bl);
+        btnSHER = new JButton("Sherlock");
+        btnSHER.setMargin(new Insets(5, 0, 5, 0));
+        btnSHER.addActionListener(bl);
+        btnBREA = new JButton("Breaking Bad");
+        btnBREA.setMargin(new Insets(5, 0, 5, 0));
+        btnBREA.addActionListener(bl);
+        btnFARG = new JButton("Fargo");
+        btnFARG.setMargin(new Insets(5, 0, 5, 0));
+        btnFARG.addActionListener(bl);
 
         //FILMS
-        buttonTLOB = new JButton("The Life Of Brian");
-        buttonTLOB.setMargin(new Insets(5, 0, 5, 0));
-        buttonTLOB.addActionListener(bl);
-        buttonPF = new JButton("Pulp Fiction");
-        buttonPF.setMargin(new Insets(5, 0, 5, 0));
-        buttonPF.addActionListener(bl);
-        buttonPruim = new JButton("Pruimenbloesem");
-        buttonPruim.setMargin(new Insets(5, 0, 5, 0));
-        buttonPruim.addActionListener(bl);
-        buttonRD = new JButton("Reservoir Dogs");
-        buttonRD.setMargin(new Insets(5, 0, 5, 0));
-        buttonRD.addActionListener(bl);
-        buttonGBU = new JButton("The Good, the Bad and the Ugly");
-        buttonGBU.setMargin(new Insets(5, 0, 5, 0));
-        buttonGBU.addActionListener(bl);
-        buttonAWD = new JButton("Andy Warhol's Dracula");
-        buttonAWD.setMargin(new Insets(5, 0, 5, 0));
-        buttonAWD.addActionListener(bl);
-        buttonOber = new JButton("Ober");
-        buttonOber.setMargin(new Insets(5, 0, 5, 0));
-        buttonOber.addActionListener(bl);
-        buttonUntergang = new JButton("Der Untergang");
-        buttonUntergang.setMargin(new Insets(5, 0, 5, 0));
-        buttonUntergang.addActionListener(bl);
-        buttonHelaas = new JButton("De helaasheid der dingen");
-        buttonHelaas.setMargin(new Insets(5, 0, 5, 0));
-        buttonHelaas.addActionListener(bl);
-        buttonACO = new JButton("A Clockwork Orange");
-        buttonACO.setMargin(new Insets(5, 0, 5, 0));
-        buttonACO.addActionListener(bl);
+        btnTLOB = new JButton("The Life Of Brian");
+        btnTLOB.setMargin(new Insets(5, 0, 5, 0));
+        btnTLOB.addActionListener(bl);
+        btnPULP = new JButton("Pulp Fiction");
+        btnPULP.setMargin(new Insets(5, 0, 5, 0));
+        btnPULP.addActionListener(bl);
+        btnPRUI = new JButton("Pruimenbloesem");
+        btnPRUI.setMargin(new Insets(5, 0, 5, 0));
+        btnPRUI.addActionListener(bl);
+        btnDOGS = new JButton("Reservoir Dogs");
+        btnDOGS.setMargin(new Insets(5, 0, 5, 0));
+        btnDOGS.addActionListener(bl);
+        btnGOOD = new JButton("The Good, the Bad and the Ugly");
+        btnGOOD.setMargin(new Insets(5, 0, 5, 0));
+        btnGOOD.addActionListener(bl);
+        btnDRAC = new JButton("Andy Warhol's Dracula");
+        btnDRAC.setMargin(new Insets(5, 0, 5, 0));
+        btnDRAC.addActionListener(bl);
+        btnOBER = new JButton("Ober");
+        btnOBER.setMargin(new Insets(5, 0, 5, 0));
+        btnOBER.addActionListener(bl);
+        btnUNTE = new JButton("Der Untergang");
+        btnUNTE.setMargin(new Insets(5, 0, 5, 0));
+        btnUNTE.addActionListener(bl);
+        btnHELA = new JButton("De helaasheid der dingen");
+        btnHELA.setMargin(new Insets(5, 0, 5, 0));
+        btnHELA.addActionListener(bl);
+        btnACLO = new JButton("A Clockwork Orange");
+        btnACLO.setMargin(new Insets(5, 0, 5, 0));
+        btnACLO.addActionListener(bl);
 
-        showSubContainer.add(buttonSherlock, gbc);
-        showSubContainer.add(buttonBB, gbc);
-        showSubContainer.add(buttonFargo, gbc);
-        showSubContainer.add(buttonTLOB, gbc);
-        showSubContainer.add(buttonPF, gbc);
-        showSubContainer.add(buttonPruim, gbc);
-        showSubContainer.add(buttonRD, gbc);
-        showSubContainer.add(buttonGBU, gbc);
-        showSubContainer.add(buttonAWD, gbc);
-        showSubContainer.add(buttonOber, gbc);
-        showSubContainer.add(buttonUntergang, gbc);
-        showSubContainer.add(buttonHelaas, gbc);
-        showSubContainer.add(buttonACO, gbc);
+        showSubContainer.add(btnSHER, gbc);
+        showSubContainer.add(btnBREA, gbc);
+        showSubContainer.add(btnFARG, gbc);
+        showSubContainer.add(btnTLOB, gbc);
+        showSubContainer.add(btnPULP, gbc);
+        showSubContainer.add(btnPRUI, gbc);
+        showSubContainer.add(btnDOGS, gbc);
+        showSubContainer.add(btnGOOD, gbc);
+        showSubContainer.add(btnDRAC, gbc);
+        showSubContainer.add(btnOBER, gbc);
+        showSubContainer.add(btnUNTE, gbc);
+        showSubContainer.add(btnHELA, gbc);
+        showSubContainer.add(btnACLO, gbc);
 
         JPanel westContainer = new JPanel(new BorderLayout());
         westContainer.setBorder(grey);
@@ -238,88 +225,88 @@ public class UI implements Runnable {
         public void actionPerformed(ActionEvent e) {
 
             //Determine the source of the action performed
-            if (e.getSource() == buttonSherlock)    {
+            if (e.getSource() == btnSHER)    {
 
                 //Placeholder
                 information.setText("Sherlock Holmes");
 
                 //First enable previous disabled button, then disable current button
                 setAllButtonsEnabled();
-                buttonSherlock.setEnabled(false);
+                btnSHER.setEnabled(false);
 
                 //Get data from database
-                information.setText(dbf.getInformationAboutFilm("Sherlock"));
+                information.setText(dbf.getInformationAboutShow("Sherlock"));
 
-            } else if (e.getSource() == buttonBB)   {
+            } else if (e.getSource() == btnBREA)   {
                 information.setText("Breaking Bad");
                 setAllButtonsEnabled();
-                buttonBB.setEnabled(false);
-                information.setText(dbf.getInformationAboutFilm("Breaking Bad"));
+                btnBREA.setEnabled(false);
+                information.setText(dbf.getInformationAboutShow("Breaking Bad"));
 
-            } else if (e.getSource() == buttonFargo)    {
+            } else if (e.getSource() == btnFARG)    {
                 information.setText("Fargo");
                 setAllButtonsEnabled();
-                buttonFargo.setEnabled(false);
-                information.setText(dbf.getInformationAboutFilm("Fargo"));
+                btnFARG.setEnabled(false);
+                information.setText(dbf.getInformationAboutShow("Fargo"));
 
-            } else if ((e.getSource() == buttonTLOB)) {
+            } else if ((e.getSource() == btnTLOB)) {
                 information.setText("The Life Of Brian");
                 setAllButtonsEnabled();
-                buttonTLOB.setEnabled(false);
-                information.setText(dbf.getInformationAboutFilm("The Life Og Brian"));
+                btnTLOB.setEnabled(false);
+                information.setText(dbf.getInformationAboutFilm("The Life Of Brian"));
 
-            } else if (e.getSource() == buttonPF)   {
+            } else if (e.getSource() == btnPULP)   {
                 information.setText("Pulp Fiction");
                 setAllButtonsEnabled();
-                buttonPF.setEnabled(false);
+                btnPULP.setEnabled(false);
                 information.setText(dbf.getInformationAboutFilm("Pulp Fiction"));
 
-            } else if (e.getSource() == buttonPruim)    {
+            } else if (e.getSource() == btnPRUI)    {
                 information.setText("Pruimenbloem");
                 setAllButtonsEnabled();
-                buttonPruim.setEnabled(false);
+                btnPRUI.setEnabled(false);
                 information.setText(dbf.getInformationAboutFilm("Pruimenbloem"));
 
-            } else if (e.getSource() == buttonRD)   {
+            } else if (e.getSource() == btnDOGS)   {
                 information.setText("Resevoir Dogs");
                 setAllButtonsEnabled();
-                buttonRD.setEnabled(false);
+                btnDOGS.setEnabled(false);
                 information.setText(dbf.getInformationAboutFilm("Resevoir Dogs"));
 
-            } else if (e.getSource() == buttonGBU)  {
+            } else if (e.getSource() == btnGOOD)  {
                 information.setText("The Good, The Bad, The Ugly");
                 setAllButtonsEnabled();
-                buttonGBU.setEnabled(false);
+                btnGOOD.setEnabled(false);
                 information.setText(dbf.getInformationAboutFilm("The Good, The Bad, The Ugly"));
 
-            } else if (e.getSource() == buttonAWD)  {
+            } else if (e.getSource() == btnDRAC)  {
                 information.setText("Dracula");
                 setAllButtonsEnabled();
-                buttonAWD.setEnabled(false);
+                btnDRAC.setEnabled(false);
                 information.setText(dbf.getInformationAboutFilm("Dracula"));
 
-            } else if (e.getSource() == buttonOber) {
+            } else if (e.getSource() == btnOBER) {
                 information.setText("Ober");
                 setAllButtonsEnabled();
-                buttonOber.setEnabled(false);
+                btnOBER.setEnabled(false);
                 information.setText(dbf.getInformationAboutFilm("Ober"));
 
-            } else if (e.getSource() == buttonUntergang)    {
+            } else if (e.getSource() == btnUNTE)    {
                 information.setText("Der Untergang");
                 setAllButtonsEnabled();
-                buttonUntergang.setEnabled(false);
+                btnUNTE.setEnabled(false);
                 information.setText(dbf.getInformationAboutFilm("Der Untergang"));
 
-            } else if (e.getSource() == buttonHelaas)   {
+            } else if (e.getSource() == btnHELA)   {
                 information.setText("De Helaasheid Der Dingen");
                 setAllButtonsEnabled();
-                buttonHelaas.setEnabled(false);
+                btnHELA.setEnabled(false);
                 information.setText(dbf.getInformationAboutFilm("De Helaasheid Der Dingen"));
 
-            } else if (e.getSource() == buttonACO)  {
+            } else if (e.getSource() == btnACLO)  {
                 information.setText("A Clockwork Orange");
                 setAllButtonsEnabled();
-                buttonACO.setEnabled(false);
+                btnACLO.setEnabled(false);
                 information.setText(dbf.getInformationAboutFilm("A Clockwork Orange"));
             }
         }
@@ -327,19 +314,19 @@ public class UI implements Runnable {
         private void setAllButtonsEnabled()  {
 
             //Sets all the buttons to enabled
-            buttonSherlock.setEnabled(true);
-            buttonBB.setEnabled(true);
-            buttonFargo.setEnabled(true);
-            buttonTLOB.setEnabled(true);
-            buttonPF.setEnabled(true);
-            buttonPruim.setEnabled(true);
-            buttonRD.setEnabled(true);
-            buttonGBU.setEnabled(true);
-            buttonAWD.setEnabled(true);
-            buttonOber.setEnabled(true);
-            buttonUntergang.setEnabled(true);
-            buttonHelaas.setEnabled(true);
-            buttonACO.setEnabled(true);
+            btnSHER.setEnabled(true);
+            btnBREA.setEnabled(true);
+            btnFARG.setEnabled(true);
+            btnTLOB.setEnabled(true);
+            btnPULP.setEnabled(true);
+            btnPRUI.setEnabled(true);
+            btnDOGS.setEnabled(true);
+            btnGOOD.setEnabled(true);
+            btnDRAC.setEnabled(true);
+            btnOBER.setEnabled(true);
+            btnUNTE.setEnabled(true);
+            btnHELA.setEnabled(true);
+            btnACLO.setEnabled(true);
         }
     }
 

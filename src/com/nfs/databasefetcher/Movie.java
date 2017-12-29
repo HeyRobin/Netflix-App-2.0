@@ -20,36 +20,6 @@ public class Movie {
     }
 
 
-    //Gives all the movies and their corresponding titles
-    public List<String> getAllFilmsInDB() {
-
-        //Declarations
-        String query =  "SELECT Titel \n" +
-                        "FROM Movie";
-        ResultSet rs = dbc.getData(query);
-
-        try {
-
-            //First, check for an empty ResultSet
-            if (rs == null) {
-                throw new IllegalStateException("The ResultSet was empty");
-            }
-
-            else {
-                //Adding every value
-                while (rs.next()) {
-                    movies.add(rs.getString("Titel"));
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return this.movies;
-    }
-
-
     public String getInformationAboutFilm(String movieName) {
 
         //Declarations
@@ -88,4 +58,33 @@ public class Movie {
 
         return tf.formatterMovie(title, genre, language, age, duration);
     }
+
+//    //Gives all the movies and their corresponding titles
+//    public List<String> getAllFilmsInDB() {
+//
+//        //Declarations
+//        String query =  "SELECT Titel \n" +
+//                        "FROM Movie";
+//        ResultSet rs = dbc.getData(query);
+//
+//        try {
+//
+//            //First, check for an empty ResultSet
+//            if (rs == null) {
+//                throw new IllegalStateException("The ResultSet was empty");
+//            }
+//
+//            else {
+//                //Adding every value
+//                while (rs.next()) {
+//                    movies.add(rs.getString("Titel"));
+//                }
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return this.movies;
+//    }
 }
