@@ -1,4 +1,4 @@
-package com.netflixstatistix.userinterface;
+package com.nfs.userinterface;
 
 import java.util.Calendar;
 

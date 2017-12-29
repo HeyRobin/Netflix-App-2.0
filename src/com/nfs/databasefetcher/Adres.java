@@ -1,4 +1,4 @@
-package com.netflixstatistix;
+package com.nfs.databasefetcher;
 
 public class Adres {
     private int huisNummer;

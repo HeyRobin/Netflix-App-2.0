@@ -1,4 +1,4 @@
-package com.netflixstatistix.connections;
+package com.nfs.connections;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,7 +21,7 @@ public class DatabaseConnection {
     public ResultSet getData(String SQL) {
         try {
             openConnection();
-            stmt = con.createStatement();
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             this.rs = this.stmt.executeQuery(SQL);
             return this.rs;
 

@@ -1,6 +1,6 @@
-package com.netflixstatistix.userinterface;
+package com.nfs.userinterface;
 
-import com.netflixstatistix.connections.DatabaseFetcher;
+import com.nfs.databasefetcher.DatabaseFetcher;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -248,79 +248,79 @@ public class UI implements Runnable {
                 buttonSherlock.setEnabled(false);
 
                 //Get data from database
-                dbf.getInformationAboutSherlock();
+                information.setText(dbf.getInformationAboutFilm("Sherlock"));
 
             } else if (e.getSource() == buttonBB)   {
                 information.setText("Breaking Bad");
                 setAllButtonsEnabled();
                 buttonBB.setEnabled(false);
-                dbf.getInformationAboutBreakingBad();
+                information.setText(dbf.getInformationAboutFilm("Breaking Bad"));
 
             } else if (e.getSource() == buttonFargo)    {
                 information.setText("Fargo");
                 setAllButtonsEnabled();
                 buttonFargo.setEnabled(false);
-                dbf.getInformationAboutFargo();
+                information.setText(dbf.getInformationAboutFilm("Fargo"));
 
             } else if ((e.getSource() == buttonTLOB)) {
                 information.setText("The Life Of Brian");
                 setAllButtonsEnabled();
                 buttonTLOB.setEnabled(false);
-                dbf.getInformationAboutTLOB();
+                information.setText(dbf.getInformationAboutFilm("The Life Og Brian"));
 
             } else if (e.getSource() == buttonPF)   {
-                information.setText("Pupl Fiction");
+                information.setText("Pulp Fiction");
                 setAllButtonsEnabled();
                 buttonPF.setEnabled(false);
-                dbf.getInformationAboutPF();
+                information.setText(dbf.getInformationAboutFilm("Pulp Fiction"));
 
             } else if (e.getSource() == buttonPruim)    {
-                information.setText("Vieze porno");
+                information.setText("Pruimenbloem");
                 setAllButtonsEnabled();
                 buttonPruim.setEnabled(false);
-                dbf.getInformationAboutPruim();
+                information.setText(dbf.getInformationAboutFilm("Pruimenbloem"));
 
             } else if (e.getSource() == buttonRD)   {
                 information.setText("Resevoir Dogs");
                 setAllButtonsEnabled();
                 buttonRD.setEnabled(false);
-                dbf.getInformationAboutRD();
+                information.setText(dbf.getInformationAboutFilm("Resevoir Dogs"));
 
             } else if (e.getSource() == buttonGBU)  {
                 information.setText("The Good, The Bad, The Ugly");
                 setAllButtonsEnabled();
                 buttonGBU.setEnabled(false);
-                dbf.getInformationAboutGBU();
+                information.setText(dbf.getInformationAboutFilm("The Good, The Bad, The Ugly"));
 
             } else if (e.getSource() == buttonAWD)  {
                 information.setText("Dracula");
                 setAllButtonsEnabled();
                 buttonAWD.setEnabled(false);
-                dbf.getInformationAboutAWD();
+                information.setText(dbf.getInformationAboutFilm("Dracula"));
 
             } else if (e.getSource() == buttonOber) {
                 information.setText("Ober");
                 setAllButtonsEnabled();
                 buttonOber.setEnabled(false);
-                dbf.getInformationAboutOber();
+                information.setText(dbf.getInformationAboutFilm("Ober"));
 
             } else if (e.getSource() == buttonUntergang)    {
                 information.setText("Der Untergang");
                 setAllButtonsEnabled();
                 buttonUntergang.setEnabled(false);
-                dbf.getInformationAboutUntergang();
+                information.setText(dbf.getInformationAboutFilm("Der Untergang"));
 
             } else if (e.getSource() == buttonHelaas)   {
                 information.setText("De Helaasheid Der Dingen");
                 setAllButtonsEnabled();
                 buttonHelaas.setEnabled(false);
-                dbf.getInformationAboutHelaas();
+                information.setText(dbf.getInformationAboutFilm("De Helaasheid Der Dingen"));
 
             } else if (e.getSource() == buttonACO)  {
                 information.setText("A Clockwork Orange");
                 setAllButtonsEnabled();
                 buttonACO.setEnabled(false);
-                dbf.getInformationAboutACO();
+                information.setText(dbf.getInformationAboutFilm("A Clockwork Orange"));
             }
         }
 

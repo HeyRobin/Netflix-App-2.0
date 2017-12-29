@@ -1,6 +1,6 @@
-package com.netflixstatistix;
+package com.nfs.databasefetcher;
 
-import com.netflixstatistix.connections.DatabaseConnection;
+import com.nfs.connections.DatabaseConnection;
 
 
 import java.sql.ResultSet;

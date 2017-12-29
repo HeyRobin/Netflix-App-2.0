@@ -1,6 +1,6 @@
-package com.netflixstatistix;
+package com.nfs;
 
-import com.netflixstatistix.userinterface.UI;
+import com.nfs.userinterface.UI;
 
 public class Main {
     public static void main(String[] args) {
