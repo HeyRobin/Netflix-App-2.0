@@ -1,5 +1,7 @@
 package com.nfs.databasefetcher;
 
+import javax.swing.*;
+
 public class DatabaseFetcher {
 
     //Declarations
@@ -13,10 +15,10 @@ public class DatabaseFetcher {
     }
 
     //Giving the information corresponding to a movie
-    public String getInformationAboutFilm(String movieName) {
+    public JPanel getInformationAboutFilm(String movieName) {
         return movie.getInformationAboutFilm(movieName);
     }
 
     //Giving the information corresponding to a show
-    public String getInformationAboutShow(String serieName)    { return show.getInformationAboutShow(serieName); }
+    public JPanel getInformationAboutShow(String serieName)    { return show.getInformationAboutShow(serieName); }
 }

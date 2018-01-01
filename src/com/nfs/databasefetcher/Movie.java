@@ -1,9 +1,10 @@
 package com.nfs.databasefetcher;
 
 import com.nfs.connections.DatabaseConnection;
+import com.nfs.userinterface.InterfaceCreator;
 
+import javax.swing.*;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Movie {
@@ -16,49 +17,59 @@ public class Movie {
     //Constructor
     public Movie()   {
         this.dbc = new DatabaseConnection();
-        this.movies = new ArrayList<>();
+//        this.movies = new ArrayList<>();
     }
 
 
-    public String getInformationAboutFilm(String movieName) {
+    public JPanel getInformationAboutFilm(String movieName) {
 
-        //Declarations
-        String query =  "SELECT *\n" +
-                        "FROM Movie\n" +
-                        "WHERE Titel = '" + movieName + "';";
-        ResultSet rs = dbc.getData(query);
-        TextFormatter tf = new TextFormatter();
-        String title = null;
-        String genre = null;
-        String language = null;
-        int age = 0;
-        int duration = 0;
+        //BUG BELOW
+//        //Declarations
+//        String query =  "SELECT * " +
+//                        "FROM Movie " +
+//                        "WHERE Titel = '" + movieName + "';";
+//        ResultSet rs = dbc.getData(query);
 
-        //Retrieving and sorting all the data
-        try {
+        //Testing purposes
+        String title = "Breaking Bad";
+        String genre = "Avontuur";
+        String language = "Engels";
+        int age = 12;
+        int duration = 136;
 
-            //First, check for an empty ResultSet
-            if (rs == null) {
-                throw new IllegalStateException("The ResultSet was empty");
+        //BUG BELOW
+//        //Retrieving and sorting all the data
+//        try {
+//            title = rs.getString("Titel");
+//            genre = rs.getString("Genre");
+//            language = rs.getString("SpokenLanguage");
+//            age = rs.getInt("Age");
+//            duration = rs.getInt("LengthInSeconds");
+//        }
+//
+//        catch (Exception e)   {
+//            e.printStackTrace();
+//        }
 
-
-            //NEEDS FIX. CANT FIND CURRENT ROW
-            } else {
-                rs.first();
-                title = rs.getString("Titel");
-                genre = rs.getString("Genre");
-                language = rs.getString("SpokenLanguage");
-                age = rs.getInt("Age");
-                duration = rs.getInt("LengthInSeconds");
-            }
-
-        } catch (Exception e)   {
-            e.printStackTrace();
-        }
-
-        return tf.formatterMovie(title, genre, language, age, duration);
+        return new InterfaceCreator().createMoviePanel(title, genre, language, age, duration);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //UNNECESSARY METHOD
 //    //Gives all the movies and their corresponding titles
 //    public List<String> getAllFilmsInDB() {
 //
