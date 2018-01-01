@@ -5,12 +5,14 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 
 public class InterfaceCreator {
+    //Declarations
 
     //Users
     private String[] userArray = new String[] {"Sander", "Robin", "Jac"};
-    private JComboBox<String> usersDropdown = new JComboBox<>(userArray);
+    private JComboBox<String> profileDropdown = new JComboBox<>(userArray);
 
     //Buttons
     private JButton profielGegevens;
@@ -75,15 +77,47 @@ public class InterfaceCreator {
         return information;
     }
 
-    public JComboBox createProfileDropdown()    {
+    public JPanel createProfileDropdown()    {
 
-        usersDropdown.setSelectedIndex(0);
+        //Creating the pane to add the dropdown and greeting
+        JPanel profileContainer = new JPanel(new BorderLayout());
 
-        return usersDropdown;
+        //Setting up the dropdown. UserArray is a placeholder
+        this.profileDropdown.setSelectedIndex(0);
+
+        //Creating the greeting JLabel
+        JLabel greeting = new JLabel(new TimeKeeper().greeting() + " " + getSelectedIem(), JLabel.CENTER);
+
+        //ItemListener class
+        class ItemListener implements java.awt.event.ItemListener {
+
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+
+                //Changes text of label greeting when profile is changed
+                greeting.setText(new TimeKeeper().greeting() + " " + getSelectedIem());
+
+            }
+        }
+
+        //Adding the Listener to the dropdown
+        this.profileDropdown.addItemListener(new ItemListener());
+
+
+        //Creating a subcontainer for better alignment
+        JPanel subContainer = new JPanel(new BorderLayout());
+        subContainer.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+        //Adding the components to the containers
+        subContainer.add(greeting);
+        profileContainer.add(profileDropdown, BorderLayout.NORTH);
+        profileContainer.add(subContainer, BorderLayout.SOUTH);
+
+        return profileContainer;
     }
 
-    public String getSelectedIem() {
-        return userArray[usersDropdown.getSelectedIndex()];
+    private String getSelectedIem() {
+        return userArray[profileDropdown.getSelectedIndex()];
     }
 
     public JPanel createButtons()  {
@@ -135,6 +169,9 @@ public class InterfaceCreator {
         return creditsPanel;
     }
 
+
+    //subclasses
+
     //ButtonListener class
     private class ButtonListener implements ActionListener {
 
@@ -144,27 +181,19 @@ public class InterfaceCreator {
             //Determine the source of the action performed
             if (e.getSource() == profielGegevens)    {
 
-                //Placeholder
-                //information.setText("Sherlock Holmes");
-
-                //First enable previous disabled button, then disable current button
+                //Press button
                 setAllButtonsEnabled();
                 profielGegevens.setEnabled(false);
 
-                //Get data from database
-                //information.setText(dbf.getInformationAboutShow("Sherlock"));
-
             } else if (e.getSource() == films)   {
-                //information.setText("Breaking Bad");
+
                 setAllButtonsEnabled();
                 films.setEnabled(false);
 
             } else if (e.getSource() == series)    {
-                //information.setText("Fargo");
+
                 setAllButtonsEnabled();
                 series.setEnabled(false);
-                //information.setText(dbf.getInformationAboutShow("Fargo"));
-
             }
         }
 
