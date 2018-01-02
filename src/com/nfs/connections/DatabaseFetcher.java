@@ -1,4 +1,7 @@
-package com.nfs.databasefetcher;
+package com.nfs.connections;
+
+import com.nfs.data.Movie;
+import com.nfs.data.Show;
 
 import javax.swing.*;
 

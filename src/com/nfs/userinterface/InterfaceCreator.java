@@ -1,5 +1,8 @@
 package com.nfs.userinterface;
 
+import com.nfs.appdetails.AppDetails;
+import com.nfs.appdetails.TimeKeeper;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -10,9 +13,13 @@ import java.awt.event.ItemEvent;
 public class InterfaceCreator {
     //Declarations
 
+    //Information
+    private JPanel informationPanel =  new JPanel(new BorderLayout());
+
     //Users
     private String[] userArray = new String[] {"Sander", "Robin", "Jac"};
     private JComboBox<String> profileDropdown = new JComboBox<>(userArray);
+    private JLabel greeting = new JLabel(new TimeKeeper().greeting() + " " + getSelectedIem(), JLabel.CENTER);
 
     //Buttons
     private JButton profielGegevens;
@@ -64,17 +71,18 @@ public class InterfaceCreator {
         return topMenuBar;
     }
 
-    public JLabel createStartupInformation()    {
+    public JPanel createStartupInformation()    {
 
-        //Declaration
         JLabel information = new JLabel(new TimeKeeper().greeting(), JLabel.CENTER);
 
         //Label Make-up
         information.setFont(new Font("Arial", Font.BOLD, 36));
         information.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 
+        informationPanel.add(information, BorderLayout.CENTER);
+
         //Return Label
-        return information;
+        return informationPanel;
     }
 
     public JPanel createProfileDropdown()    {
@@ -85,31 +93,15 @@ public class InterfaceCreator {
         //Setting up the dropdown. UserArray is a placeholder
         this.profileDropdown.setSelectedIndex(0);
 
-        //Creating the greeting JLabel
-        JLabel greeting = new JLabel(new TimeKeeper().greeting() + " " + getSelectedIem(), JLabel.CENTER);
-
-        //ItemListener class
-        class ItemListener implements java.awt.event.ItemListener {
-
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-
-                //Changes text of label greeting when profile is changed
-                greeting.setText(new TimeKeeper().greeting() + " " + getSelectedIem());
-
-            }
-        }
-
         //Adding the Listener to the dropdown
         this.profileDropdown.addItemListener(new ItemListener());
 
-
-        //Creating a subcontainer for better alignment
+        //Creating a sub-container for better alignment
         JPanel subContainer = new JPanel(new BorderLayout());
         subContainer.setBorder(new EmptyBorder(20, 20, 20, 20));
 
         //Adding the components to the containers
-        subContainer.add(greeting);
+        subContainer.add(this.greeting);
         profileContainer.add(profileDropdown, BorderLayout.NORTH);
         profileContainer.add(subContainer, BorderLayout.SOUTH);
 
@@ -169,9 +161,29 @@ public class InterfaceCreator {
         return creditsPanel;
     }
 
+    public JPanel createProfielGegevens()  {
+        JLabel hello = new JLabel("profielgegevens", JLabel.CENTER);
+        JPanel helloPanel = new JPanel(new BorderLayout());
+        helloPanel.add(hello, BorderLayout.NORTH);
+        return helloPanel;
+    }
 
-    //subclasses
+    public JPanel createMovieButtons()  {
+        JLabel hello = new JLabel("moviebuttons", JLabel.CENTER);
+        JPanel helloPanel = new JPanel(new BorderLayout());
+        helloPanel.add(hello, BorderLayout.NORTH);
+        return helloPanel;
+    }
 
+    public JPanel createFilmButtons()  {
+        JLabel hello = new JLabel("filmbuttons", JLabel.CENTER);
+        JPanel helloPanel = new JPanel(new BorderLayout());
+        helloPanel.add(hello, BorderLayout.NORTH);
+        return helloPanel;
+    }
+
+
+    //SUBCLASSES
     //ButtonListener class
     private class ButtonListener implements ActionListener {
 
@@ -180,29 +192,47 @@ public class InterfaceCreator {
 
             //Determine the source of the action performed
             if (e.getSource() == profielGegevens)    {
-
-                //Press button
-                setAllButtonsEnabled();
-                profielGegevens.setEnabled(false);
+                pressButton(profielGegevens);
+                replacePane(createProfielGegevens());
 
             } else if (e.getSource() == films)   {
-
-                setAllButtonsEnabled();
-                films.setEnabled(false);
+                pressButton(films);
+                replacePane(createFilmButtons());
 
             } else if (e.getSource() == series)    {
+                pressButton(series);
+                replacePane(createMovieButtons());
 
-                setAllButtonsEnabled();
-                series.setEnabled(false);
             }
         }
 
         private void setAllButtonsEnabled()  {
-
-            //Sets all the buttons to enabled
             profielGegevens.setEnabled(true);
             films.setEnabled(true);
             series.setEnabled(true);
+        }
+
+        private void pressButton(JButton button)    {
+            setAllButtonsEnabled();
+            button.setEnabled(false);
+        }
+
+        private void replacePane(Component component)   {
+            informationPanel.removeAll();
+            informationPanel.add(component, BorderLayout.CENTER);
+            informationPanel.updateUI();
+        }
+    }
+
+    //ItemListener class
+    class ItemListener implements java.awt.event.ItemListener {
+
+        @Override
+        public void itemStateChanged(ItemEvent e) {
+
+            //Changes text of label greeting when profile is changed
+            greeting.setText(new TimeKeeper().greeting() + " " + getSelectedIem());
+
         }
     }
 }

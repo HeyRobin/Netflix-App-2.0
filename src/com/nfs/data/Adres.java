@@ -1,4 +1,4 @@
-package com.nfs.databasefetcher;
+package com.nfs.data;
 
 public class Adres {
     private int huisNummer;

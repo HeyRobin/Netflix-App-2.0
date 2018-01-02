@@ -1,10 +1,9 @@
-package com.nfs.databasefetcher;
+package com.nfs.data;
 
 import com.nfs.connections.DatabaseConnection;
 import com.nfs.userinterface.InterfaceCreator;
 
 import javax.swing.*;
-import java.sql.ResultSet;
 import java.util.List;
 
 public class Movie {
@@ -53,21 +52,6 @@ public class Movie {
 
         return new InterfaceCreator().createMoviePanel(title, genre, language, age, duration);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     //UNNECESSARY METHOD
 //    //Gives all the movies and their corresponding titles

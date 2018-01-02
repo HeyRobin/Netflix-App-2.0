@@ -12,12 +12,12 @@ public class DatabaseConnection {
 //    final String dbPassword = "MarlBoroq17";
 //    final String databaseName = "NFS";
 //    final String connectionUrl = "jdbc:sqlserver://" + serverAdres + ":" + serverPort + ";databaseName=" + databaseName + ";user=" + dbUserName + ";password=" + dbPassword;
+
+    //custom URL want slecht internet in duitslandia
     private final String connectionUrl = "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=Database;integratedSecurity=false;";
     private Connection con = null;
     private Statement stmt = null;
     private ResultSet rs = null;
-
-    public DatabaseConnection() { }
 
     public ResultSet getData(String SQL) {
         try {
@@ -46,7 +46,6 @@ public class DatabaseConnection {
             e.printStackTrace();
         }
     }
-
 
     private void closeConnection() {
         if (this.con != null || this.stmt != null || this.con != null) {

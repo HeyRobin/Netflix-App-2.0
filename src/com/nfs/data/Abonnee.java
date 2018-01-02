@@ -1,4 +1,4 @@
-package com.nfs.databasefetcher;
+package com.nfs.data;
 
 import com.nfs.connections.DatabaseConnection;
 
@@ -46,13 +46,12 @@ public class Abonnee{
 
     }
 
-    private ArrayList<Profiel> buildProfiles(int abonneeID){    //Zoekt bijhorende profielen en brengt deze onder in het Parents Abbo object.
-        ArrayList<Profiel> profielen = new ArrayList();
+    //Zoekt bijhorende profielen en brengt deze onder in het Parents Abbo object.
+    private ArrayList<Profiel> buildProfiles(int abonneeID){
+        ArrayList<Profiel> profielen = new ArrayList<>();
         DatabaseConnection con = new DatabaseConnection();
 
         try {
-
-
             ResultSet rs = con.getData("SELECT COUNT(*) AS AantalRows FROM Profiel WHERE AbonneeID = '" + abonneeID + "';");
             rs.next();
             int amountOfRows = rs.getInt("AantalRows");
@@ -69,63 +68,5 @@ public class Abonnee{
             e.printStackTrace();
         }
         return profielen;
-    }
-
-
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public String getNaam() {
-        return naam;
-    }
-
-    public void setNaam(String naam) {
-        this.naam = naam;
-    }
-
-    public String getStraat() {
-        return straat;
-    }
-
-    public void setStraat(String straat) {
-        this.straat = straat;
-    }
-
-    public String getHuisNr() {
-        return huisNr;
-    }
-
-    public void setHuisNr(String huisNr) {
-        this.huisNr = huisNr;
-    }
-
-    public String getToevoeging() {
-        return toevoeging;
-    }
-
-    public void setToevoeging(String toevoeging) {
-        this.toevoeging = toevoeging;
-    }
-
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
-    public String getWoonPlaats() {
-        return woonPlaats;
-    }
-
-    public void setWoonPlaats(String woonPlaats) {
-        this.woonPlaats = woonPlaats;
     }
 }

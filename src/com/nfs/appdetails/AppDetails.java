@@ -1,9 +1,9 @@
-package com.nfs.userinterface;
+package com.nfs.appdetails;
 
 public class AppDetails {
 
     // Versiedetails en auteurs
-    private String version = "0.5";
+    private String version = "0.7";
     private String authors = "Sander Postma, Robin La Rondelle, Jac Sebregts";
 
     public String getVersion() {

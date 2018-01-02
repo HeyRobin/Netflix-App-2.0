@@ -1,8 +1,8 @@
-package com.nfs.databasefetcher;
+package com.nfs.data;
 
 public class TextFormatter {
 
-    ///Formats all the movie details to a simple String
+    ///Formats all the movie data to a simple String
     public String formatterMovie(String title, String genre, String spokenLanguage, int age, int lengthInSeconds)   {
         String output;
 
