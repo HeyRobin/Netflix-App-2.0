@@ -77,7 +77,7 @@ public class InterfaceCreator {
 
         //Label Make-up
         information.setFont(new Font("Arial", Font.BOLD, 36));
-        information.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+        information.setBorder(BorderFactory.createLineBorder(Color.gray));
 
         informationPanel.add(information, BorderLayout.CENTER);
 
@@ -148,7 +148,7 @@ public class InterfaceCreator {
 
         //Create panel for labels
         JPanel creditsPanel = new JPanel(new BorderLayout());
-        creditsPanel.setBorder(new EmptyBorder(3, 10, 3, 10));
+        creditsPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 
         //Create Labels with information
         JLabel creditsAppVersion = new JLabel("Netflix Statistix versie " + new AppDetails().getVersion(), JLabel.LEFT);
@@ -169,10 +169,56 @@ public class InterfaceCreator {
     }
 
     public JPanel createMovieButtons()  {
-        JLabel hello = new JLabel("moviebuttons", JLabel.CENTER);
-        JPanel helloPanel = new JPanel(new BorderLayout());
-        helloPanel.add(hello, BorderLayout.NORTH);
-        return helloPanel;
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.setBorder(BorderFactory.createLineBorder(Color.gray));
+
+        JPanel buttonPanel = new JPanel(new GridBagLayout());
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(10, 10, 70, 10);
+
+        //width and height of the buttons, Non-scalable
+        c.ipady = 100;
+        c.ipadx = 70;
+
+
+        //positioning
+        c.gridy = 0;
+        c.gridx = 0;
+        buttonPanel.add(new JButton("hello"), c);
+
+        c.gridx = 1;
+        buttonPanel.add(new JButton("hello"), c);
+
+        c.gridx = 2;
+        buttonPanel.add(new JButton("hello"), c);
+
+        c.gridx = 0;
+        c.gridy = 1;
+        buttonPanel.add(new JButton("hello"), c);
+
+        c.gridx = 1;
+        buttonPanel.add(new JButton("hello"), c);
+
+        c.gridx = 2;
+        buttonPanel.add(new JButton("hello"), c);
+
+        c.gridx = 0;
+        c.gridy = 2;
+        c.insets = new Insets(10, 10, 10, 10);
+        buttonPanel.add(new JButton("hello"), c);
+
+        c.gridx = 1;
+        buttonPanel.add(new JButton("hello"), c);
+
+        c.gridx = 2;
+        buttonPanel.add(new JButton("hello"), c);
+
+        mainPanel.add(buttonPanel, BorderLayout.CENTER);
+
+        return mainPanel;
     }
 
     public JPanel createFilmButtons()  {
