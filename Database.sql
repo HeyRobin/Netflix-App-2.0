@@ -1,5 +1,4 @@
 -- TODO
--- - Vullen met data
 -- - Cascade's opzetten
 
 
@@ -104,21 +103,58 @@ INSERT INTO Serie (Title, SerieID, Genre, SpokenLanguage, MinAge) VALUES
 
 INSERT INTO Episode (EpisodeNumber, Title, SerieID, LengthInMinutes) VALUES
 /* Sherlock */
-(10101, 'A Study in Pink' 001, 88),
-(10102, 'The Blind Banker', 001, 88),
-(10103, 'The Great Game', 001, 88),
-(10201, 'A Scandal in Belgravia', 001, 88),
-(10202, 'The Hounds of Baskerville', 001, 88),
-(10203, 'The Reichenbach Fall', 001, 88),
-(10301, 'The Empty Hearse', 001, 88),
-(10302, 'The Sign of Three', 001, 88),
-(10303, 'His Last Vow', 001, 88);
+(1001, 'A Study in Pink' 001, 88),
+(1002, 'The Blind Banker', 001, 88),
+(1003, 'The Great Game', 001, 88),
+(1004, 'A Scandal in Belgravia', 001, 88),
+(1005, 'The Hounds of Baskerville', 001, 88),
+(1006, 'The Reichenbach Fall', 001, 88),
+(1007, 'The Empty Hearse', 001, 88),
+(1008, 'The Sign of Three', 001, 88),
+(1009, 'His Last Vow', 001, 88);
 
 /* Breaking Bad */
-(20101),
+(2000, 'Pilot', 002, 58),
+(2001, 'Cat is in the Bag…', 002, 48),
+(2002, '…And the Bag is in the River', 002, 48),
+(2003, 'Cancer Man', 002, 48),
+(2004, 'Gray Matter', 002, 48),
+(2005, 'Crazy Handful of Nothin', 002, 48),
+(2006, 'A No-Rough-Stuff-Type Deal', 002, 48),
+(2007, 'Seven Thirty-Seven', 002, 48),
+(2008, 'Grilled', 002, 48),
+(2009, 'Bit by a Dead Bee', 002, 48),
+(2011, 'Down', 002, 48),
+(2012, 'Breakage', 002, 48),
+(2013, 'Peekaboo', 002, 48),
+(2014, 'Negro Y Azul', 002, 48), 
+(2015, '4 Days Out', 002, 48),
+(2016, 'Over', 002, 48),
+(2017, 'Mandala', 002, 48),
+(2018, 'Phoenix', 002, 48),
+(2019, 'ABQ', 002, 48);
 
 /* Fargo */
-(30101),
+(3001, 'The Crocodiles Dilemma', 003, 68),
+(3002, 'The Rooster Prince', 003, 68),
+(3003, 'A Muddy Road', 003, 68),
+(3004, 'Eating the Blame', 003, 68),
+(3005, 'The Six Ungraspables', 003, 68),
+(3006, 'Buridans Ass', 003, 68),
+(3007, 'Who Shaves the Barber?', 003, 68),
+(3008, 'The Heap', 003, 68),
+(3009, 'A Fox, a Rabbit, and a Cabbage', 003, 68),
+(3010, 'Mortons Fork', 003, 68),
+(3101, 'Waiting for Dutch', 003, 68),
+(3102, 'Before the Law', 003, 68),
+(3103, 'The Myth of Sisyphus', 003, 68),
+(3104, 'The Gift of the Magi', 003, 68),
+(3105, 'Fear and Trembling', 003, 68),
+(3106, 'Rhinoceros', 003, 68),
+(3107, 'Did you do this? No, you did it!', 003, 68),
+(3108, 'Loplop', 003, 68),
+(3109, 'The Castle', 003, 68),
+(3110, 'Palindrome', 003, 68);
 
 INSERT INTO SeriesSeen (SerieID, PercentageSeen, UserName, UserProfile) VALUES
 (1001, 100, 'Frank', 1215426),
@@ -150,9 +186,9 @@ INSERT INTO MoviesSeen (MovieID, PercentageSeen, UserName, UserProfile) VALUES
 (8002, 100, 'Diana', 5285824);
 
 /* 
-001 -- Sherlock
-002 -- Breaking Bad
-003 -- Fargo
+001 - Sherlock
+002 - Breaking Bad
+003 - Fargo
 */
 INSERT INTO SerieAssociations (SerieID, LooksLike) VALUES
 (001, 003),
