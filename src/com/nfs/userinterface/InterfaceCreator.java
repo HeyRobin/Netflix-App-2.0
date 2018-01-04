@@ -168,10 +168,10 @@ public class InterfaceCreator {
         return helloPanel;
     }
 
-    public JPanel createMovieButtons()  {
+    public JPanel createShowButtons()  {
 
         JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setBorder(BorderFactory.createLineBorder(Color.gray));
+        JPanel west = new JPanel(new BorderLayout());
 
         JPanel buttonPanel = new JPanel(new GridBagLayout());
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -181,51 +181,79 @@ public class InterfaceCreator {
 
         //width and height of the buttons, Non-scalable
         c.ipady = 100;
-        c.ipadx = 70;
+        c.ipadx = 55;
 
 
         //positioning
         c.gridy = 0;
         c.gridx = 0;
-        buttonPanel.add(new JButton("hello"), c);
+        buttonPanel.add(new JButton("Show 1"), c);
 
         c.gridx = 1;
-        buttonPanel.add(new JButton("hello"), c);
+        buttonPanel.add(new JButton("Show 2"), c);
 
         c.gridx = 2;
-        buttonPanel.add(new JButton("hello"), c);
+        buttonPanel.add(new JButton("Show 3"), c);
 
         c.gridx = 0;
         c.gridy = 1;
-        buttonPanel.add(new JButton("hello"), c);
+        buttonPanel.add(new JButton("Show 4"), c);
 
         c.gridx = 1;
-        buttonPanel.add(new JButton("hello"), c);
+        buttonPanel.add(new JButton("Show 5"), c);
 
         c.gridx = 2;
-        buttonPanel.add(new JButton("hello"), c);
+        buttonPanel.add(new JButton("Show 6"), c);
 
         c.gridx = 0;
         c.gridy = 2;
         c.insets = new Insets(10, 10, 10, 10);
-        buttonPanel.add(new JButton("hello"), c);
+        buttonPanel.add(new JButton("Show 7"), c);
 
         c.gridx = 1;
-        buttonPanel.add(new JButton("hello"), c);
+        buttonPanel.add(new JButton("Show 8"), c);
 
         c.gridx = 2;
-        buttonPanel.add(new JButton("hello"), c);
+        buttonPanel.add(new JButton("Show 9"), c);
 
-        mainPanel.add(buttonPanel, BorderLayout.CENTER);
+        mainPanel.add(buttonPanel, BorderLayout.NORTH);
+        west.add(mainPanel, BorderLayout.WEST);
 
-        return mainPanel;
+        return west;
     }
 
     public JPanel createFilmButtons()  {
-        JLabel hello = new JLabel("filmbuttons", JLabel.CENTER);
-        JPanel helloPanel = new JPanel(new BorderLayout());
-        helloPanel.add(hello, BorderLayout.NORTH);
-        return helloPanel;
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        JPanel west = new JPanel(new BorderLayout());
+
+        JPanel buttonPanel = new JPanel(new GridBagLayout());
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(10, 10, 70, 10);
+        c.anchor = GridBagConstraints.NORTHWEST;
+
+        //width and height of the buttons, Non-scalable
+        c.ipady = 100;
+        c.ipadx = 65;
+
+
+        //positioning
+        c.gridy = 0;
+        c.gridx = 0;
+        buttonPanel.add(new JButton("Film 1"), c);
+
+        c.gridx = 1;
+        buttonPanel.add(new JButton("Film 2"), c);
+
+        c.gridx = 2;
+        buttonPanel.add(new JButton("Film 3"), c);
+
+        mainPanel.add(buttonPanel, BorderLayout.NORTH);
+        west.add(mainPanel, BorderLayout.WEST);
+
+        return west;
     }
 
 
@@ -247,7 +275,7 @@ public class InterfaceCreator {
 
             } else if (e.getSource() == series)    {
                 pressButton(series);
-                replacePane(createMovieButtons());
+                replacePane(createShowButtons());
 
             }
         }
