@@ -6,15 +6,17 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DatabaseConnection {
-//    final String serverAdres = "multiplicity.softether.net";
-//    final int serverPort = 6667;
-//    final String dbUserName = "sa";
-//    final String dbPassword = "MarlBoroq17";
-//    final String databaseName = "NFS";
-//    final String connectionUrl = "jdbc:sqlserver://" + serverAdres + ":" + serverPort + ";databaseName=" + databaseName + ";user=" + dbUserName + ";password=" + dbPassword;
+    final String serverAdres = "multiplicity.softether.net";
+    final int serverPort = 6667;
+    final String dbUserName = "sa";
+    final String dbPassword = "MarlBoroq17";
+    final String databaseName = "NFS";
+    final String connectionUrl = "jdbc:sqlserver://" + serverAdres + ":" + serverPort + ";databaseName=" + databaseName + ";user=" + dbUserName + ";password=" + dbPassword;
 
     //custom URL want slecht internet in duitslandia
-    private final String connectionUrl = "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=Database;integratedSecurity=false;";
+
+    // Internet in Duitslandia was niet slecht... Server stond uit. Sp
+//    private final String connectionUrl = "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=Database;integratedSecurity=false;";
     private Connection con = null;
     private Statement stmt = null;
     private ResultSet rs = null;
@@ -37,7 +39,7 @@ public class DatabaseConnection {
         }
     }
 
-    public void openConnection() {
+    private void openConnection() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             this.con = DriverManager.getConnection(this.connectionUrl);

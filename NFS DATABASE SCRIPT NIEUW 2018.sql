@@ -44,7 +44,7 @@ CREATE TABLE	Serie(
 	MinAge 		int					);
 
 CREATE TABLE	Episode(
-	EpisodeNumber 	int 			NOT NULL,
+	EpisodeNumber 	int 		UNIQUE	NOT NULL,
 	Title 		varchar(40) 		NOT NULL,
 	SerieID 	int FOREIGN KEY REFERENCES Serie(SerieID),
 	LengthInMinutes int 			NOT NULL,
@@ -53,17 +53,18 @@ CREATE TABLE	Episode(
 
 CREATE TABLE	SeriesSeen(
 	SerieID		int FOREIGN KEY REFERENCES Serie(SerieID),
+	EpisodeNumber int FOREIGN KEY REFERENCES Episode(EpisodeNumber),
 	PercentageSeen 	int,
-	UserName	int FOREIGN KEY REFERENCES UserProfile(ProfileName),
+	SubScriber	int FOREIGN KEY REFERENCES Subscriber(SubscriberID),
 	UserProfile	int FOREIGN KEY REFERENCES UserProfile(ProfileID)
-		CONSTRAINT PK_SeriesSeen PRIMARY KEY (SerieID)	);
+		CONSTRAINT PK_SeriesSeen PRIMARY KEY (SerieID, EpisodeNumber, SubScriber, UserProfile)	);
 								
 CREATE TABLE	MoviesSeen(
 	MovieID 	int FOREIGN KEY REFERENCES Movie(MovieID),
 	PercentageSeen 	int,
-	UserName	int FOREIGN KEY REFERENCES UserProfile(ProfileName),
+	Subscriber	int FOREIGN KEY REFERENCES Subscriber(SubscriberID),
 	UserProfile	int FOREIGN KEY REFERENCES UserProfile(ProfileID)
-		CONSTRAINT PK_MoviesSeen PRIMARY KEY (MovieID)	);
+		CONSTRAINT PK_MoviesSeen PRIMARY KEY (MovieID, Subscriber, UserProfile)	);
 
 CREATE TABLE	SerieAssociations(
 	SerieID int FOREIGN KEY REFERENCES Serie(SerieID),
@@ -77,12 +78,12 @@ INSERT INTO Subscriber (SubscriberID, Name, Street, HouseNr, PostalCode, City) V
 (5285824, 'F. de Kat', 'Kantlaan', 11, '4811CD', 'Breda');
 
 INSERT INTO UserProfile (SubscriberID, ProfileID, ProfileName, DateOfBirth) VALUES
-(1215426, 01, 'Frank', '1968-01-25'),
-(1215426, 02, 'Madelief', '2001-08-19'),
-(5602533, 01, 'Petrus', '1999-06-26'),
-(5602533, 02, 'Paulus', '1999-06-26'),
-(5285824, 01, 'Fritz', '1968-08-19'),
-(5285824, 02, 'Diana', '1988-12-25');
+(1215426, 100001, 'Frank', '1968-01-25'),
+(1215426, 100002, 'Madelief', '2001-08-19'),
+(5602533, 100003, 'Petrus', '1999-06-26'),
+(5602533, 100004, 'Paulus', '1999-06-26'),
+(5285824, 100005, 'Fritz', '1968-08-19'),
+(5285824, 100006, 'Diana', '1988-12-25');
 
 INSERT INTO Movie (Title, MovieID, Genre, SpokenLanguage, MinAge, LengthInMinutes) VALUES
 ('The Abominable Bride', 1010, 'Detective', 'Engels', 12 , 89),
@@ -112,12 +113,12 @@ INSERT INTO Episode (EpisodeNumber, Title, SerieID, LengthInMinutes) VALUES
 (1006, 'The Reichenbach Fall', 001, 88),
 (1007, 'The Empty Hearse', 001, 88),
 (1008, 'The Sign of Three', 001, 88),
-(1009, 'His Last Vow', 001, 88);
+(1009, 'His Last Vow', 001, 88),
 
 /* Breaking Bad */
 (2000, 'Pilot', 002, 58),
-(2001, 'Cat is in the Bagâ€¦', 002, 48),
-(2002, 'â€¦And the Bag is in the River', 002, 48),
+(2001, 'Cat is in the Bag…', 002, 48),
+(2002, '…And the Bag is in the River', 002, 48),
 (2003, 'Cancer Man', 002, 48),
 (2004, 'Gray Matter', 002, 48),
 (2005, 'Crazy Handful of Nothin', 002, 48),
@@ -133,7 +134,7 @@ INSERT INTO Episode (EpisodeNumber, Title, SerieID, LengthInMinutes) VALUES
 (2016, 'Over', 002, 48),
 (2017, 'Mandala', 002, 48),
 (2018, 'Phoenix', 002, 48),
-(2019, 'ABQ', 002, 48);
+(2019, 'ABQ', 002, 48),
 
 /* Fargo */
 (3001, 'The Crocodiles Dilemma', 003, 68),
@@ -157,34 +158,34 @@ INSERT INTO Episode (EpisodeNumber, Title, SerieID, LengthInMinutes) VALUES
 (3109, 'The Castle', 003, 68),
 (3110, 'Palindrome', 003, 68);
 
-INSERT INTO SeriesSeen (SerieID, PercentageSeen, UserName, UserProfile) VALUES
-(1001, 100, 'Frank', 1215426),
-(1001, 100, 'Madelief', 1215426),
-(1001, 100, 'Fritz', 5285824),
-(1001, 45, 'Diana', 5285824),
-(1002, 100, 'Frank', 1215426),
-(1002, 60,  'Madelief', 1215426),
-(1002, 100, 'Fritz', 5285824),
-(1003, 78, 'Frank', 1215426),
-(2001, 100, 'Madelief', 1215426),
-(2002, 100, 'Madelief', 1215426),
-(2003, 100, 'Madelief', 1215426),
-(2004, 22, 'Madelief', 1215426),
-(2019, 10, 'Paulus', 5602533),
-(3001, 91, 'Madelief', 1215426),
-(3001, 100, 'Petrus', 5602533),
-(3001, 100, 'Paulus', 5602533),
-(3002, 100, 'Petrus', 5602533),
-(3002, 74, 'Paulus', 5602533),
-(3010, 60, 'Paulus', 5602533),
-(3010, 60, 'Petrus', 5602533);
+INSERT INTO SeriesSeen (SerieID, EpisodeNumber, PercentageSeen, SubScriber, UserProfile) VALUES
+(001, 1001, 100, '1215426', 100001),
+(001, 1001, 100, '1215426', 100002),
+(001, 1001, 100, '5285824', 100005),
+(001, 1001, 45,	'5285824', 100006),
+(001, 1002, 100, '1215426', 100001),
+(001, 1002, 60,  '1215426', 100002),
+(001, 1002, 100, '5285824', 100005),
+(001, 1003, 78,	'1215426', 100001),
+(002, 2001, 100, '1215426', 100002),
+(002, 2002, 100, '1215426', 100002),
+(002, 2003, 100, '1215426', 100002),
+(002, 2004, 22,	'1215426', 100002),
+(002, 2019, 10,	'5602533', 100004),
+(003, 3001, 91,	'1215426', 100002),
+(003, 3001, 100, '5602533', 100003),
+(003, 3001, 100, '5602533', 100004),
+(003, 3002, 100, '5602533', 100003),
+(003, 3002, 74,	'5602533', 100004),
+(003, 3010, 60,	'5602533', 100004),
+(003, 3010, 60,	'5602533', 100003);
 
-INSERT INTO MoviesSeen (MovieID, PercentageSeen, UserName, UserProfile) VALUES
-(1010, 5, 'Fritz', 5285824),
-(8001, 100, 'Petrus', 5602533),
-(8001, 100, 'Paulus', 5602533),
-(8002, 99, 'Petrus', 5602533),
-(8002, 100, 'Diana', 5285824);
+INSERT INTO MoviesSeen (MovieID, PercentageSeen, Subscriber, UserProfile) VALUES
+(1010, 5, '5285824', 100005),
+(8001, 100, '5602533', 100003),
+(8001, 100, '5602533', 100004),
+(8002, 99, '5602533', 100003),
+(8002, 100, '5285824', 100006);
 
 /* 
 001 - Sherlock
@@ -197,3 +198,12 @@ INSERT INTO SerieAssociations (SerieID, LooksLike) VALUES
 (002, 003),
 (003, 002);
 
+
+
+
+-- Setting up login for admin's
+CREATE TABLE AdminLogin(
+						UserName Varchar(10) UNIQUE NOT NULL,
+						Pin int);
+
+INSERT INTO AdminLogin (UserName, Pin) VALUES  ('admin', 1234);
