@@ -2,6 +2,8 @@ package com.nfs.userinterface;
 
 import com.nfs.appdetails.AppDetails;
 import com.nfs.appdetails.TimeKeeper;
+import com.nfs.data.Film;
+import com.nfs.data.Show;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -28,32 +30,6 @@ public class InterfaceCreator {
 
 
     //Methods
-    public JPanel createMoviePanel(String title, String genre, String Language, int age, int duration)    {
-
-        //Assigning the parameters
-        JLabel givenTitle = new JLabel(title);
-        JLabel givenGenre = new JLabel(genre);
-        JLabel givenLanguage = new JLabel(Language);
-        JLabel givenAge = new JLabel(""+age+"+");
-        JLabel givenDuration = new JLabel(""+duration+" min");
-
-        //Setting up the new panel
-        JPanel newPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1;
-        gbc.gridwidth = GridBagConstraints.REMAINDER;
-        newPanel.add(givenTitle, gbc);
-
-        gbc.gridheight = 2;
-
-
-
-        return newPanel;
-    }
-
     public JMenuBar createTopMenuBar()  {
 
         //Declarations
@@ -122,7 +98,7 @@ public class InterfaceCreator {
         c.gridwidth = GridBagConstraints.REMAINDER;
 
         //Setting up the buttons
-        ButtonListener bl = new ButtonListener();
+        MenuButtonListener bl = new MenuButtonListener();
 
         profielGegevens = new JButton("Profiel Gegevens");
         profielGegevens.addActionListener(bl);
@@ -256,10 +232,50 @@ public class InterfaceCreator {
         return west;
     }
 
+    public JPanel createInformationAboutShow(String showName)   {
+
+        JPanel main = new JPanel(new BorderLayout());
+        Show show = new Show();
+        JPanel jPanel = show.getInformationAboutShow(showName);
+
+        return jPanel;
+    }
+
+    public JPanel createInformationAboutFilm(String filmName)   {
+        Film movie = new Film();
+        movie.getInformationAboutFilm(filmName);
+        return null;
+    }
+
+    public JPanel createFilmPanel(String title, String genre, String Language, int age, int duration)    {
+
+        //Assigning the parameters
+        JLabel givenTitle = new JLabel(title);
+        JLabel givenGenre = new JLabel(genre);
+        JLabel givenLanguage = new JLabel(Language);
+        JLabel givenAge = new JLabel(""+age+"+");
+        JLabel givenDuration = new JLabel(""+duration+" min");
+
+        //Setting up the new panel
+        JPanel newPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        newPanel.add(givenTitle, gbc);
+
+        gbc.gridheight = 2;
+
+
+
+        return newPanel;
+    }
 
     //SUBCLASSES
     //ButtonListener class
-    private class ButtonListener implements ActionListener {
+    class MenuButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -307,6 +323,24 @@ public class InterfaceCreator {
             //Changes text of label greeting when profile is changed
             greeting.setText(new TimeKeeper().greeting() + " " + getSelectedIem());
 
+        }
+    }
+
+    //Actionlistener for the Film Buttons
+    class FilmButtonListener implements  ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            createInformationAboutFilm("Sherlock");
+        }
+    }
+
+    //Action Listener for the Show buttons
+    class ShowButtonListener implements ActionListener  {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            createInformationAboutShow("Breaking Bad");
         }
     }
 }

@@ -1,36 +1,32 @@
-package com.nfs.Login;
-
-
+package com.nfs.login;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-
 
 public class LoginScherm {
+
+    //declarations
     public String username;
     public String password;
-    static JPanel panel;
-    static JFrame frame;
-
+    private static JPanel panel;
+    private static JFrame frame;
 
     public static void buildUI() {
+        ImageIcon icon = new ImageIcon();
 
-        Image icon = new BufferedImage(32, 32, 3);
-
-        frame = new JFrame("Login");
+        frame = new JFrame("login");
 
         frame.setSize(350, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
         panel = new JPanel();   //maakt een paneel, en voegt deze toe aan het frame.
         frame.add(panel);
         placeComponents();
         frame.setVisible(true);
-        frame.setIconImage(icon);
+        frame.setIconImage(icon.getImage());
 
 
     }
@@ -60,7 +56,7 @@ public class LoginScherm {
         passwordField.setBounds(130, 80, 80, 25);
         panel.add(passwordField);
 
-        JButton loginButton = new JButton("Login");
+        JButton loginButton = new JButton("login");
         loginButton.setBounds(30, 110, 80, 25);
         loginButton.addActionListener(new LoginListener(userField,passwordField));
         panel.add(loginButton);

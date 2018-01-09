@@ -1,6 +1,6 @@
 package com.nfs.connections;
 
-import com.nfs.data.Movie;
+import com.nfs.data.Film;
 import com.nfs.data.Show;
 
 import javax.swing.*;
@@ -8,12 +8,12 @@ import javax.swing.*;
 public class DatabaseFetcher {
 
     //Declarations
-    private Movie movie;
+    private Film movie;
     private Show show;
 
     //Constructor
     public DatabaseFetcher()    {
-        movie = new Movie();
+        movie = new Film();
         show = new Show();
     }
 

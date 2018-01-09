@@ -13,10 +13,7 @@ public class DatabaseConnection {
     final String databaseName = "NFS";
     final String connectionUrl = "jdbc:sqlserver://" + serverAdres + ":" + serverPort + ";databaseName=" + databaseName + ";user=" + dbUserName + ";password=" + dbPassword;
 
-    //custom URL want slecht internet in duitslandia
-
-    // Internet in Duitslandia was niet slecht... Server stond uit. Sp
-//    private final String connectionUrl = "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=Database;integratedSecurity=false;";
+   // private final String connectionUrl = "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=Database;integratedSecurity=false;";
     private Connection con = null;
     private Statement stmt = null;
     private ResultSet rs = null;
