@@ -1,10 +1,13 @@
 package com.nfs;
 
 import com.nfs.login.LoginScherm;
+import com.nfs.userinterface.UI;
 
 public class Main {
     public static void main(String[] args) {
-        LoginScherm.buildUI();
+        //LoginScherm.buildUI();
+        UI ui = new UI();
+        ui.run();
     }
 }
 

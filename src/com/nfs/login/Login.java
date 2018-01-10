@@ -18,7 +18,7 @@ public class Login {
         System.out.println(sql);
         DatabaseConnection con = new DatabaseConnection();
         ResultSet rs = con.getData(sql);
-            
+
         if(rs.next()){
             System.out.println("login succesvol");
 
