@@ -326,6 +326,8 @@ public class InterfaceCreator {
         }
     }
 
+<<<<<<< HEAD
+=======
     class StatistiekenListener implements ActionListener    {
 
         @Override
@@ -362,4 +364,5 @@ public class InterfaceCreator {
         informationPanel.add(component, BorderLayout.CENTER);
         informationPanel.updateUI();
     }
+>>>>>>> 6fec2441162b389f954c0044b2c51b257d5ce6db
 }

@@ -3,8 +3,10 @@ package com.nfs;
 import com.nfs.connections.DatabaseConnection;
 import com.nfs.connections.DatabaseFetcher;
 
+import com.nfs.userinterface.MovieStatisticsPanel;
 import com.nfs.userinterface.UI;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Main {
@@ -18,10 +20,13 @@ public class Main {
 
       //  }
 
+        JFrame frame = new JFrame();
+        frame.setSize(600,600);
+        frame.add(new MovieStatisticsPanel(1010));
+        frame.setVisible(true);
 
-
-        UI ui = new UI();
-        ui.run();
+      //  UI ui = new UI();
+      //  ui.run();
     }
 }
 
