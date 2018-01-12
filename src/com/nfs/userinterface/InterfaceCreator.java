@@ -24,6 +24,8 @@ public class InterfaceCreator {
     private JLabel greeting = new JLabel(new TimeKeeper().greeting() + " " + getSelectedIem(), JLabel.CENTER);
 
     //Buttons
+    private JButton statistieken;
+    private JButton accountGegevens;
     private JButton profielGegevens;
     private JButton films;
     private JButton series;
@@ -98,21 +100,29 @@ public class InterfaceCreator {
         c.gridwidth = GridBagConstraints.REMAINDER;
 
         //Setting up the buttons
-        MenuButtonListener bl = new MenuButtonListener();
+        statistieken = new JButton("Statistieken");
+        statistieken.addActionListener(new StatistiekenListener());
+        statistieken.setMargin(new Insets(5, 0, 5, 0));
+
+        accountGegevens = new JButton("Accountgegevens");
+        accountGegevens.addActionListener(new AccountListener());
+        accountGegevens.setMargin(new Insets(5, 0, 5, 0));
 
         profielGegevens = new JButton("Profiel Gegevens");
-        profielGegevens.addActionListener(bl);
+        profielGegevens.addActionListener(new ProfielButtonListener());
         profielGegevens.setMargin(new Insets(5, 0, 5, 0));
 
         films = new JButton("Films");
-        films.addActionListener(bl);
+        films.addActionListener(new FilmButtonListener());
         films.setMargin(new Insets(5, 0, 5, 0));
 
         series = new JButton("Series");
-        series.addActionListener(bl);
+        series.addActionListener(new SerieButtonListener());
         series.setMargin(new Insets(5, 0, 5, 0));
 
         //Adding the buttons to the panel
+        buttons.add(statistieken, c);
+        buttons.add(accountGegevens, c);
         buttons.add(profielGegevens, c);
         buttons.add(films, c);
         buttons.add(series, c);
@@ -273,48 +283,38 @@ public class InterfaceCreator {
         return newPanel;
     }
 
+
+
     //SUBCLASSES
-    //ButtonListener class
-    class MenuButtonListener implements ActionListener {
+
+
+
+    class SerieButtonListener implements  ActionListener    {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
-            //Determine the source of the action performed
-            if (e.getSource() == profielGegevens)    {
-                pressButton(profielGegevens);
-                replacePane(createProfielGegevens());
-
-            } else if (e.getSource() == films)   {
-                pressButton(films);
-                replacePane(createFilmButtons());
-
-            } else if (e.getSource() == series)    {
-                pressButton(series);
-                replacePane(createShowButtons());
-
-            }
-        }
-
-        private void setAllButtonsEnabled()  {
-            profielGegevens.setEnabled(true);
-            films.setEnabled(true);
-            series.setEnabled(true);
-        }
-
-        private void pressButton(JButton button)    {
-            setAllButtonsEnabled();
-            button.setEnabled(false);
-        }
-
-        private void replacePane(Component component)   {
-            informationPanel.removeAll();
-            informationPanel.add(component, BorderLayout.CENTER);
-            informationPanel.updateUI();
+            pressButton(series);
+            replacePane(createShowButtons());
         }
     }
 
-    //ItemListener class
+    class FilmButtonListener implements ActionListener  {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            pressButton(films);
+            replacePane(createFilmButtons());
+        }
+    }
+
+    class ProfielButtonListener implements ActionListener   {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            pressButton(profielGegevens);
+            replacePane(createProfielGegevens());
+        }
+    }
+
     class ItemListener implements java.awt.event.ItemListener {
 
         @Override
@@ -326,8 +326,7 @@ public class InterfaceCreator {
         }
     }
 
-    //Actionlistener for the Film Buttons
-    class FilmButtonListener implements  ActionListener {
+    class FilmSelectorButtonListener implements  ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -335,7 +334,6 @@ public class InterfaceCreator {
         }
     }
 
-    //Action Listener for the Show buttons
     class ShowButtonListener implements ActionListener  {
 
         @Override
@@ -344,4 +342,43 @@ public class InterfaceCreator {
         }
     }
 
+<<<<<<< HEAD
+=======
+    class StatistiekenListener implements ActionListener    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            pressButton(statistieken);
+            replacePane(new JLabel("Statistieken"));
+        }
+    }
+
+    class AccountListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            pressButton(accountGegevens);
+            replacePane(new JLabel("Acountgegevens"));
+        }
+    }
+
+    private void setAllButtonsEnabled()  {
+        statistieken.setEnabled(true);
+        accountGegevens.setEnabled(true);
+        profielGegevens.setEnabled(true);
+        films.setEnabled(true);
+        series.setEnabled(true);
+    }
+
+    private void pressButton(JButton button)    {
+        setAllButtonsEnabled();
+        button.setEnabled(false);
+    }
+
+    private void replacePane(Component component)   {
+        informationPanel.removeAll();
+        informationPanel.add(component, BorderLayout.CENTER);
+        informationPanel.updateUI();
+    }
+>>>>>>> 6fec2441162b389f954c0044b2c51b257d5ce6db
 }
