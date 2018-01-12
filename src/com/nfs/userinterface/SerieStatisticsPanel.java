@@ -55,7 +55,7 @@ public class SerieStatisticsPanel extends JPanel { //placeholder
         }episodes += "</html>";
 
         bottomPanel.add(new JLabel( episodes), BorderLayout.PAGE_END);
-        System.out.println(episodes);
+
 
 
 
