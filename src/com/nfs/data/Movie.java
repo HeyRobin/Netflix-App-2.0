@@ -1,17 +1,17 @@
 package com.nfs.data;
 
 import com.nfs.connections.DatabaseConnection;
-<<<<<<< HEAD
+
 
 import javax.swing.*;
 import java.awt.*;
-=======
+
 import com.nfs.connections.DatabaseFetcher;
 import com.nfs.userinterface.InterfaceCreator;
 
 import javax.swing.*;
 import java.util.ArrayList;
->>>>>>> f020e3be37f1b8a000035cb70bde3f8aa8a9cc71
+
 import java.util.List;
 
 public class Movie {
@@ -27,19 +27,19 @@ public class Movie {
 
 
 
-<<<<<<< HEAD
+
     //Constructor
     public Movie() {
-        this.dbc = new DatabaseConnection();
+
 //        this.movies = new ArrayList<>();
     }
-=======
-    public Movie(int movieID){
+
+    public Movie(int movieID) {
         DatabaseFetcher con = new DatabaseFetcher();
         ArrayList<String[]> results = con.getDataReturnArrayList("SELECT Title, SpokenLanguage, MinAge, LengthInMinutes, Genre FROM Movie WHERE MovieID = '" + movieID + "';");
         //Haal basis gegevens film op.
 
-        for (String[] resultSet: results
+        for (String[] resultSet : results
                 ) {
             this.movieTitle = resultSet[0];
             this.language = resultSet[1];
@@ -47,19 +47,12 @@ public class Movie {
             this.length = Integer.parseInt(resultSet[3]);
             this.genre = resultSet[4];
         }
->>>>>>> f020e3be37f1b8a000035cb70bde3f8aa8a9cc71
-
-    public JComponent createFilmButtons()  {
-        return new JLabel("Film Buttons");
-    }
-}
-
-
-<<<<<<< HEAD
 
 
 
-=======
+
+
+
         if (con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '"+ movieID +"';") != null) {
             sharedWatchedProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '" + movieID + "';"));
         } else{
@@ -99,4 +92,4 @@ public class Movie {
 
 
 }
->>>>>>> f020e3be37f1b8a000035cb70bde3f8aa8a9cc71
+
