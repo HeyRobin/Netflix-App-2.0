@@ -54,6 +54,7 @@ public class UI implements Runnable {
         //Creates the container for the left side of the UI
         JPanel westContainer = new JPanel(new BorderLayout());
         westContainer.setBorder(grey());
+        westContainer.setPreferredSize(new Dimension(200, 600));
 
         //Add components to the left side of the UI
         westContainer.add(ifc.createDropdownsAndGreeting(), BorderLayout.NORTH);

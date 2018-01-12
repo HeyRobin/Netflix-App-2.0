@@ -3,19 +3,19 @@ package com.nfs.userinterface;
 import com.nfs.appdetails.AppDetails;
 import com.nfs.appdetails.TimeKeeper;
 import com.nfs.connections.DatabaseFetcher;
-import com.nfs.data.Movie;
 import com.nfs.data.MovieButton;
-
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+<<<<<<< HEAD
 
 import com.nfs.data.SerieButton;
 import com.nfs.data.currentUser;
 import javafx.scene.control.ComboBox;
+=======
+>>>>>>> 9f12faa08fc940b34bf70373047656f3e46b903e
 
 public class InterfaceCreator {
     //Declarations
@@ -50,55 +50,42 @@ public class InterfaceCreator {
 
     public JPanel createDropdownsAndGreeting()  {
 
-        JPanel profilePanel = new JPanel(new BorderLayout());
-        JComboBox profiledropdown = new ProfileDropdown().createProfileDropdown();
-        JLabel profileLabel = new JLabel("Profiel: ");
-        profilePanel.add(profiledropdown, BorderLayout.EAST);
-        profilePanel.add(profileLabel, BorderLayout.WEST);
+        //Profile dropdowns
+        JPanel dropdownCombination = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
 
-        JPanel subscriberPanel = new JPanel(new BorderLayout());
-        JLabel subscriberLabel = new JLabel("Account: ");
-        JComboBox subscribersdropdown = new SubscriberDropdown().createSubscriberDropdown();
-        subscriberPanel.add(subscriberLabel, BorderLayout.WEST);
-        subscriberPanel.add(subscribersdropdown, BorderLayout.EAST);
+        c.gridy = 0;
+        c.weightx = 1;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.NORTHWEST;
+        dropdownCombination.add(new SubscriberDropdown().createSubscriberDropdownPanel(), c);
 
+        c.gridy = 1;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.NORTHWEST;
+        dropdownCombination.add(new ProfileDropdown().createProfileDropdown(), c);
 
+//        subscriberDropdown.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//                String selected = (String) subscriberDropdown.getItemAt(subscriberDropdown.getSelectedIndex());
+//                for (String[] array : currentUser.currentSubscribers
+//                        ) {
+//                    if (selected.equals(array[1])) {
+//                        currentUser.setCurrentSubscriber(Integer.parseInt(array[0]));
+//                        profileDropdown.updateUI();
+//                        dropdowns.revalidate();
+//                        DatabaseFetcher con = new DatabaseFetcher();
+//                        System.out.println("test");
+//
+//                        profileDropdown.setSelectedItem(con.getDataResultSingleCellAsString("SELECT TOP 1 ProfileName FROM UserProfile WHERE SubscriberID ='" + currentUser.currentSubscriber + "';"));
+//                    }
+//                }
+//            }
+//        });
 
-        JPanel dropdownSubpanel = new JPanel(new BorderLayout());
-        dropdownSubpanel.add(profiledropdown, BorderLayout.NORTH);
-        dropdownSubpanel.add(profiledropdown, BorderLayout.SOUTH);
-
-        JPanel dropdownSubPanel2 = new JPanel(new BorderLayout());
-        dropdownSubPanel2.add(subscribersdropdown, BorderLayout.NORTH);
-        dropdownSubPanel2.add(subscribersdropdown, BorderLayout.SOUTH);
-
-
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.add(dropdownSubpanel, BorderLayout.SOUTH);
-        panel.add(dropdownSubPanel2,BorderLayout.NORTH);
-
-
-        subscribersdropdown.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-             String selected =(String)subscribersdropdown.getItemAt(subscribersdropdown.getSelectedIndex());
-                for (String[] array:currentUser.currentSubs
-                     ) {if (selected.equals(array[1])){
-                         currentUser.setCurrentSubscriber(Integer.parseInt(array[0]));
-                         profiledropdown.updateUI();
-                         profilePanel.revalidate();
-                         DatabaseFetcher con = new DatabaseFetcher();
-                    System.out.println("test");
-
-                        profiledropdown.setSelectedItem(con.getDataResultSingleCellAsString("SELECT TOP 1 ProfileName FROM UserProfile WHERE SubscriberID ='" + currentUser.currentSubscriber + "';"));
-                };
-
-                }
-            }
-        });
-
-        return panel;
+        return dropdownCombination;
     }
 
     public JPanel createButtons()  {
