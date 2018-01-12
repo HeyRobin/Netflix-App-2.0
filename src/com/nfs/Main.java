@@ -25,8 +25,8 @@ public class Main {
         frame.add(new MovieStatisticsPanel(1010));
         frame.setVisible(true);
 
-      //  UI ui = new UI();
-      //  ui.run();
+        UI ui = new UI();
+        ui.run();
     }
 }
 

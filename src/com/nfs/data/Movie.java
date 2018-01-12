@@ -6,7 +6,7 @@ import com.nfs.userinterface.InterfaceCreator;
 import javax.swing.*;
 import java.util.List;
 
-public class Film {
+public class Movie {
 
     //Declarations
     private DatabaseConnection dbc;
@@ -14,7 +14,7 @@ public class Film {
 
 
     //Constructor
-    public Film()   {
+    public Movie()   {
         this.dbc = new DatabaseConnection();
 //        this.movies = new ArrayList<>();
     }
@@ -25,7 +25,7 @@ public class Film {
         //BUG BELOW
 //        //Declarations
 //        String query =  "SELECT * " +
-//                        "FROM Film " +
+//                        "FROM Movie " +
 //                        "WHERE Titel = '" + movieName + "';";
 //        ResultSet rs = dbc.getData(query);
 
@@ -59,7 +59,7 @@ public class Film {
 //
 //        //Declarations
 //        String query =  "SELECT Titel \n" +
-//                        "FROM Film";
+//                        "FROM Movie";
 //        ResultSet rs = dbc.getData(query);
 //
 //        try {

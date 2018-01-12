@@ -1,10 +1,9 @@
 package com.nfs.connections;
 
-import com.nfs.data.Film;
+import com.nfs.data.Movie;
 import com.nfs.data.Show;
 
 import javax.swing.*;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
@@ -12,12 +11,12 @@ import java.util.ArrayList;
 public class DatabaseFetcher {
 
     //Declarations
-    private Film movie;
+    private Movie movie;
     private Show show;
 
     //Constructor
     public DatabaseFetcher()    {
-        movie = new Film();
+        movie = new Movie();
         show = new Show();
     }
 

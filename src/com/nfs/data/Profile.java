@@ -4,16 +4,16 @@ import com.nfs.connections.DatabaseConnection;
 
 import java.sql.ResultSet;
 
-public class Profiel {
+public class Profile {
     private String profielNaam;
     private String geboorteDatum;
     private int abonneeID;
 
-    public Profiel(int inputAbonneeID, int profielVolgNummer) {
+    public Profile(int inputAbonneeID, int profielVolgNummer) {
         DatabaseConnection con = new DatabaseConnection();
 
         try {
-            ResultSet rs = con.getData("SELECT * FROM Profiel where AbonneeID = '" + inputAbonneeID + "'");
+            ResultSet rs = con.getData("SELECT * FROM Profile where AbonneeID = '" + inputAbonneeID + "'");
 
             while (profielVolgNummer > 0) {
 

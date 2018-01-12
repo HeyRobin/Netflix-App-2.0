@@ -6,7 +6,7 @@ import com.nfs.connections.DatabaseConnection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class Abonnee{
+public class Subscriber {
     private int ID;
     private String naam;
     private String straat;
@@ -14,21 +14,21 @@ public class Abonnee{
     private String toevoeging;
     private String postcode;
     private String woonPlaats;
-    private ArrayList<Profiel> profielen;
+    private ArrayList<Profile> profielen;
 
-    public ArrayList<Profiel> getProfielen() {
+    public ArrayList<Profile> getProfielen() {
         return profielen;
     }
 
-    public void setProfielen(ArrayList<Profiel> profielen) {
+    public void setProfielen(ArrayList<Profile> profielen) {
         this.profielen = profielen;
     }
 
-    public Abonnee(int lookupID){
+    public Subscriber(int lookupID){
         DatabaseConnection con = new DatabaseConnection();
 
         try {
-        ResultSet rs = con.getData("SELECT * FROM Abonnee WHERE AbonneeID = '"+ lookupID + "';" );
+        ResultSet rs = con.getData("SELECT * FROM Subscriber WHERE AbonneeID = '"+ lookupID + "';" );
 
             rs.next();
             this.ID =  rs.getInt("AbonneeID");
@@ -47,19 +47,19 @@ public class Abonnee{
     }
 
     //Zoekt bijhorende profielen en brengt deze onder in het Parents Abbo object.
-    private ArrayList<Profiel> buildProfiles(int abonneeID){
-        ArrayList<Profiel> profielen = new ArrayList<>();
+    private ArrayList<Profile> buildProfiles(int abonneeID){
+        ArrayList<Profile> profielen = new ArrayList<>();
         DatabaseConnection con = new DatabaseConnection();
 
         try {
-            ResultSet rs = con.getData("SELECT COUNT(*) AS AantalRows FROM Profiel WHERE AbonneeID = '" + abonneeID + "';");
+            ResultSet rs = con.getData("SELECT COUNT(*) AS AantalRows FROM Profile WHERE AbonneeID = '" + abonneeID + "';");
             rs.next();
             int amountOfRows = rs.getInt("AantalRows");
             System.out.println("Aantal rows in return "+amountOfRows);
             int i = 0;
 
             while (i < amountOfRows){
-                profielen.add(new Profiel(abonneeID, amountOfRows - i));
+                profielen.add(new Profile(abonneeID, amountOfRows - i));
                 i++;
             }
 

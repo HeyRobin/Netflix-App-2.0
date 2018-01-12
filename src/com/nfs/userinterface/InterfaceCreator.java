@@ -2,7 +2,7 @@ package com.nfs.userinterface;
 
 import com.nfs.appdetails.AppDetails;
 import com.nfs.appdetails.TimeKeeper;
-import com.nfs.data.Film;
+import com.nfs.data.Movie;
 import com.nfs.data.Show;
 
 import javax.swing.*;
@@ -108,7 +108,7 @@ public class InterfaceCreator {
         accountGegevens.addActionListener(new AccountListener());
         accountGegevens.setMargin(new Insets(5, 0, 5, 0));
 
-        profielGegevens = new JButton("Profiel Gegevens");
+        profielGegevens = new JButton("Profile Gegevens");
         profielGegevens.addActionListener(new ProfielButtonListener());
         profielGegevens.setMargin(new Insets(5, 0, 5, 0));
 
@@ -228,13 +228,13 @@ public class InterfaceCreator {
         //positioning
         c.gridy = 0;
         c.gridx = 0;
-        buttonPanel.add(new JButton("Film 1"), c);
+        buttonPanel.add(new JButton("Movie 1"), c);
 
         c.gridx = 1;
-        buttonPanel.add(new JButton("Film 2"), c);
+        buttonPanel.add(new JButton("Movie 2"), c);
 
         c.gridx = 2;
-        buttonPanel.add(new JButton("Film 3"), c);
+        buttonPanel.add(new JButton("Movie 3"), c);
 
         mainPanel.add(buttonPanel, BorderLayout.NORTH);
         west.add(mainPanel, BorderLayout.WEST);
@@ -252,7 +252,7 @@ public class InterfaceCreator {
     }
 
     public JPanel createInformationAboutFilm(String filmName)   {
-        Film movie = new Film();
+        Movie movie = new Movie();
         movie.getInformationAboutFilm(filmName);
         return null;
     }
@@ -342,8 +342,7 @@ public class InterfaceCreator {
         }
     }
 
-<<<<<<< HEAD
-=======
+
     class StatistiekenListener implements ActionListener    {
 
         @Override
@@ -380,5 +379,5 @@ public class InterfaceCreator {
         informationPanel.add(component, BorderLayout.CENTER);
         informationPanel.updateUI();
     }
->>>>>>> 6fec2441162b389f954c0044b2c51b257d5ce6db
+
 }
