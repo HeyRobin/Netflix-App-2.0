@@ -6,13 +6,14 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MovieButton extends JButton {
+
     private int movieID;
+
     public MovieButton(int movieID){
         this.movieID = movieID;
         DatabaseFetcher con = new DatabaseFetcher();
 
         String buttonText = con.getDataResultSingleCellAsString("SELECT Title FROM Movie WHERE MovieID = '"+ movieID + "'; ");
-        buttonText = buttonText.replace("","\n");
 
         super.setText(buttonText);
         super.setEnabled(true);

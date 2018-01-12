@@ -12,6 +12,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
+import com.nfs.data.SerieButton;
 import com.nfs.data.currentUser;
 import javafx.scene.control.ComboBox;
 
@@ -220,6 +222,9 @@ public class InterfaceCreator {
     }
 
     public JPanel createShowButtons()  {
+            DatabaseFetcher con = new DatabaseFetcher();
+        ArrayList<String[]> series = con.getDataReturnArrayList("SELECT SerieID FROM Serie;");
+
 
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel west = new JPanel(new BorderLayout());
@@ -230,42 +235,42 @@ public class InterfaceCreator {
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(10, 10, 70, 10);
 
+
+
+        int serieInArray = 0;
+        int x = 0;
+        int z = 0;
         //width and height of the buttons, Non-scalable
         c.ipady = 100;
         c.ipadx = 55;
 
 
-        //positioning
-        c.gridy = 0;
-        c.gridx = 0;
-        buttonPanel.add(new JButton("Serie 1"), c);
 
-        c.gridx = 1;
-        buttonPanel.add(new JButton("Serie 2"), c);
+        for (int y = 0; y < (series.size()/3 + 1); y++) {
+            for (x = 0; x < 3; x++) {
+                c.gridx = x;
+                c.gridy = y;
+                if (serieInArray == series.size()) {
+                    break;
+                }
 
-        c.gridx = 2;
-        buttonPanel.add(new JButton("Serie 3"), c);
+                SerieButton button = new SerieButton(Integer.parseInt(series.get(serieInArray)[0]));
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        replacePane(new SerieStatisticsPanel(button.getSerieID()));
+                        setAllButtonsEnabled();
+                    }
 
-        c.gridx = 0;
-        c.gridy = 1;
-        buttonPanel.add(new JButton("Serie 4"), c);
+                });
 
-        c.gridx = 1;
-        buttonPanel.add(new JButton("Serie 5"), c);
+                serieInArray++;
+                buttonPanel.add(button, c);
+            }
 
-        c.gridx = 2;
-        buttonPanel.add(new JButton("Serie 6"), c);
+        }
 
-        c.gridx = 0;
-        c.gridy = 2;
-        c.insets = new Insets(10, 10, 10, 10);
-        buttonPanel.add(new JButton("Serie 7"), c);
 
-        c.gridx = 1;
-        buttonPanel.add(new JButton("Serie 8"), c);
-
-        c.gridx = 2;
-        buttonPanel.add(new JButton("Serie 9"), c);
 
         mainPanel.add(buttonPanel, BorderLayout.NORTH);
         west.add(mainPanel, BorderLayout.WEST);
