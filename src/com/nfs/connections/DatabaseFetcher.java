@@ -1,9 +1,8 @@
 package com.nfs.connections;
 
 import com.nfs.data.Movie;
-import com.nfs.data.Show;
+import com.nfs.data.Serie;
 
-import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ public class DatabaseFetcher {
 
     //Declarations
     private Movie movie;
-    private Show show;
+    private Serie show;
 
     //Constructor
     public DatabaseFetcher()    {
@@ -67,6 +66,6 @@ public class DatabaseFetcher {
 
 
     //Giving the information corresponding to a show
-    public JPanel getInformationAboutShow(String serieName)    {
-        return show.getInformationAboutShow(serieName); }
+    //public JPanel getInformationAboutShow(String serieName)    {
+    //    return show.getInformationAboutShow(serieName); }
 }
