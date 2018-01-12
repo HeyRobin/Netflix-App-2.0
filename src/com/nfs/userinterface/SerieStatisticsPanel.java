@@ -31,7 +31,7 @@ public class SerieStatisticsPanel extends JPanel { //placeholder
 
 
 
-        JLabel infoTopPanel = new JLabel("<HTML> <br/><br/><br/><br/>" +
+        JLabel infoTopPanel = new JLabel("<HTML> " +
                 "Aantal Episodes: " + serie.getAmountOfEpisodes() +"<br/>" +
                 "Genre: "+ serie.getGenre() + "<br/>" +
                 "Taal: " + serie.getLanguage() +"<br/>" +
@@ -45,7 +45,20 @@ public class SerieStatisticsPanel extends JPanel { //placeholder
         topPanel.setBorder(BorderFactory.createEmptyBorder(10,30,10,10));
 
            bottomPanel.add(new JLabel("Episodes", SwingConstants.CENTER),BorderLayout.NORTH);
-           
+
+            String episodes ="<html>";
+
+
+        for (String[] stringContainer :con.getDataReturnArrayList("SELECT EpisodeNumber, Title, LengthInMinutes FROM Episode WHERE SerieID = '" + serieID + "';")
+             ) { episodes =  episodes + "Episode Nr: "+ stringContainer[0].substring(1) + " -  " + stringContainer[1] + "Duur:" + stringContainer[2] + "<br/>";
+
+        }episodes += "</html>";
+
+        bottomPanel.add(new JLabel( episodes), BorderLayout.PAGE_END);
+        System.out.println(episodes);
+
+
+
 
 
 

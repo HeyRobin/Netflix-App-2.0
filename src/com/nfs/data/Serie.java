@@ -81,7 +81,7 @@ public class Serie {
         this.language = serieGegevens.get(0)[3];
         this.minAge = Integer.parseInt(serieGegevens.get(0)[4]);
 
-        ArrayList<String[]> episodeGegevens = con.getDataReturnArrayList("SELECT EpisodeNumber, Title, LengthInMinutes FROM Episode WHERE SerieID = '" + this.serieID + "';" );
+        ArrayList<String[]> episodeGegevens = con.getDataReturnArrayList("SELECT EpisodeNumber, Title, LengthInMinutes FROM Episode WHERE SerieID = '" + serieID + "';" );
 
 
         this.amountOfEpisodes = episodeGegevens.size();

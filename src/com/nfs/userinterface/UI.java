@@ -22,7 +22,7 @@ public class UI implements Runnable {
 
         //Shaping the UI
         this.frame.setSize(new Dimension(800, 800));
-        this.frame.setMinimumSize(new Dimension(650, 650));
+        this.frame.setMinimumSize(new Dimension(700, 650));
         this.frame.setResizable(true);
 
         //Set action when closed
