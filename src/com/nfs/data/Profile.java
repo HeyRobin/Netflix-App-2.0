@@ -15,16 +15,9 @@ public class Profile {
     private String geboorteDatum;
     private int abonneeID;
 
-<<<<<<< HEAD:src/com/nfs/data/Profile.java
+
     public Profile(int inputAbonneeID, int profielVolgNummer) {
-=======
 
-    private String[] userArray = new String[] {"Sander", "Robin", "Jac"};
-    private JComboBox<String> profileDropdown = new JComboBox<>(userArray);
-    private JLabel greeting = new JLabel(TimeKeeper.greeting() + " " + getSelectedIem(), JLabel.CENTER);
-
-    public Profiel(int inputAbonneeID, int profielVolgNummer) {
->>>>>>> 1c219f51fca5d5bd4611eb5e305114bc8b7e72bf:src/com/nfs/data/Profiel.java
         DatabaseConnection con = new DatabaseConnection();
 
         try {
@@ -42,38 +35,13 @@ public class Profile {
             this.abonneeID = rs.getInt("AbonneeID");
 
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
-
-
     }
 
-    public JPanel createProfileDropdown()    {
 
-        //Creating the pane to add the dropdown and greeting
-        JPanel profileContainer = new JPanel(new BorderLayout());
 
-        //Setting up the dropdown. UserArray is a placeholder
-        this.profileDropdown.setSelectedIndex(0);
 
-        //Adding the Listener to the dropdown
-        this.profileDropdown.addItemListener(new ProfileDropdownListener());
-
-        //Creating a sub-container for better alignment
-        JPanel subContainer = new JPanel(new BorderLayout());
-        subContainer.setBorder(new EmptyBorder(20, 20, 20, 20));
-
-        //Adding the components to the containers
-        subContainer.add(this.greeting);
-        profileContainer.add(this.profileDropdown, BorderLayout.NORTH);
-        profileContainer.add(subContainer, BorderLayout.SOUTH);
-
-        return profileContainer;
-    }
-
-    private String getSelectedIem() {
-        return userArray[profileDropdown.getSelectedIndex()];
-    }
 
     public String getProfielNaam() {
         return profielNaam;
@@ -100,14 +68,5 @@ public class Profile {
     }
 
 
-    //subclasses
-    class ProfileDropdownListener implements java.awt.event.ItemListener {
 
-        @Override
-        public void itemStateChanged(ItemEvent e) {
-            //Changes text of label greeting when profile is changed
-            greeting.setText(TimeKeeper.greeting() + " " + getSelectedIem());
-        }
-    }
 }
-
