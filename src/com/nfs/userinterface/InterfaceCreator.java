@@ -201,7 +201,7 @@ public class InterfaceCreator {
         @Override
         public void actionPerformed(ActionEvent e) {
             pressButton(films);
-            replacePane(new Movie().createFilmButtons());
+         //   replacePane(new Movie().createFilmButtons());
         }
     }
 

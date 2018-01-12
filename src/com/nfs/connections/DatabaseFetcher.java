@@ -21,9 +21,9 @@ public class DatabaseFetcher {
     }
 
     //Giving the information corresponding to a movie
-    public JPanel getInformationAboutFilm(String movieName) {
-        return movie.getInformationAboutFilm(movieName);
-    }
+    //public JPanel getInformationAboutFilm(String movieName) {
+     //   return movie.getInformationAboutFilm(movieName);
+   // }
 
 
 

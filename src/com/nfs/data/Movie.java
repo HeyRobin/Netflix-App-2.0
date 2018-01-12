@@ -1,23 +1,22 @@
 package com.nfs.data;
 
 import com.nfs.connections.DatabaseConnection;
-<<<<<<< HEAD
+
 
 import javax.swing.*;
-=======
+
 
 
 import javax.swing.*;
 import java.awt.*;
 
->>>>>>> bfe9398e4e28f2ee4864c64072d4fef2631f632c
+
 import com.nfs.connections.DatabaseFetcher;
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
+
 
 import java.util.List;
->>>>>>> bfe9398e4e28f2ee4864c64072d4fef2631f632c
+
 
 public class Movie {
     private int movieID;
@@ -30,12 +29,8 @@ public class Movie {
     private String genre;
     private int length;
 
-<<<<<<< HEAD
-=======
 
 
-
->>>>>>> bfe9398e4e28f2ee4864c64072d4fef2631f632c
     //Constructor
     public Movie() {
 
@@ -56,47 +51,38 @@ public class Movie {
             this.genre = resultSet[4];
         }
 
-<<<<<<< HEAD
 
-    public JComponent createFilmButtons() {
-        return new JLabel("Film Buttons");
-    }
+        if (con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '" + movieID + "';") != null)
 
 
-        if(con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '"+movieID +"';")!=null)
-=======
-
-
->>>>>>> bfe9398e4e28f2ee4864c64072d4fef2631f632c
-
-    {
-        sharedWatchedProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '" + movieID + "';"));
-    } else
-
-    {
-        sharedWatchedProgress = 0;
-    }
-    //Check statistic
-
-<<<<<<< HEAD
-    timesSeen =Integer.parseInt(con.getDataResultSingleCellAsString("SELECT * FROM MoviesSeen WHERE MovieID = '"+movieID +"';"));
-=======
-        if (con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '"+ movieID +"';") != null) {
+        {
             sharedWatchedProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '" + movieID + "';"));
-        } else{
+        } else
+
+        {
             sharedWatchedProgress = 0;
         }
         //Check statistic
->>>>>>> bfe9398e4e28f2ee4864c64072d4fef2631f632c
 
-        if(con.getDataResultSingleCellAsString("SELECT PercentageSeen FROM MoviesSeen WHERE MovieID = '"+movieID +"' AND Subscriber = '"+currentUser.currentSubscriber +"' AND UserProfile = '"+currentUser.currentProfile +"';")!=null)
+        timesSeen = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT * FROM MoviesSeen WHERE MovieID = '" + movieID + "';"));
 
-    {
-        individualWatchedProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT PercentageSeen FROM MoviesSeen WHERE MovieID = '" + movieID + "' AND Subscriber = ' " + currentUser.currentSubscriber + "' AND UserProfile = ' " + currentUser.currentProfile + "'; "));
-    }else
+        if (con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '" + movieID + "';") != null) {
+            sharedWatchedProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '" + movieID + "';"));
+        } else {
+            sharedWatchedProgress = 0;
+        }
+        //Check statistic
 
-    {
-        individualWatchedProgress = 0;
+
+        if (con.getDataResultSingleCellAsString("SELECT PercentageSeen FROM MoviesSeen WHERE MovieID = '" + movieID + "' AND Subscriber = '" + currentUser.currentSubscriber + "' AND UserProfile = '" + currentUser.currentProfile + "';") != null)
+
+        {
+            individualWatchedProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT PercentageSeen FROM MoviesSeen WHERE MovieID = '" + movieID + "' AND Subscriber = ' " + currentUser.currentSubscriber + "' AND UserProfile = ' " + currentUser.currentProfile + "'; "));
+        } else
+
+        {
+            individualWatchedProgress = 0;
+        }
     }
     //Check statistic
 
