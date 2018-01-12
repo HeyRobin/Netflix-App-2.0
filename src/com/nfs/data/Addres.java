@@ -1,11 +1,11 @@
 package com.nfs.data;
 
-public class Adres {
+public class Addres {
     private int huisNummer;
     private String straatNaam;
     private String postCode;
 
-    public Adres(String straatNaam, int huisNummer, String postCode)    {
+    public Addres(String straatNaam, int huisNummer, String postCode)    {
         this.huisNummer = huisNummer;
         this.straatNaam = straatNaam;
         this.postCode = postCode;
