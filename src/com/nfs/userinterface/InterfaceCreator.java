@@ -12,6 +12,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import com.nfs.data.currentUser;
+import javafx.scene.control.ComboBox;
 
 public class InterfaceCreator {
     //Declarations
@@ -25,6 +27,7 @@ public class InterfaceCreator {
     private JButton profielGegevens;
     private JButton films;
     private JButton series;
+
 
 
     //Methods
@@ -57,12 +60,41 @@ public class InterfaceCreator {
         subscriberPanel.add(subscriberLabel, BorderLayout.WEST);
         subscriberPanel.add(subscribersdropdown, BorderLayout.EAST);
 
+
+
         JPanel dropdownSubpanel = new JPanel(new BorderLayout());
         dropdownSubpanel.add(profiledropdown, BorderLayout.NORTH);
         dropdownSubpanel.add(profiledropdown, BorderLayout.SOUTH);
 
+        JPanel dropdownSubPanel2 = new JPanel(new BorderLayout());
+        dropdownSubPanel2.add(subscribersdropdown, BorderLayout.NORTH);
+        dropdownSubPanel2.add(subscribersdropdown, BorderLayout.SOUTH);
+
+
         JPanel panel = new JPanel(new BorderLayout());
-        panel.add(dropdownSubpanel);
+        panel.add(dropdownSubpanel, BorderLayout.SOUTH);
+        panel.add(dropdownSubPanel2,BorderLayout.NORTH);
+
+
+        subscribersdropdown.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+             String selected =(String)subscribersdropdown.getItemAt(subscribersdropdown.getSelectedIndex());
+                for (String[] array:currentUser.currentSubs
+                     ) {if (selected.equals(array[1])){
+                         currentUser.setCurrentSubscriber(Integer.parseInt(array[0]));
+                         profiledropdown.updateUI();
+                         profilePanel.revalidate();
+                         DatabaseFetcher con = new DatabaseFetcher();
+                    System.out.println("test");
+
+                        profiledropdown.setSelectedItem(con.getDataResultSingleCellAsString("SELECT TOP 1 ProfileName FROM UserProfile WHERE SubscriberID ='" + currentUser.currentSubscriber + "';"));
+                };
+
+                }
+            }
+        });
 
         return panel;
     }
