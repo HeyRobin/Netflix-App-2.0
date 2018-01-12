@@ -32,11 +32,6 @@ public class Movie {
 
 
     //Constructor
-    public Movie() {
-
-//        this.movies = new ArrayList<>();
-    }
-
     public Movie(int movieID) {
         DatabaseFetcher con = new DatabaseFetcher();
         ArrayList<String[]> results = con.getDataReturnArrayList("SELECT Title, SpokenLanguage, MinAge, LengthInMinutes, Genre FROM Movie WHERE MovieID = '" + movieID + "';");
@@ -54,7 +49,6 @@ public class Movie {
 
         if (con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '" + movieID + "';") != null)
 
-
         {
             sharedWatchedProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '" + movieID + "';"));
         } else
@@ -64,17 +58,20 @@ public class Movie {
         }
         //Check statistic
 
-        timesSeen = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT * FROM MoviesSeen WHERE MovieID = '" + movieID + "';"));
+        timesSeen = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT COUNT(*) FROM MoviesSeen WHERE MovieID = '" + movieID + "';"));
 
-        if (con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '" + movieID + "';") != null) {
-            sharedWatchedProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '" + movieID + "';"));
-        } else {
+        String movieSeen = con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM MoviesSeen WHERE MovieID = '"+ movieID +"';");
+        if (movieSeen == null){
             sharedWatchedProgress = 0;
+        } else {
+            sharedWatchedProgress = Integer.parseInt(movieSeen);
         }
+
+
         //Check statistic
 
 
-        if (con.getDataResultSingleCellAsString("SELECT PercentageSeen FROM MoviesSeen WHERE MovieID = '" + movieID + "' AND Subscriber = '" + currentUser.currentSubscriber + "' AND UserProfile = '" + currentUser.currentProfile + "';") != null)
+        if (!con.getDataResultSingleCellAsString("SELECT PercentageSeen FROM MoviesSeen WHERE MovieID = '" + movieID + "' AND Subscriber = '" + currentUser.currentSubscriber + "' AND UserProfile = '" + currentUser.currentProfile + "';").equals(""))
 
         {
             individualWatchedProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT PercentageSeen FROM MoviesSeen WHERE MovieID = '" + movieID + "' AND Subscriber = ' " + currentUser.currentSubscriber + "' AND UserProfile = ' " + currentUser.currentProfile + "'; "));

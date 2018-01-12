@@ -13,6 +13,7 @@ public class UI implements Runnable {
     private InterfaceCreator ifc = new InterfaceCreator();
     private JFrame frame;
 
+
     @Override
     public void run() {
 
@@ -31,6 +32,7 @@ public class UI implements Runnable {
         createComponents(this.frame.getContentPane());
 
         this.frame.pack();
+
 
         //Centers the window relative to the screen
         this.frame.setLocationRelativeTo(null);
@@ -64,7 +66,13 @@ public class UI implements Runnable {
         container.add(ifc.createCredits(), BorderLayout.SOUTH);
     }
 
+ //   public void setContainer(JPanel container) {
+
+    //    this.container.add(container);
+  //  }
+
     public Border grey()   {
         return BorderFactory.createLineBorder(Color.gray);
     }
 }
+

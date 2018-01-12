@@ -2,13 +2,16 @@ package com.nfs.userinterface;
 
 import com.nfs.appdetails.AppDetails;
 import com.nfs.appdetails.TimeKeeper;
+import com.nfs.connections.DatabaseFetcher;
 import com.nfs.data.Movie;
+import com.nfs.data.MovieButton;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class InterfaceCreator {
     //Declarations
@@ -128,6 +131,62 @@ public class InterfaceCreator {
         return helloPanel;
     }
 
+    public JPanel createMovieButtons(){
+
+        DatabaseFetcher con = new DatabaseFetcher();
+        ArrayList<String[]> movies = con.getDataReturnArrayList("SELECT MovieID FROM movie;");
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        JPanel west = new JPanel(new BorderLayout());
+
+        JPanel buttonPanel = new JPanel(new GridBagLayout());
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(10, 10, 25, 10);
+
+        int movieInArray = 0;
+        int x = 0;
+        int z = 0;
+
+        //width and height of the buttons, Non-scalable
+        c.ipady = 55;
+        c.ipadx = 65;
+
+
+
+     for (int y = 0; y < (movies.size()/3 + 1); y++) {
+         for (x = 0; x < 3; x++) {
+             c.gridx = x;
+             c.gridy = y;
+             if (movieInArray == movies.size()) {
+                 break;
+             }
+
+             MovieButton button = new MovieButton(Integer.parseInt(movies.get(movieInArray)[0]));
+             button.addActionListener(new ActionListener() {
+                 @Override
+                 public void actionPerformed(ActionEvent e) {
+                     replacePane(new MovieStatisticsPanel(button.getMovieID()));
+                     setAllButtonsEnabled();
+                 }
+
+             });
+
+             movieInArray++;
+             buttonPanel.add(button, c);
+         }
+
+     }
+
+
+
+        mainPanel.add(buttonPanel, BorderLayout.NORTH);
+        west.add(mainPanel, BorderLayout.WEST);
+
+        return west;
+    }
+
     public JPanel createShowButtons()  {
 
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -187,6 +246,8 @@ public class InterfaceCreator {
 
 
 
+
+
     class SerieButtonListener implements  ActionListener    {
 
         @Override
@@ -201,9 +262,12 @@ public class InterfaceCreator {
         @Override
         public void actionPerformed(ActionEvent e) {
             pressButton(films);
-         //   replacePane(new Movie().createFilmButtons());
+            replacePane(createMovieButtons());
         }
     }
+
+
+
 
     class ProfielButtonListener implements ActionListener   {
         @Override
@@ -244,7 +308,7 @@ public class InterfaceCreator {
         button.setEnabled(false);
     }
 
-    private void replacePane(Component component)   {
+    public void replacePane(Component component)   {
         eastPanel.removeAll();
         eastPanel.add(component, BorderLayout.CENTER);
         eastPanel.updateUI();

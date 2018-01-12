@@ -16,8 +16,6 @@ public class DatabaseFetcher {
 
     //Constructor
     public DatabaseFetcher()    {
-        movie = new Movie();
-        show = new Show();
     }
 
     //Giving the information corresponding to a movie

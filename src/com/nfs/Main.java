@@ -1,19 +1,11 @@
 package com.nfs;
 import com.nfs.data .currentUser;
-
-import com.nfs.connections.DatabaseConnection;
-import com.nfs.connections.DatabaseFetcher;
-
-import com.nfs.userinterface.MovieStatisticsPanel;
 import com.nfs.userinterface.UI;
-
-import javax.swing.*;
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        currentUser.setCurrentSubscriber(5285824);
-        currentUser.setCurrentProfile(100005);
+        currentUser.setCurrentSubscriber(5602533);
+        currentUser.setCurrentProfile(100004);
 
 
    //     DatabaseFetcher con = new DatabaseFetcher();
@@ -25,10 +17,10 @@ public class Main {
 
       //  }
 
-        JFrame frame = new JFrame();
-        frame.setSize(600,600);
-        frame.add(new MovieStatisticsPanel(1010));
-        frame.setVisible(true);
+      //  JFrame frame = new JFrame();
+      //  frame.setSize(600,600);
+     //   frame.add(new MovieStatisticsPanel(1010));
+     //   frame.setVisible(true);
 
         UI ui = new UI();
         ui.run();
