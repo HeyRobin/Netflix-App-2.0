@@ -12,9 +12,10 @@ public class DatabaseConnection {
     final String dbUserName = "sa";
     final String dbPassword = "MarlBoroq17";
     final String databaseName = "NFS";
-    final String connectionUrl = "jdbc:sqlserver://" + serverAdres + ":" + serverPort + ";databaseName=" + databaseName + ";user=" + dbUserName + ";password=" + dbPassword;
+   // final String connectionUrl = "jdbc:sqlserver://" + serverAdres + ":" + serverPort + ";databaseName=" + databaseName + ";user=" + dbUserName + ";password=" + dbPassword;
 
-   // private final String connectionUrl = "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=Database;integratedSecurity=false;";
+    private final String connectionUrl = "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=NFS;integratedsecurity=true;";
+
     private Connection con = null;
     private Statement stmt = null;
     private ResultSet rs = null;

@@ -220,34 +220,34 @@ public class InterfaceCreator {
         //positioning
         c.gridy = 0;
         c.gridx = 0;
-        buttonPanel.add(new JButton("Show 1"), c);
+        buttonPanel.add(new JButton("Serie 1"), c);
 
         c.gridx = 1;
-        buttonPanel.add(new JButton("Show 2"), c);
+        buttonPanel.add(new JButton("Serie 2"), c);
 
         c.gridx = 2;
-        buttonPanel.add(new JButton("Show 3"), c);
+        buttonPanel.add(new JButton("Serie 3"), c);
 
         c.gridx = 0;
         c.gridy = 1;
-        buttonPanel.add(new JButton("Show 4"), c);
+        buttonPanel.add(new JButton("Serie 4"), c);
 
         c.gridx = 1;
-        buttonPanel.add(new JButton("Show 5"), c);
+        buttonPanel.add(new JButton("Serie 5"), c);
 
         c.gridx = 2;
-        buttonPanel.add(new JButton("Show 6"), c);
+        buttonPanel.add(new JButton("Serie 6"), c);
 
         c.gridx = 0;
         c.gridy = 2;
         c.insets = new Insets(10, 10, 10, 10);
-        buttonPanel.add(new JButton("Show 7"), c);
+        buttonPanel.add(new JButton("Serie 7"), c);
 
         c.gridx = 1;
-        buttonPanel.add(new JButton("Show 8"), c);
+        buttonPanel.add(new JButton("Serie 8"), c);
 
         c.gridx = 2;
-        buttonPanel.add(new JButton("Show 9"), c);
+        buttonPanel.add(new JButton("Serie 9"), c);
 
         mainPanel.add(buttonPanel, BorderLayout.NORTH);
         west.add(mainPanel, BorderLayout.WEST);
