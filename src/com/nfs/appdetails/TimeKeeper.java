@@ -4,11 +4,11 @@ import java.util.Calendar;
 
 public class TimeKeeper {
 
-       private int getTime() {
+       private static int getTime() {
            return Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
        }
 
-       public String greeting() {
+       public static String greeting() {
            int hour = getTime();
 
            if (hour>=0 && hour<=6) {
