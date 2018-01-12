@@ -1,7 +1,7 @@
 package com.nfs.userinterface;
 
 import com.nfs.appdetails.AppDetails;
-import com.nfs.data.Profiel;
+import com.nfs.data.Profile;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -54,7 +54,7 @@ public class UI implements Runnable {
         westContainer.setBorder(grey());
 
         //Add components to the left side of the UI
-        westContainer.add(new Profiel(1234,1234).createProfileDropdown(), BorderLayout.NORTH);
+        westContainer.add(ifc.createDropdownsAndGreeting(), BorderLayout.NORTH);
         westContainer.add(ifc.createButtons(), BorderLayout.SOUTH);
 
         //Add the left side to the UI
