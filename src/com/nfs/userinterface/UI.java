@@ -1,6 +1,7 @@
 package com.nfs.userinterface;
 
 import com.nfs.appdetails.AppDetails;
+import com.nfs.data.Profiel;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -39,7 +40,7 @@ public class UI implements Runnable {
     private void createComponents(Container container) {
 
         //Adds Menubar to frame
-        this.frame.setJMenuBar(ifc.createTopMenuBar());
+        this.frame.setJMenuBar(Interface.createTopMenuBar());
 
         //Creates an Pane to place components in
         container = frame.getContentPane();
@@ -53,7 +54,7 @@ public class UI implements Runnable {
         westContainer.setBorder(grey());
 
         //Add components to the left side of the UI
-        westContainer.add(ifc.createProfileDropdown(), BorderLayout.NORTH);
+        westContainer.add(new Profiel(1234,1234).createProfileDropdown(), BorderLayout.NORTH);
         westContainer.add(ifc.createButtons(), BorderLayout.SOUTH);
 
         //Add the left side to the UI
