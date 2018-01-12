@@ -89,7 +89,7 @@ public class Serie {
         try {
             this.amountOfViews = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT COUNT(*) FROM SeriesSeen WHERE SerieID = '" + this.serieID + "';"));
         }catch (Exception e){
-            
+
             this.amountOfViews = 0;
         }
 

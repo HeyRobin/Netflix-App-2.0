@@ -9,13 +9,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-<<<<<<< HEAD
+
 
 import com.nfs.data.SerieButton;
 import com.nfs.data.currentUser;
 import javafx.scene.control.ComboBox;
-=======
->>>>>>> 9f12faa08fc940b34bf70373047656f3e46b903e
+
+
 
 public class InterfaceCreator {
     //Declarations
