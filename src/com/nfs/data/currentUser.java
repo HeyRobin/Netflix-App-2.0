@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class currentUser {
    static public int currentSubscriber;
    static public int currentProfile;
-   static public ArrayList<String[]> currentSubs;
-   static public ArrayList<String[]> currentProfs;
+   static public ArrayList<String[]> currentSubscribers;
+   static public ArrayList<String[]> currentProfiles;
 
 
     public static void setCurrentSubscriber(int subscriberID){

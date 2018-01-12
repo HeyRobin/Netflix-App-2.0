@@ -1,42 +1,58 @@
 package com.nfs.userinterface;
 
 import com.nfs.connections.DatabaseFetcher;
-
 import javax.swing.*;
-import javax.xml.crypto.Data;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import com.nfs.data.currentUser;
 
 public class SubscriberDropdown extends JComboBox {
+
     public static int subscriberID;
     private String[] subscriberArray;
     private JComboBox<String> subscriberDropdown;
 
     public SubscriberDropdown()    {
+
         DatabaseFetcher con = new DatabaseFetcher();
         ArrayList<String[]> subs = con.getDataReturnArrayList("SELECT SubscriberID, Name FROM Subscriber");
-        currentUser.currentSubs = subs;
+        currentUser.currentSubscribers = subs;
         int i = 0;
 
         this.subscriberArray = new String[subs.size()];
-        for (String[] container:subs
-             ) {this.subscriberArray[i] = container[1]; i++;
 
+        for (String[] container:subs) {
+            this.subscriberArray[i] = container[1];
+            i++;
         }
 
-
         this.subscriberDropdown = new JComboBox<>(subscriberArray);
-
-
-
     }
 
-    public JComboBox createSubscriberDropdown() {
-        this.subscriberDropdown.setSelectedIndex(0);
+    public JPanel createSubscriberDropdownPanel() {
 
-        return this.subscriberDropdown;
+        //Profile dropdowns
+        JPanel dropdowns = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+
+        //Label subscriber combobox
+        JLabel subscriberLabel = new JLabel("Account: ");
+        c.gridx = 0;
+        c.weightx = 0;
+        c.fill = GridBagConstraints.NONE;
+        c.anchor = GridBagConstraints.LINE_START;
+        dropdowns.add(subscriberLabel, c);
+
+        //Combobox subscribers
+        c.gridx = 1;
+        c.weightx = 1;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.LINE_END;
+        dropdowns.add(this.subscriberDropdown, c);
+
+        return dropdowns;
     }
 
     private String getSelectedSubscriber() {
