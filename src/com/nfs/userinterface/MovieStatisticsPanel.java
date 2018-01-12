@@ -30,10 +30,14 @@ public class MovieStatisticsPanel extends JPanel {
 
 
 
-        JLabel infoTopPanel = new JLabel("<HTML>   Tijdsduur: "+ movie.getLength() +"</br>" +
-                                                        "Genre: "+ movie.getGenre() + "</br>" +
-                                                        "Taal: " + movie.getLanguage() +"</br>" +
-                                                        "Minimum leeftijd: "+ movie.getAge() +"</br></HTML>");
+        JLabel infoTopPanel = new JLabel("<HTML> <br/><br/><br/><br/>" +
+                                                        "  Tijdsduur: "+ movie.getLength() +"<br/>" +
+                                                        "Genre: "+ movie.getGenre() + "<br/>" +
+                                                        "Taal: " + movie.getLanguage() +"<br/>" +
+                                                        "Minimum leeftijd: "+ movie.getAge() +"<br/>" +
+                                                        "Totaal bekeken percentage" + movie.getSharedWatchedProgress() + "<br/>" +
+                                                        "Totaal aantal keer bekeken: " + movie.getTimesSeen() + "%<br/>" +
+                                                        "Aantal views met 100%:    " + movie.getIndividualWatchedProgress() + "%<br/></HTML>");
         topPanel.add(infoTopPanel,BorderLayout.CENTER);
 
     }

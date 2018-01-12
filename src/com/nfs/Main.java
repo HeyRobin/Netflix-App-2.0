@@ -1,4 +1,5 @@
 package com.nfs;
+import com.nfs.data .currentUser;
 
 import com.nfs.connections.DatabaseConnection;
 import com.nfs.connections.DatabaseFetcher;
@@ -11,6 +12,10 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        currentUser.setCurrentSubscriber(5285824);
+        currentUser.setCurrentProfile(100005);
+
+
    //     DatabaseFetcher con = new DatabaseFetcher();
     //    ArrayList<String[]> result = con.getDataReturnArrayList("SELECT SubscriberID FROM Subscriber");
 
