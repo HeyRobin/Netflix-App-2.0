@@ -2,6 +2,8 @@ package com.nfs.data;
 
 import com.nfs.appdetails.TimeKeeper;
 import com.nfs.connections.DatabaseConnection;
+import com.nfs.connections.DatabaseFetcher;
+import com.nfs.userinterface.Interface;
 import com.nfs.userinterface.InterfaceCreator;
 
 import javax.swing.*;
@@ -9,64 +11,72 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class Profile {
-    private String profielNaam;
-    private String geboorteDatum;
-    private int abonneeID;
+    private String profileName;
+    private String dateOfBirth;
+    private int subScriberID;
+    private int profileID;
+    private String subScriberName;
 
 
-    public Profile(int inputAbonneeID, int profielVolgNummer) {
 
-        DatabaseConnection con = new DatabaseConnection();
+    public Profile(int subScriberID, int profileID) {
 
-        try {
-            ResultSet rs = con.getData("SELECT * FROM Profile where AbonneeID = '" + inputAbonneeID + "'");
+        DatabaseFetcher con = new DatabaseFetcher();
 
-            while (profielVolgNummer > 0) {
 
-                rs.next();
-                profielVolgNummer--;
+        this.subScriberName = con.getDataResultSingleCellAsString("SELECT Name FROM Subscriber WHERE SubscriberID = '" + subScriberID + "';");
+        this.subScriberID = subScriberID;
 
-            }
 
-            this.profielNaam = rs.getString("Profielnaam");
-            this.geboorteDatum = rs.getString("Geboortedatum");
-            this.abonneeID = rs.getInt("AbonneeID");
+        ArrayList<String[]> data = con.getDataReturnArrayList("SELECT ProfileName, DateOfBirth, ProfileID FROM UserProfile WHERE SubscriberID = '" + subScriberID + "' AND ProfileID = '" +profileID+"';");
+        this.profileName = data.get(0)[0];
+        this.dateOfBirth = data.get(0)[1];
+        this.profileID = Integer.parseInt(data.get(0)[2]);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
 
-
-
-
-    public String getProfielNaam() {
-        return profielNaam;
+    public String getProfileName() {
+        return profileName;
     }
 
-    public void setProfielNaam(String profielNaam) {
-        this.profielNaam = profielNaam;
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
     }
 
-    public String getGeboorteDatum() {
-        return geboorteDatum;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setGeboorteDatum(String geboorteDatum) {
-        this.geboorteDatum = geboorteDatum;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public int getAbonneeID() {
-        return abonneeID;
+    public int getSubScriberID() {
+        return subScriberID;
     }
 
-    public void setAbonneeID(int abonneeID) {
-        this.abonneeID = abonneeID;
+    public void setSubScriberID(int subScriberID) {
+        this.subScriberID = subScriberID;
     }
 
+    public int getProfileID() {
+        return profileID;
+    }
 
+    public void setProfileID(int profileID) {
+        this.profileID = profileID;
+    }
 
+    public String getSubScriberName() {
+        return subScriberName;
+    }
+
+    public void setSubScriberName(String subScriberName) {
+        this.subScriberName = subScriberName;
+    }
 }

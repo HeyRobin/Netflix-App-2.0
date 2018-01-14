@@ -20,6 +20,23 @@ public class DatabaseConnection {
     private Statement stmt = null;
     private ResultSet rs = null;
 
+
+    public void runSQL(String SQL){
+        openConnection();
+
+        try{
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            this.stmt.execute(SQL);
+            System.out.println(SQL);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+
+    }
+
     public ResultSet getData(String SQL) {
         try {
             openConnection();
@@ -33,6 +50,7 @@ public class DatabaseConnection {
 
         } finally {
             while (this.con != null) {
+                System.out.println(SQL);
                 closeConnection();
             }
         }

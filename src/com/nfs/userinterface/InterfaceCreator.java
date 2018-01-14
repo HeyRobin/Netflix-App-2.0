@@ -3,7 +3,8 @@ package com.nfs.userinterface;
 import com.nfs.appdetails.AppDetails;
 import com.nfs.appdetails.TimeKeeper;
 import com.nfs.connections.DatabaseFetcher;
-import com.nfs.data.MovieButton;
+import com.nfs.data.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,8 +12,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
-import com.nfs.data.SerieButton;
-import com.nfs.data.currentUser;
 import javafx.scene.control.ComboBox;
 
 
@@ -151,6 +150,63 @@ public class InterfaceCreator {
         helloPanel.add(hello, BorderLayout.NORTH);
         return helloPanel;
     }
+
+    public JPanel createAccountSettings(int subScriberID){
+
+        AccountSettingsPanel accountPanel = new AccountSettingsPanel(subScriberID);
+
+        Subscriber subscriber = new Subscriber(subScriberID);
+
+
+
+        JLabel titel = new JLabel("Account Gegevens:");
+        titel.setFont(new Font("Serif", Font.PLAIN, 30));
+
+        JLabel content = new JLabel("<html><br/><br/>Naam: " + subscriber.getName() +"<br/>" +
+                "                                Adres: " + subscriber.getStreet() + " " + subscriber.getHouseNr() + " " + subscriber.getHouseNrExt() + "" +
+                                                        " " + subscriber.getZipcode() + "</html>");
+
+
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new BorderLayout());
+
+        topPanel.add(titel, BorderLayout.NORTH);
+        topPanel.add(content,BorderLayout.CENTER);
+
+        accountPanel.add(topPanel, BorderLayout.NORTH);
+
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setLayout(new GridLayout(5,0));
+        accountPanel.add(bottomPanel, BorderLayout.SOUTH);
+
+        JLabel profilesBottomPanelHeader = new JLabel("Profiles associated with this account");
+        profilesBottomPanelHeader.setHorizontalAlignment(SwingConstants.CENTER);
+        bottomPanel.add(profilesBottomPanelHeader);
+
+        for (Profile profile : subscriber.getProfileContainer()
+                ) {
+            JButton button = new JButton(profile.getProfileName());
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    replacePane(new ProfileSettingsPanel(subScriberID, profile.getProfileID() ));
+                    setAllButtonsEnabled();
+                }
+            });
+            button.setPreferredSize(new Dimension(100,20));
+            bottomPanel.add(button);
+        }
+        ;
+
+
+
+        return accountPanel;
+    }
+
+
+
+
+
 
     public JPanel createMovieButtons(){
 
@@ -297,7 +353,7 @@ public class InterfaceCreator {
         @Override
         public void actionPerformed(ActionEvent e) {
             pressButton(profielGegevens);
-            replacePane(createProfielGegevens());
+            replacePane(new ProfileSettingsPanel(currentUser.currentSubscriber,currentUser.currentProfile));
         }
     }
 
@@ -315,7 +371,7 @@ public class InterfaceCreator {
         @Override
         public void actionPerformed(ActionEvent e) {
             pressButton(accountGegevens);
-            replacePane(new JLabel("Acountgegevens"));
+            replacePane(createAccountSettings(currentUser.currentSubscriber));
         }
     }
 

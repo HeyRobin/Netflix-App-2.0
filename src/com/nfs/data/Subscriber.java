@@ -1,72 +1,112 @@
 package com.nfs.data;
 
 import com.nfs.connections.DatabaseConnection;
+import com.nfs.connections.DatabaseFetcher;
 
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class Subscriber {
-    private int ID;
-    private String naam;
-    private String straat;
-    private String huisNr;
-    private String toevoeging;
-    private String postcode;
-    private String woonPlaats;
-    private ArrayList<Profile> profielen;
 
-    public ArrayList<Profile> getProfielen() {
-        return profielen;
-    }
+    private int subScriberID;
+    private ArrayList<Profile> profileContainer;
+    private String name;
+    private String street;
+    private String zipcode;
+    private String city;
+    private String houseNr;
+    private String houseNrExt;
 
-    public void setProfielen(ArrayList<Profile> profielen) {
-        this.profielen = profielen;
-    }
+    public Subscriber(int subScriberID){
 
-    public Subscriber(int lookupID){
-        DatabaseConnection con = new DatabaseConnection();
+        DatabaseFetcher con = new DatabaseFetcher();
 
-        try {
-        ResultSet rs = con.getData("SELECT * FROM Subscriber WHERE AbonneeID = '"+ lookupID + "';" );
+        ArrayList<String[]> accountData = con.getDataReturnArrayList("SELECT Name,Street,PostalCode,City,HouseNr,HouseNrExt FROM Subscriber WHERE SubscriberID = '" + subScriberID + "';");
 
-            rs.next();
-            this.ID =  rs.getInt("AbonneeID");
-            this.naam = rs.getString("Naam");
-            this.straat = rs.getString("Straat");
-            this.huisNr = rs.getString("Huisnummer");
-            this.toevoeging = rs.getString("Toevoeging");
-            this.postcode = rs.getString("Postcode");
-            this.woonPlaats = rs.getString("Woonplaats");
-            this.profielen = buildProfiles(this.ID);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
-    //Zoekt bijhorende profielen en brengt deze onder in het Parents Abbo object.
-    private ArrayList<Profile> buildProfiles(int abonneeID){
-        ArrayList<Profile> profielen = new ArrayList<>();
-        DatabaseConnection con = new DatabaseConnection();
-
-        try {
-            ResultSet rs = con.getData("SELECT COUNT(*) AS AantalRows FROM Profile WHERE AbonneeID = '" + abonneeID + "';");
-            rs.next();
-            int amountOfRows = rs.getInt("AantalRows");
-            System.out.println("Aantal rows in return "+amountOfRows);
-            int i = 0;
-
-            while (i < amountOfRows){
-                profielen.add(new Profile(abonneeID, amountOfRows - i));
-                i++;
+            this.subScriberID = subScriberID;
+            this.name = accountData.get(0)[0];
+            this.street = accountData.get(0)[1];
+            this.zipcode = accountData.get(0)[2];
+            this.city = accountData.get(0)[3];
+            this.houseNr = accountData.get(0)[4];
+            this.houseNrExt = accountData.get(0)[5];
+            if (this.houseNrExt == null){
+                this.houseNrExt = "";
             }
 
+            ArrayList<String[]> profileData = con.getDataReturnArrayList("SELECT ProfileID FROM UserProfile WHERE SubScriberID = '" + this.subScriberID + "'");
 
-        }catch (Exception e){
-            e.printStackTrace();
+            this.profileContainer = new ArrayList<Profile>();
+
+        for (String[] profiel:profileData
+             ) {profileContainer.add(new Profile(this.subScriberID, Integer.parseInt(profiel[0])));
         }
-        return profielen;
+
+
+    }
+
+    public int getSubScriberID() {
+        return subScriberID;
+    }
+
+    public void setSubScriberID(int subScriberID) {
+        this.subScriberID = subScriberID;
+    }
+
+    public ArrayList<Profile> getProfileContainer() {
+        return profileContainer;
+    }
+
+    public void setProfileContainer(ArrayList<Profile> profileContainer) {
+        this.profileContainer = profileContainer;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getHouseNr() {
+        return houseNr;
+    }
+
+    public void setHouseNr(String houseNr) {
+        this.houseNr = houseNr;
+    }
+
+    public String getHouseNrExt() {
+        return houseNrExt;
+    }
+
+    public void setHouseNrExt(String houseNrExt) {
+        this.houseNrExt = houseNrExt;
     }
 }

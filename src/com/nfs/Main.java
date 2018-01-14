@@ -1,5 +1,6 @@
 package com.nfs;
 import com.nfs.data .currentUser;
+import com.nfs.userinterface.ChangeProfile;
 import com.nfs.userinterface.UI;
 
 public class Main {
@@ -23,7 +24,11 @@ public class Main {
      //   frame.setVisible(true);
 
         UI ui = new UI();
+
+
         ui.run();
+
+
     }
 }
 
