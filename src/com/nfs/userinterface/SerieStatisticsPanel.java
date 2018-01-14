@@ -38,23 +38,32 @@ public class SerieStatisticsPanel extends JPanel { //placeholder
                 "Minimum leeftijd: "+ serie.getMinAge() +"<br/>" +
                 "Totaal aantal views: " + serie.getAmountOfViews() + "<br/>" +
                 "Percetage mensen afgekeken: " + serie.getSharedAmountCompleted() + "%<br/>" +
-                "Eigen voortgang: " + serie.getIndividualProgress() + "%<br/></HTML>");
+                "Eigen voortgang: " + serie.getIndividualProgress() + "%<br/><br/></HTML>");
 
         infoTopPanel.setFont(new Font("Serif", Font.BOLD, 18));
         topPanel.add(infoTopPanel,BorderLayout.CENTER);
         topPanel.setBorder(BorderFactory.createEmptyBorder(10,30,10,10));
 
-           bottomPanel.add(new JLabel("Episodes", SwingConstants.CENTER),BorderLayout.NORTH);
+            JLabel episodeTitel = new JLabel("<html>Episodes<br/></html>", SwingConstants.LEFT);
+            episodeTitel.setFont(new Font("Serif", Font.BOLD, 18));
+           bottomPanel.add(episodeTitel,BorderLayout.NORTH);
 
             String episodes ="<html>";
 
 
-        for (String[] stringContainer :con.getDataReturnArrayList("SELECT EpisodeNumber, Title, LengthInMinutes FROM Episode WHERE SerieID = '" + serieID + "';")
+        for (String[] stringContainer :con.getDataReturnArrayList("SELECT TOP 18 EpisodeNumber, Title, LengthInMinutes FROM Episode WHERE SerieID = '" + serieID + "';")
              ) { episodes =  episodes + "Episode Nr: "+ stringContainer[0].substring(1) + " -  " + stringContainer[1] + "Duur:" + stringContainer[2] + "<br/>";
 
         }episodes += "</html>";
+        JLabel episodesLabel = new JLabel(episodes);
+        episodesLabel.setVerticalAlignment(SwingConstants.TOP);
 
-        bottomPanel.add(new JLabel( episodes), BorderLayout.PAGE_END);
+        bottomPanel.add(episodesLabel, BorderLayout.CENTER);
+
+
+
+
+      //  bottomPanel.add(new JLabel( episodes), BorderLayout.PAGE_END);
 
 
 
