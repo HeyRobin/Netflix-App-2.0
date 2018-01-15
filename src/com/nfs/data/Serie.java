@@ -91,14 +91,18 @@ public class Serie {
         }
 
         try{
-            this.sharedAmountCompleted = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM SeriesSeen WHERE SerieID = '" + serieID + "';"));
+            this.sharedAmountCompleted = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM SeriesSeen WHERE SerieID = '" + serieID + "';"))
+                    /
+                    (Integer.parseInt(con.getDataResultSingleCellAsString("SELECT COUNT(*) FROM Episode WHERE SerieiD = '" + this.serieID + "';")));
         }catch (Exception e){
 
             this.sharedAmountCompleted = 0;
         }
 
         try{
-            this.individualProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM SeriesSeen WHERE SerieID = '" + serieID + "' AND SubScriber = '" + CurrentUser.currentSubscriber + "' AND UserProfile = '" + CurrentUser.currentProfile + "';"));
+            this.individualProgress = (Integer.parseInt(con.getDataResultSingleCellAsString("SELECT SUM(PercentageSeen) FROM SeriesSeen WHERE SerieID = '" + serieID + "' AND SubScriber = '" + CurrentUser.currentSubscriber + "' AND UserProfile = '" + CurrentUser.currentProfile + "';"))
+                                        /
+                    (Integer.parseInt(con.getDataResultSingleCellAsString("SELECT COUNT(*) FROM Episode WHERE SerieiD = '" + this.serieID + "';"))));
         }catch (Exception e){
 
             this.individualProgress = 0;

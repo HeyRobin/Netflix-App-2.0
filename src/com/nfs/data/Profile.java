@@ -27,11 +27,11 @@ public class Profile {
         DatabaseFetcher con = new DatabaseFetcher();
 
 
-        this.subScriberName = con.getDataResultSingleCellAsString("SELECT NameExt FROM Subscriber WHERE SubscriberID = '" + subScriberID + "';");
+        this.subScriberName = con.getDataResultSingleCellAsString("SELECT Name FROM Subscriber WHERE SubscriberID = '" + subScriberID + "';");
         this.subScriberID = subScriberID;
 
 
-        ArrayList<String[]> data = con.getDataReturnArrayList("SELECT ProfileName, DateOfBirth, ProfileID FROM UserProfile WHERE SubscriberID = '" + subScriberID + "' AND ProfileID = '" +profileID+"';");
+        ArrayList<String[]> data = con.getDataReturnArrayList("SELECT ProfileName, DateOfBirth, ProfileID FROM UserProfile WHERE SubscriberID = '" + subScriberID + "' AND ProfileID = '" + profileID +"';");
         this.profileName = data.get(0)[0];
         this.dateOfBirth = data.get(0)[1];
         this.profileID = Integer.parseInt(data.get(0)[2]);
