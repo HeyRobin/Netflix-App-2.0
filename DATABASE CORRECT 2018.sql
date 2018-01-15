@@ -52,13 +52,15 @@ CREATE TABLE	Episode(
 CREATE TABLE	SeriesSeen(
 	EpisodeID		int				NOT NULL FOREIGN KEY REFERENCES Episode (EpisodeNumber),
 	PercentageSeen 	int,
-	UserName		varchar(40)		NOT NULL PRIMARY KEY									
+	UserName		varchar(40)		NOT NULL,
+		CONSTRAINT PK_SeriesSeen PRIMARY KEY (EpisodeID, UserName)									
 											);
 						
 CREATE TABLE	MoviesSeen(
 	MovieNumber		int				NOT NULL FOREIGN KEY REFERENCES Movie(MovieID),
 	PercentageSeen 	int,
-	UserName		varchar(40)		NOT NULL PRIMARY KEY	
+	UserName		varchar(40)		NOT NULL,
+		CONSTRAINT PK_MoviesSeen PRIMARY KEY (MovieNumber, UserName)	
 												);
 
 CREATE TABLE	SerieAssociations(
