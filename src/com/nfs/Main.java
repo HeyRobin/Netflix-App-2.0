@@ -4,8 +4,10 @@ import com.nfs.userinterface.UI;
 
 public class Main {
     public static void main(String[] args) {
-        CurrentUser.setCurrentSubscriber(5602533);
-        CurrentUser.setCurrentProfile(100004);
+
+        //init
+        CurrentUser.setCurrentSubscriber(1215426);
+        CurrentUser.setCurrentProfile(100001);
 
 
    //     DatabaseFetcher con = new DatabaseFetcher();

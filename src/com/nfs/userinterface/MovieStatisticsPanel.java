@@ -45,13 +45,7 @@ public class MovieStatisticsPanel extends JPanel {
         infoTopPanel.setFont(new Font("Serif", Font.BOLD, 18));
         topPanel.add(infoTopPanel,BorderLayout.CENTER);
         topPanel.setBorder(BorderFactory.createEmptyBorder(10,30,10,10));
-        //   bottomPanel.add(new JLabel("Wij raden u aan:"),BorderLayout.NORTH);
-        //    ArrayList<String[]> recommendedMovies = con.getDataReturnArrayList("SELECT MovieID FROM movie;");
-        //    Collections.shuffle(recommendedMovies);
 
-        //    bottomPanel.add(new MovieButton(Integer.parseInt(recommendedMovies.get(0)[0])),BorderLayout.WEST);
-        //    bottomPanel.add(new MovieButton(Integer.parseInt(recommendedMovies.get(1)[0])),BorderLayout.CENTER);
-        //    bottomPanel.add(new MovieButton(Integer.parseInt(recommendedMovies.get(2)[0])),BorderLayout.EAST);
 
 
     }

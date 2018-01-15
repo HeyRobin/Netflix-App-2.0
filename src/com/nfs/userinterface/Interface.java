@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Interface {
 
 
-    public static JMenuBar createTopMenuBar()  {
+    public static JMenuBar createTopMenuBar()  {    //top menu bar.
 
         //Declarations
         JMenuBar topMenuBar = new JMenuBar();

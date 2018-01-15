@@ -33,7 +33,7 @@ public class ProfileSettingsPanel extends JPanel {
         JLabel content = new JLabel("<html><br/> <br/>Account: " + profile.getSubScriberName() + " (Account Nummer: " + profile.getSubScriberID() + ")<br/>" +
                                                 "Profiel: " + profile.getProfileName() + " (Profiel nummer " + profile.getProfileID() + ") <br/>" +
                                                 "Geboorte Datum: " + profile.getDateOfBirth() + "<br/>" +
-                                                "<br/>" );
+                                                "<br/>" );   // Data about profile
         topPanel.add(content,BorderLayout.CENTER);
 
 
@@ -44,7 +44,7 @@ public class ProfileSettingsPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ChangeProfile changeProfile = new ChangeProfile(profile.getSubScriberID(),profile.getProfileID());
-            }
+            }  //change profile button
         });
 
         topPanel.add(changeValues, BorderLayout.SOUTH);

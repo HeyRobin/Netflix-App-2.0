@@ -24,7 +24,7 @@ public class Subscriber {
 
         ArrayList<String[]> accountData = con.getDataReturnArrayList("SELECT Name,Street,PostalCode,City,HouseNr,HouseNrExt FROM Subscriber WHERE SubscriberID = '" + subScriberID + "';");
 
-            this.subScriberID = subScriberID;
+            this.subScriberID = subScriberID;           //assign the vars to the object
             this.name = accountData.get(0)[0];
             this.street = accountData.get(0)[1];
             this.zipcode = accountData.get(0)[2];

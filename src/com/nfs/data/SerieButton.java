@@ -12,7 +12,7 @@ public class SerieButton extends JButton {
 
 
 
-    public SerieButton(int serieID){
+    public SerieButton(int serieID){    //Seriebuttons meant for the Serie selection panel.
 
         this.serieID = serieID;
         DatabaseFetcher con = new DatabaseFetcher();

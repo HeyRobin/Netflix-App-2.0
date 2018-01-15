@@ -9,7 +9,7 @@ import com.nfs.data.Profile;
 import com.nfs.data.Subscriber;
 import com.nfs.userinterface.InterfaceCreator;
 
-public class AccountSettingsPanel extends JPanel {
+public class AccountSettingsPanel extends JPanel {  //account settings panel
     private int subScriberID;
     private JPanel bottomPanel;
     public AccountSettingsPanel(int subScriberID) {

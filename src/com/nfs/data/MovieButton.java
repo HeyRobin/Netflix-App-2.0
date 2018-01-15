@@ -9,7 +9,7 @@ public class MovieButton extends JButton {
 
     private int movieID;
 
-    public MovieButton(int movieID){
+    public MovieButton(int movieID){ // meant for the movie selection panel.
         this.movieID = movieID;
         DatabaseFetcher con = new DatabaseFetcher();
 
@@ -20,14 +20,7 @@ public class MovieButton extends JButton {
         super.setPreferredSize(new Dimension(65,55));
         super.setMaximumSize(new Dimension(65,55));
         super.setMinimumSize(new Dimension(65,55));
-      //  super.addActionListener(new ActionListener() {
-      //      @Override
-      //     public void actionPerformed(ActionEvent e) {
-      //          PanelManager.UpdateContainer(new MovieStatisticsPanel(movieID));
-      //          System.out.println(movieID);
-//
-      //      }
-      //  });
+
     }
 
     public int getMovieID() {
