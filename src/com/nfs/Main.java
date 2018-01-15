@@ -1,12 +1,11 @@
 package com.nfs;
-import com.nfs.data .currentUser;
-import com.nfs.userinterface.ChangeProfile;
+import com.nfs.data.CurrentUser;
 import com.nfs.userinterface.UI;
 
 public class Main {
     public static void main(String[] args) {
-        currentUser.setCurrentSubscriber(5602533);
-        currentUser.setCurrentProfile(100004);
+        CurrentUser.setCurrentSubscriber(5602533);
+        CurrentUser.setCurrentProfile(100004);
 
 
    //     DatabaseFetcher con = new DatabaseFetcher();

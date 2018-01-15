@@ -12,10 +12,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
-import javafx.scene.control.ComboBox;
-
-
-
 public class InterfaceCreator {
     //Declarations
 
@@ -69,16 +65,16 @@ public class InterfaceCreator {
 //            public void actionPerformed(ActionEvent e) {
 //
 //                String selected = (String) subscriberDropdown.getItemAt(subscriberDropdown.getSelectedIndex());
-//                for (String[] array : currentUser.currentSubscribers
+//                for (String[] array : CurrentUser.currentSubscribers
 //                        ) {
 //                    if (selected.equals(array[1])) {
-//                        currentUser.setCurrentSubscriber(Integer.parseInt(array[0]));
+//                        CurrentUser.setCurrentSubscriber(Integer.parseInt(array[0]));
 //                        profileDropdown.updateUI();
 //                        dropdowns.revalidate();
 //                        DatabaseFetcher con = new DatabaseFetcher();
 //                        System.out.println("test");
 //
-//                        profileDropdown.setSelectedItem(con.getDataResultSingleCellAsString("SELECT TOP 1 ProfileName FROM UserProfile WHERE SubscriberID ='" + currentUser.currentSubscriber + "';"));
+//                        profileDropdown.setSelectedItem(con.getDataResultSingleCellAsString("SELECT TOP 1 ProfileName FROM UserProfile WHERE SubscriberID ='" + CurrentUser.currentSubscriber + "';"));
 //                    }
 //                }
 //            }
@@ -353,7 +349,7 @@ public class InterfaceCreator {
         @Override
         public void actionPerformed(ActionEvent e) {
             pressButton(profielGegevens);
-            replacePane(new ProfileSettingsPanel(currentUser.currentSubscriber,currentUser.currentProfile));
+            replacePane(new ProfileSettingsPanel(CurrentUser.currentSubscriber, CurrentUser.currentProfile));
         }
     }
 
@@ -371,7 +367,7 @@ public class InterfaceCreator {
         @Override
         public void actionPerformed(ActionEvent e) {
             pressButton(accountGegevens);
-            replacePane(createAccountSettings(currentUser.currentSubscriber));
+            replacePane(createAccountSettings(CurrentUser.currentSubscriber));
         }
     }
 

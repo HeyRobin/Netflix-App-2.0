@@ -22,7 +22,7 @@ public class Subscriber {
 
         DatabaseFetcher con = new DatabaseFetcher();
 
-        ArrayList<String[]> accountData = con.getDataReturnArrayList("SELECT Name,Street,PostalCode,City,HouseNr,HouseNrExt FROM Subscriber WHERE SubscriberID = '" + subScriberID + "';");
+        ArrayList<String[]> accountData = con.getDataReturnArrayList("SELECT NameExt,Street,PostalCode,City,HouseNr,HouseNrExt FROM Subscriber WHERE SubscriberID = '" + subScriberID + "';");
 
             this.subScriberID = subScriberID;
             this.name = accountData.get(0)[0];

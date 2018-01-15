@@ -3,30 +3,130 @@ package com.nfs.userinterface;
 import com.nfs.connections.DatabaseFetcher;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
-import com.nfs.data.currentUser;
+import com.nfs.data.CurrentUser;
+
 
 public class ProfileDropdown extends JComboBox {
     private String[] profileArray ;
-    private JComboBox<String> profileDropdown;
+    private static JComboBox<String> profileDropdown;
 
     public ProfileDropdown()    {
 
-        DatabaseFetcher con = new DatabaseFetcher();
-        ArrayList<String[]> subs = con.getDataReturnArrayList("SELECT SubscriberID, ProfileName FROM UserProfile WHERE SubscriberID = '" + currentUser.currentSubscriber + "';");
-        int i = 0;
-        currentUser.currentProfiles = subs;
-        this.profileArray = new String[subs.size()];
 
-        for (String[] container:subs) {
-            this.profileArray[i] = container[1];
+        //Adds the profiles from getprofiles() to a new ArrayList
+        ArrayList<String[]> profiles = getProfiles();
+
+
+
+        //Defines how big the new profiledropdown should be
+        int currentProfilesSize = profiles.size();
+        this.profileArray = new String[currentProfilesSize];
+
+
+
+        //Set-up for the for-loop
+        int i = 0;
+
+
+
+        //Fills the profileArray with data
+        for (String[] profile : profiles) {
+
+
+
+            //Puts the profile name (stored at profile[1]) in the profileArray at spot [i]
+            this.profileArray[i] = profile[1];
             i++;
+
+
         }
 
-        this.profileDropdown = new JComboBox<>(profileArray);
+
+
+        //Creates an new profileDropdown with the data gathered from the for-loop
+        profileDropdown = new JComboBox<>(profileArray);
+
+
+
+        //Add a new itemlistener to the combobox
+        profileDropdown.addItemListener(new ItemListener() {
+
+
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+
+
+                //Loops through all the profiles
+                for (String[] profile : CurrentUser.currentProfiles)  {
+
+                    //if the current profile equals the iterated profile, then the Current profile from
+                    //CurrentUser.currentProfile is set to the active profile.
+                    if (getSelectedIem().equals(profile[1]))    {
+                        CurrentUser.setCurrentProfile(Integer.parseInt(profile[0]));
+                    }
+                }
+
+
+            }
+        });
+
+
+    }
+
+    public static void updateProfiles()    {
+
+        //Creates an new profile array with new profiles
+        String[] newProfileArray = new String[getProfiles().size()];
+
+
+        //Loops through all the profiles of the current subscriber
+        int i = 0;
+        for (String[] profile : CurrentUser.currentProfiles)  {
+
+            newProfileArray[i] = profile[1];
+            i++;
+
+        }
+
+
+        //Adds the new subscribers to the combobox via a new combobox model
+        DefaultComboBoxModel model = new DefaultComboBoxModel( newProfileArray );
+        profileDropdown.setModel(model);
+
+
     }
 
 
+    //Gets all the profiles corresponding to the current subscriber
+    private static ArrayList<String[]> getProfiles()  {
+
+
+
+        //Makes a new database fetcher object to retrieve data
+        DatabaseFetcher con = new DatabaseFetcher();
+
+
+
+        //Results are stored in an ArrayList which gets object in the form of a String array
+        //One String array contains one row of retrieved data from the query
+        String query = "SELECT SubscriberID, ProfileName FROM UserProfile WHERE SubscriberID = '" + CurrentUser.currentSubscriber + "';";
+        ArrayList<String[]> profiles = con.getDataReturnArrayList(query);
+
+
+        //Sets the current profiles from CurrentUser to the profiles gathered by the query
+        CurrentUser.currentProfiles = profiles;
+
+
+
+        return profiles;
+    }
+
+
+
+    //Crreate the actual dropdown and label
     public JPanel createProfileDropdown() {
 
         //Profile dropdowns
@@ -55,21 +155,12 @@ public class ProfileDropdown extends JComboBox {
         return dropdowns;
     }
 
+
+    //Return the selected item from the combobox
     private String getSelectedIem() {
         return profileArray[profileDropdown.getSelectedIndex()];
     }
 
-    public void updateValues(){
-        int i = 0;
 
-        this.profileArray = new String[currentUser.currentProfiles.size()];
-
-        for (String[] container:currentUser.currentProfiles) {
-            this.profileArray[i] = container[1];
-            i++;
-        }
-
-        this.profileDropdown = new JComboBox<>(profileArray);
-    }
 
 }

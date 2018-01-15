@@ -1,21 +1,8 @@
 package com.nfs.data;
 
-import com.nfs.connections.DatabaseConnection;
-
-
-import javax.swing.*;
-
-
-
-import javax.swing.*;
-import java.awt.*;
-
 
 import com.nfs.connections.DatabaseFetcher;
 import java.util.ArrayList;
-
-
-import java.util.List;
 
 
 public class Movie {
@@ -71,10 +58,10 @@ public class Movie {
         //Check statistic
 
 
-        if (!con.getDataResultSingleCellAsString("SELECT PercentageSeen FROM MoviesSeen WHERE MovieID = '" + movieID + "' AND Subscriber = '" + currentUser.currentSubscriber + "' AND UserProfile = '" + currentUser.currentProfile + "';").equals(""))
+        if (!con.getDataResultSingleCellAsString("SELECT PercentageSeen FROM MoviesSeen WHERE MovieID = '" + movieID + "' AND Subscriber = '" + CurrentUser.currentSubscriber + "' AND UserProfile = '" + CurrentUser.currentProfile + "';").equals(""))
 
         {
-            individualWatchedProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT PercentageSeen FROM MoviesSeen WHERE MovieID = '" + movieID + "' AND Subscriber = ' " + currentUser.currentSubscriber + "' AND UserProfile = ' " + currentUser.currentProfile + "'; "));
+            individualWatchedProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT PercentageSeen FROM MoviesSeen WHERE MovieID = '" + movieID + "' AND Subscriber = ' " + CurrentUser.currentSubscriber + "' AND UserProfile = ' " + CurrentUser.currentProfile + "'; "));
         } else
 
         {

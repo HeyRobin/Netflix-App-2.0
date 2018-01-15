@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.nfs.data.currentUser;
 public class ProfileSettingsPanel extends JPanel {
     private int subScriberID;
     private int profielID;

@@ -1,10 +1,7 @@
 package com.nfs.data;
 
-import com.nfs.connections.DatabaseConnection;
 import com.nfs.connections.DatabaseFetcher;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 
@@ -101,7 +98,7 @@ public class Serie {
         }
 
         try{
-            this.individualProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM SeriesSeen WHERE SerieID = '" + serieID + "' AND SubScriber = '" + currentUser.currentSubscriber + "' AND UserProfile = '" + currentUser.currentProfile + "';"));
+            this.individualProgress = Integer.parseInt(con.getDataResultSingleCellAsString("SELECT AVG(PercentageSeen) FROM SeriesSeen WHERE SerieID = '" + serieID + "' AND SubScriber = '" + CurrentUser.currentSubscriber + "' AND UserProfile = '" + CurrentUser.currentProfile + "';"));
         }catch (Exception e){
 
             this.individualProgress = 0;

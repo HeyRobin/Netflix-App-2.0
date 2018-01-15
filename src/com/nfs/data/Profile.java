@@ -27,7 +27,7 @@ public class Profile {
         DatabaseFetcher con = new DatabaseFetcher();
 
 
-        this.subScriberName = con.getDataResultSingleCellAsString("SELECT Name FROM Subscriber WHERE SubscriberID = '" + subScriberID + "';");
+        this.subScriberName = con.getDataResultSingleCellAsString("SELECT NameExt FROM Subscriber WHERE SubscriberID = '" + subScriberID + "';");
         this.subScriberID = subScriberID;
 
 
