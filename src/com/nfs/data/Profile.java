@@ -22,10 +22,10 @@ public class Profile {
 
 
         System.out.println("SELECT ProfileName, DateOfBirth, ProfileID FROM UserProfile WHERE SubscriberID = '"
-                + CurrentUser.currentSubscriber + "' AND ProfileID = '" + CurrentUser.currentProfile +"';");
+                + subscriberID + "' AND ProfileID = '" + profileID +"';");
 
         ArrayList<String[]> data = con.getDataReturnArrayList("SELECT ProfileName, DateOfBirth, ProfileID FROM UserProfile WHERE SubscriberID = '"
-                + CurrentUser.currentSubscriber + "' AND ProfileID = '" + CurrentUser.currentProfile +"';");
+                + subscriberID + "' AND ProfileID = '" + profileID +"';");
 
 
         System.out.println(data.size());

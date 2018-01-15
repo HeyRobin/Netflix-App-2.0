@@ -23,7 +23,7 @@ public class ChangeProfile extends JFrame {   //small popup to change db values.
 
         Profile profile = new Profile(subScriberId,profileID);
 
-        super.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        super.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         super.setLocationRelativeTo(null);
 
