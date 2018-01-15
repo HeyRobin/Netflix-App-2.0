@@ -4,16 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 public class DatabaseConnection {
-    final String serverAdres = "multiplicity.softether.net";
-    final int serverPort = 6667;
-    final String dbUserName = "sa";
-    final String dbPassword = "MarlBoroq17";
-    final String databaseName = "NFS";
-   // final String connectionUrl = "jdbc:sqlserver://" + serverAdres + ":" + serverPort + ";databaseName=" + databaseName + ";user=" + dbUserName + ";password=" + dbPassword;
-
     private final String connectionUrl = "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=NFS;integratedsecurity=true;";
 
     private Connection con = null;
@@ -74,9 +66,4 @@ public class DatabaseConnection {
         }
 
     }
-
-    public Connection getCon() {
-        return con;
-    }
-
 }

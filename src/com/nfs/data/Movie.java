@@ -71,10 +71,6 @@ public class Movie {
     //Check statistic
 
 
-    public int getMovieID() {
-        return movieID;
-    }
-
     public String getMovieTitle() {
         return movieTitle;
     }

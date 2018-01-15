@@ -19,52 +19,20 @@ public class Serie {
     private int individualProgress;
     private int amountOfEpisodes;
 
-    public int getSerieID() {
-        return serieID;
-    }
-
-    public void setSerieID(int serieID) {
-        this.serieID = serieID;
-    }
-
     public int getMinAge() {
         return minAge;
-    }
-
-    public void setMinAge(int minAge) {
-        this.minAge = minAge;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
     public String getGenre() {
         return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public String[] getEpisodes() {
-        return episodes;
-    }
-
-    public void setEpisodes(String[] episodes) {
-        this.episodes = episodes;
     }
 
     public Serie(int serieID){
@@ -139,38 +107,12 @@ int i = 0;
         return amountOfViews;
     }
 
-    public ArrayList<String[]> getEpisodeGegevens() {
-        return episodeGegevens;
-    }
-
-    public void setEpisodeGegevens(ArrayList<String[]> episodeGegevens) {
-        this.episodeGegevens = episodeGegevens;
-    }
-
-    public void setAmountOfViews(int amountOfViews) {
-        this.amountOfViews = amountOfViews;
-    }
-
-    public void setSharedAmountCompleted(int sharedAmountCompleted) {
-        this.sharedAmountCompleted = sharedAmountCompleted;
-    }
-
-    public String[] getAssociations() {
-        return associations;
-    }
-
-    public void setAssociations(String[] associations) {
-        this.associations = associations;
-    }
 
     public int getIndividualProgress() {
         return individualProgress;
     }
 
-    public void setIndividualProgress(int individualProgress) {
-        this.individualProgress = individualProgress;
     }
-}
 
 
 

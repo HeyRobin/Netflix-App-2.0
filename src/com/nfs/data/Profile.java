@@ -41,39 +41,19 @@ public class Profile {
         return profileName;
     }
 
-    public void setProfileName(String profileName) {
-        this.profileName = profileName;
-    }
-
     public String getDateOfBirth() {
         return dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public int getSubScriberID() {
         return subScriberID;
     }
 
-    public void setSubScriberID(int subScriberID) {
-        this.subScriberID = subScriberID;
-    }
-
     public int getProfileID() {
         return profileID;
     }
 
-    public void setProfileID(int profileID) {
-        this.profileID = profileID;
-    }
-
     public String getSubScriberName() {
         return subScriberName;
-    }
-
-    public void setSubScriberName(String subScriberName) {
-        this.subScriberName = subScriberName;
     }
 }

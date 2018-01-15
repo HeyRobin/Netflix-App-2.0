@@ -26,8 +26,4 @@ public class MovieButton extends JButton {
     public int getMovieID() {
         return movieID;
     }
-
-    public void setMovieID(int movieID) {
-        this.movieID = movieID;
-    }
 }

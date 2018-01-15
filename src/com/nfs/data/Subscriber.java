@@ -1,6 +1,5 @@
 package com.nfs.data;
 
-import com.nfs.connections.DatabaseConnection;
 import com.nfs.connections.DatabaseFetcher;
 
 
@@ -46,67 +45,28 @@ public class Subscriber {
 
     }
 
-    public int getSubScriberID() {
-        return subScriberID;
-    }
-
-    public void setSubScriberID(int subScriberID) {
-        this.subScriberID = subScriberID;
-    }
-
     public ArrayList<Profile> getProfileContainer() {
         return profileContainer;
-    }
-
-    public void setProfileContainer(ArrayList<Profile> profileContainer) {
-        this.profileContainer = profileContainer;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getStreet() {
         return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
     }
 
     public String getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
     public String getHouseNr() {
         return houseNr;
-    }
-
-    public void setHouseNr(String houseNr) {
-        this.houseNr = houseNr;
     }
 
     public String getHouseNrExt() {
         return houseNrExt;
     }
 
-    public void setHouseNrExt(String houseNrExt) {
-        this.houseNrExt = houseNrExt;
-    }
-}
+   }
