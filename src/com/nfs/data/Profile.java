@@ -11,9 +11,7 @@ public class Profile {
     private String subScriberName;
 
 
-
     public Profile(int subscriberID, int profileID) {
-
         DatabaseFetcher con = new DatabaseFetcher();
 
 
@@ -35,8 +33,8 @@ public class Profile {
         this.dateOfBirth = data.get(0)[1];
         this.profileID = Integer.parseInt(data.get(0)[2]);
 
-
     }
+
 
 
     public String getProfileName() {

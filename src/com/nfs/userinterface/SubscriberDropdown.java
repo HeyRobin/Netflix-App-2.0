@@ -40,6 +40,10 @@ public class SubscriberDropdown extends JComboBox {
 
         //Set the current Subscriber to the first in the list
         CurrentUser.currentSubscriber = Integer.parseInt(subscribers.get(0)[0]);
+        CurrentUser.currentProfiles = ProfileDropdown.getProfiles();
+
+        System.out.println(Integer.parseInt(CurrentUser.currentProfiles.get(0)[0]));
+        CurrentUser.currentProfile =  Integer.parseInt(CurrentUser.currentProfiles.get(0)[0]);
 
 
 
@@ -91,7 +95,12 @@ public class SubscriberDropdown extends JComboBox {
                     //If the iterated subscriber matches the current selected subscriber, then the Current Subscriber is
                     //set to the selected subscriber
                     if (getSelectedSubscriber().equals( (subscriber[1]))) {
-                        CurrentUser.setCurrentSubscriber(Integer.parseInt(subscriber[0]));
+                        CurrentUser.currentSubscriber = Integer.parseInt(subscriber[0]);
+
+                        CurrentUser.currentProfiles = ProfileDropdown.getProfiles();
+
+                        System.out.println(Integer.parseInt(CurrentUser.currentProfiles.get(0)[0]));
+                        CurrentUser.currentProfile =  Integer.parseInt(CurrentUser.currentProfiles.get(0)[0]);
                     }
 
 

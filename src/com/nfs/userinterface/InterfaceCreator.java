@@ -348,6 +348,7 @@ public class InterfaceCreator {
     class ProfielButtonListener implements ActionListener   {
         @Override
         public void actionPerformed(ActionEvent e) {
+            setAllButtonsEnabled();
             replacePane(new ProfileSettingsPanel(CurrentUser.currentSubscriber, CurrentUser.currentProfile));
         }
     }
@@ -365,14 +366,15 @@ public class InterfaceCreator {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            pressButton(accountGegevens);
+            //pressButton(accountGegevens);
+            setAllButtonsEnabled();
             replacePane(createAccountSettings(CurrentUser.currentSubscriber));
         }
     }
 
     private void setAllButtonsEnabled()  {
         //statistieken.setEnabled(true);
-        accountGegevens.setEnabled(true);
+        //accountGegevens.setEnabled(true);
         profielGegevens.setEnabled(true);
         films.setEnabled(true);
         series.setEnabled(true);

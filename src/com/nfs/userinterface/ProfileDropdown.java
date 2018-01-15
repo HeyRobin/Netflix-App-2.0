@@ -125,7 +125,7 @@ public class ProfileDropdown extends JComboBox {
 
 
     //Gets all the profiles corresponding to the current subscriber
-    private static ArrayList<String[]> getProfiles()  {
+    public static ArrayList<String[]> getProfiles()  {
 
 
 
