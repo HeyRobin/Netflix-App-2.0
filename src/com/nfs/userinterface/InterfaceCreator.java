@@ -4,7 +4,6 @@ import com.nfs.appdetails.AppDetails;
 import com.nfs.appdetails.TimeKeeper;
 import com.nfs.connections.DatabaseFetcher;
 import com.nfs.data.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,13 +12,11 @@ import java.util.ArrayList;
 
 
 public class InterfaceCreator {
-    //Declarations
 
     //Information
     private JPanel eastPanel =  new JPanel(new BorderLayout());
 
     //Buttons
-    private JButton statistieken;
     private JButton accountGegevens;
     private JButton profielGegevens;
     private JButton films;
@@ -31,7 +28,7 @@ public class InterfaceCreator {
 
     public JPanel createStartupInformation()    {
 
-        JLabel information = new JLabel(new TimeKeeper().greeting(), JLabel.CENTER);
+        JLabel information = new JLabel(TimeKeeper.greeting(), JLabel.CENTER);
 
         //Label Make-up
         information.setFont(new Font("Arial", Font.BOLD, 36));
@@ -43,7 +40,7 @@ public class InterfaceCreator {
         return eastPanel;
     }
 
-    public JPanel createDropdownsAndGreeting()  {       // Top left Dropsdowns
+    public JPanel createDropdownsAndGreeting()  {
 
         //Profile dropdowns
         JPanel dropdownCombination = new JPanel(new GridBagLayout());
@@ -60,30 +57,10 @@ public class InterfaceCreator {
         c.anchor = GridBagConstraints.NORTHWEST;
         dropdownCombination.add(new ProfileDropdown().createProfileDropdown(), c);
 
-//        subscriberDropdown.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//                String selected = (String) subscriberDropdown.getItemAt(subscriberDropdown.getSelectedIndex());
-//                for (String[] array : CurrentUser.currentSubscribers
-//                        ) {
-//                    if (selected.equals(array[1])) {
-//                        CurrentUser.setCurrentSubscriber(Integer.parseInt(array[0]));
-//                        profileDropdown.updateUI();
-//                        dropdowns.revalidate();
-//                        DatabaseFetcher con = new DatabaseFetcher();
-//                        System.out.println("test");
-//
-//                        profileDropdown.setSelectedItem(con.getDataResultSingleCellAsString("SELECT TOP 1 ProfileName FROM UserProfile WHERE SubscriberID ='" + CurrentUser.currentSubscriber + "';"));
-//                    }
-//                }
-//            }
-//        });
-
         return dropdownCombination;
     }
 
-    public JPanel createButtons()  {        //Setting up buttons lower left.
+    public JPanel createButtons()  {
 
         //Setting up the panel
         JPanel buttons = new JPanel(new GridBagLayout());
@@ -92,29 +69,47 @@ public class InterfaceCreator {
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridwidth = GridBagConstraints.REMAINDER;
 
-        //Setting up the buttons
-//        statistieken = new JButton("Statistieken");
-//        statistieken.addActionListener(new StatistiekenListener());
-//        statistieken.setMargin(new Insets(5, 0, 5, 0));
-
         accountGegevens = new JButton("Accountgegevens");
-        accountGegevens.addActionListener(new AccountListener());
+        accountGegevens.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setAllButtonsEnabled();
+                replacePane(createAccountSettings(CurrentUser.currentSubscriber));
+            }
+        });
         accountGegevens.setMargin(new Insets(5, 0, 5, 0));
 
         profielGegevens = new JButton("Profile Gegevens");
-        profielGegevens.addActionListener(new ProfielButtonListener());
+        profielGegevens.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setAllButtonsEnabled();
+                replacePane(new ProfileSettingsPanel(CurrentUser.currentSubscriber, CurrentUser.currentProfile));
+            }
+        });
         profielGegevens.setMargin(new Insets(5, 0, 5, 0));
 
         films = new JButton("Films");
-        films.addActionListener(new FilmButtonListener());
+        films.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pressButton(films);
+                replacePane(createMovieButtons());
+            }
+        });
         films.setMargin(new Insets(5, 0, 5, 0));
 
         series = new JButton("Series");
-        series.addActionListener(new SerieButtonListener());
+        series.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pressButton(series);
+                replacePane(createShowButtons());
+            }
+        });
         series.setMargin(new Insets(5, 0, 5, 0));
 
         //Adding the buttons to the panel
-        //buttons.add(statistieken, c);
         buttons.add(accountGegevens, c);
         buttons.add(profielGegevens, c);
         buttons.add(films, c);
@@ -138,13 +133,6 @@ public class InterfaceCreator {
         creditsPanel.add(credits, BorderLayout.EAST);
 
         return creditsPanel;
-    }
-
-    public JPanel createProfielGegevens()  {      //Profile tab
-        JLabel hello = new JLabel("profielgegevens", JLabel.CENTER);
-        JPanel helloPanel = new JPanel(new BorderLayout());
-        helloPanel.add(hello, BorderLayout.NORTH);
-        return helloPanel;
     }
 
     public JPanel createAccountSettings(int subScriberID){  //Setup account panel
@@ -198,11 +186,6 @@ public class InterfaceCreator {
 
         return accountPanel;
     }
-
-
-
-
-
 
     public JPanel createMovieButtons(){
 
@@ -317,64 +300,7 @@ public class InterfaceCreator {
         return west;
     }
 
-
-    //SUBCLASSES
-
-
-
-
-
-    class SerieButtonListener implements  ActionListener    {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            pressButton(series);
-            replacePane(createShowButtons());
-        }
-    }
-
-    class FilmButtonListener implements ActionListener  {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            pressButton(films);
-            replacePane(createMovieButtons());
-        }
-    }
-
-
-
-
-    class ProfielButtonListener implements ActionListener   {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            setAllButtonsEnabled();
-            replacePane(new ProfileSettingsPanel(CurrentUser.currentSubscriber, CurrentUser.currentProfile));
-        }
-    }
-
-//    class StatistiekenListener implements ActionListener    {
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            pressButton(statistieken);
-//            replacePane(new JLabel("Statistieken"));
-//        }
-//    }
-
-    class AccountListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            //pressButton(accountGegevens);
-            setAllButtonsEnabled();
-            replacePane(createAccountSettings(CurrentUser.currentSubscriber));
-        }
-    }
-
     private void setAllButtonsEnabled()  {
-        //statistieken.setEnabled(true);
-        //accountGegevens.setEnabled(true);
         profielGegevens.setEnabled(true);
         films.setEnabled(true);
         series.setEnabled(true);
@@ -385,7 +311,7 @@ public class InterfaceCreator {
         button.setEnabled(false);
     }
 
-    public void replacePane(Component component)   {
+    private void replacePane(Component component)   {
         eastPanel.removeAll();
         eastPanel.add(component, BorderLayout.CENTER);
         eastPanel.updateUI();

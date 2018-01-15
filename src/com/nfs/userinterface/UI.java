@@ -41,9 +41,6 @@ public class UI implements Runnable {
 
     private void createComponents(Container container) {
 
-        //Adds Menubar to frame
-        this.frame.setJMenuBar(Interface.createTopMenuBar());
-
         //Creates an Pane to place components in
         container = frame.getContentPane();
         container.setLayout(new BorderLayout());
@@ -53,7 +50,7 @@ public class UI implements Runnable {
 
         //Creates the container for the left side of the UI
         JPanel westContainer = new JPanel(new BorderLayout());
-        westContainer.setBorder(grey());
+        westContainer.setBorder(BorderFactory.createLineBorder(Color.gray));
         westContainer.setPreferredSize(new Dimension(200, 600));
 
         //Add components to the left side of the UI
@@ -65,15 +62,6 @@ public class UI implements Runnable {
 
         //Add credits to the bottom of the UI
         container.add(ifc.createCredits(), BorderLayout.SOUTH);
-    }
-
- //   public void setContainer(JPanel container) {
-
-    //    this.container.add(container);
-  //  }
-
-    public Border grey()   {
-        return BorderFactory.createLineBorder(Color.gray);
     }
 }
 
