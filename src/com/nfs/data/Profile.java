@@ -1,16 +1,6 @@
 package com.nfs.data;
 
-import com.nfs.appdetails.TimeKeeper;
-import com.nfs.connections.DatabaseConnection;
 import com.nfs.connections.DatabaseFetcher;
-import com.nfs.userinterface.Interface;
-import com.nfs.userinterface.InterfaceCreator;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
-import java.awt.event.ItemEvent;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class Profile {

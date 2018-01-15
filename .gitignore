@@ -69,3 +69,8 @@ fabric.properties
 # End of https://www.gitignore.io/api/intellij
 *.xml
 .idea/workspace.xml
+Netflix-App-2.0.iml
+src/.idea/src.iml
+src/.idea/src.iml
+src/com/.idea/com.iml
+src/.idea/src.iml

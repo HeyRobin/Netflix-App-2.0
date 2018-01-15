@@ -65,7 +65,8 @@ public class ProfileDropdown extends JComboBox {
                     //if the current profile equals the iterated profile, then the Current profile from
                     //CurrentUser.currentProfile is set to the active profile.
                     if (getSelectedIem().equals(profile[1]))    {
-                        CurrentUser.setCurrentProfile(Integer.parseInt(profile[0]));
+                        CurrentUser.currentProfile =  Integer.parseInt(profile[2]);
+                        System.out.println(profile[2]);
                     }
                 }
 
@@ -97,6 +98,27 @@ public class ProfileDropdown extends JComboBox {
         profileDropdown.setModel(model);
 
 
+        profileDropdown.addItemListener(new ItemListener() {
+
+
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+
+
+                //Loops through all the profiles
+                for (String[] profile : CurrentUser.currentProfiles)  {
+
+                    //if the current profile equals the iterated profile, then the Current profile from
+                    //CurrentUser.currentProfile is set to the active profile.
+                    if (profileDropdown.getSelectedItem().equals(profile[1]))    {
+                        CurrentUser.currentProfile =  Integer.parseInt(profile[2]);
+                    }
+                }
+
+
+            }
+        });
+
     }
 
 
@@ -112,7 +134,7 @@ public class ProfileDropdown extends JComboBox {
 
         //Results are stored in an ArrayList which gets object in the form of a String array
         //One String array contains one row of retrieved data from the query
-        String query = "SELECT SubscriberID, ProfileName FROM UserProfile WHERE SubscriberID = '" + CurrentUser.currentSubscriber + "';";
+        String query = "SELECT SubscriberID, ProfileName, profileID FROM UserProfile WHERE SubscriberID = '" + CurrentUser.currentSubscriber + "';";
         ArrayList<String[]> profiles = con.getDataReturnArrayList(query);
 
 
