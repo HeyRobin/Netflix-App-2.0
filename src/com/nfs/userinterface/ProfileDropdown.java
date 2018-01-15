@@ -112,6 +112,8 @@ public class ProfileDropdown extends JComboBox {
                     //CurrentUser.currentProfile is set to the active profile.
                     if (profileDropdown.getSelectedItem().equals(profile[1]))    {
                         CurrentUser.currentProfile =  Integer.parseInt(profile[2]);
+                        System.out.println(profile[2]);
+                        System.out.println(CurrentUser.currentProfile);
                     }
                 }
 

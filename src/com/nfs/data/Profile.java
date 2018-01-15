@@ -12,16 +12,25 @@ public class Profile {
 
 
 
-    public Profile(int subScriberID, int profileID) {
+    public Profile(int subscriberID, int profileID) {
 
         DatabaseFetcher con = new DatabaseFetcher();
 
 
-        this.subScriberName = con.getDataResultSingleCellAsString("SELECT Name FROM Subscriber WHERE SubscriberID = '" + subScriberID + "';");
-        this.subScriberID = subScriberID;
+        this.subScriberName = con.getDataResultSingleCellAsString("SELECT Name FROM Subscriber WHERE SubscriberID = '" + subscriberID + "';");
+        this.subScriberID = subscriberID;
 
 
-        ArrayList<String[]> data = con.getDataReturnArrayList("SELECT ProfileName, DateOfBirth, ProfileID FROM UserProfile WHERE SubscriberID = '" + subScriberID + "' AND ProfileID = '" + profileID +"';");
+        System.out.println("SELECT ProfileName, DateOfBirth, ProfileID FROM UserProfile WHERE SubscriberID = '"
+                + CurrentUser.currentSubscriber + "' AND ProfileID = '" + CurrentUser.currentProfile +"';");
+
+        ArrayList<String[]> data = con.getDataReturnArrayList("SELECT ProfileName, DateOfBirth, ProfileID FROM UserProfile WHERE SubscriberID = '"
+                + CurrentUser.currentSubscriber + "' AND ProfileID = '" + CurrentUser.currentProfile +"';");
+
+
+        System.out.println(data.size());
+
+
         this.profileName = data.get(0)[0];
         this.dateOfBirth = data.get(0)[1];
         this.profileID = Integer.parseInt(data.get(0)[2]);
