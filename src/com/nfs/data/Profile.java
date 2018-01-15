@@ -4,6 +4,7 @@ import com.nfs.connections.DatabaseFetcher;
 import java.util.ArrayList;
 
 public class Profile {
+
     private String profileName;
     private String dateOfBirth;
     private int subScriberID;
