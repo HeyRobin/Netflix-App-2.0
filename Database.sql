@@ -8,6 +8,7 @@ DROP DATABASE NFS;
 
 CREATE DATABASE NFS;
 USE NFS;
+GO
 
 --Setting up the tables;
 CREATE TABLE	Subscriber(
@@ -77,15 +78,16 @@ INSERT INTO Subscriber (SubscriberID, FirstName, NameExt, LastName, Street, Hous
 ALTER TABLE Subscriber
 DROP COLUMN Name;
 
-ALTER TABLE Subscriber
-ADD Firstname varchar(30) AFTER SubscriberID;
 
 ALTER TABLE Subscriber
-ADD NameExt varchar(10) AFTER FirstName;
+ADD Firstname varchar(30);
 
 ALTER TABLE Subscriber
-ADD LastName varchar(40) AFTER NameExt;
+ADD NameExt varchar(10);
 
+ALTER TABLE Subscriber
+ADD LastName varchar(40);
+*/
 UPDATE Subscriber
 SET FirstName = 'Familie', NameExt = 'van', LastName = 'Raalte'
 WHERE SubscriberID = 1215426;
@@ -97,7 +99,7 @@ WHERE SubscriberID = 5602533;
 UPDATE Subscriber
 SET FirstName = 'Frank', NameExt = 'de', LastName = 'Kat'
 WHERE SubscriberID = 5285824;
-*/
+
 
 INSERT INTO UserProfile (SubscriberID, ProfileID, ProfileName, DateOfBirth) VALUES
 (1215426, 01, 'Frank', '1968-01-25'),
@@ -211,36 +213,36 @@ INSERT INTO Episode (EpisodeNumber, Title, SerieID, LengthInMinutes) VALUES
 (5204, 'Special: White Christmas', 005, 73);
 
 INSERT INTO SeriesSeen (SerieID, PercentageSeen, UserName) VALUES
-(1001, 100, 'Frank'),
-(1001, 100, 'Madelief'),
-(1001, 100, 'Fritz'),
-(1001, 45, 'Diana'),
-(1002, 100, 'Frank'),
-(1002, 60,  'Madelief'),
-(1002, 100, 'Fritz'),
-(1003, 78, 'Frank'),
-(2001, 100, 'Madelief'),
-(2002, 100, 'Madelief'),
-(2003, 100, 'Madelief'),
-(2004, 22, 'Madelief'),
-(2019, 10, 'Paulus'),
-(3001, 91, 'Madelief'),
-(3001, 100, 'Petrus'),
-(3001, 100, 'Paulus'),
-(3002, 100, 'Petrus'),
-(3002, 74, 'Paulus'),
-(3010, 60, 'Paulus'),
-(3010, 60, 'Petrus'),
-(4001, 100, 'Madelief'),
-(4001, 100, 'Fritz'),
-(4002, 100, 'Madelief'),
-(4002, 99, 'Fritz'),
-(4003, 63, 'Madelief'),
-(5101, 50, 'Petrus'),
-(5101, 37, 'Paulus'),
-(5201, 100, 'Madelief'),
-(5201, 10, 'Diana'),
-(5201, 33, 'Madelief');
+(001, 100, 'Frank'),
+(001, 100, 'Madelief'),
+(001, 100, 'Fritz'),
+(001, 45, 'Diana'),
+(002, 100, 'Frank'),
+(002, 60,  'Madelief'),
+(002, 100, 'Fritz'),
+(003, 78, 'Frank'),
+(001, 100, 'Madelief'),
+(002, 100, 'Madelief'),
+(003, 100, 'Madelief'),
+(004, 22, 'Madelief'),
+(019, 10, 'Paulus'),
+(001, 91, 'Madelief'),
+(001, 100, 'Petrus'),
+(001, 100, 'Paulus'),
+(002, 100, 'Petrus'),
+(002, 74, 'Paulus'),
+(010, 60, 'Paulus'),
+(010, 60, 'Petrus'),
+(001, 100, 'Madelief'),
+(001, 100, 'Fritz'),
+(002, 100, 'Madelief'),
+(002, 99, 'Fritz'),
+(003, 63, 'Madelief'),
+(101, 50, 'Petrus'),
+(101, 37, 'Paulus'),
+(201, 100, 'Madelief'),
+(201, 10, 'Diana'),
+(201, 33, 'Madelief');
 
 INSERT INTO MoviesSeen (MovieID, PercentageSeen, UserName) VALUES
 (1010, 5, 'Fritz'),
@@ -295,3 +297,15 @@ INSERT INTO SerieAssociations (SerieID, LooksLike) VALUES
 (005, 001),
 (005, 002),
 (005, 004);
+
+
+SELECT * FROM Episode;
+SELECT * FROM Movie;
+SELECT * FROM Seen;
+SELECT * FROM Serie;
+SELECT * FROM SerieAssociations;
+SELECT * FROm Subscriber;
+SELECT * FROM UserProfile;
+
+SELECT * FROM UserProfile;
+SELECT ProfileName, DateOfBirth, ProfileID FROM UserProfile WHERE SubscriberID = '5602533';
