@@ -93,9 +93,9 @@ public class InterfaceCreator {
         c.gridwidth = GridBagConstraints.REMAINDER;
 
         //Setting up the buttons
-        statistieken = new JButton("Statistieken");
-        statistieken.addActionListener(new StatistiekenListener());
-        statistieken.setMargin(new Insets(5, 0, 5, 0));
+//        statistieken = new JButton("Statistieken");
+//        statistieken.addActionListener(new StatistiekenListener());
+//        statistieken.setMargin(new Insets(5, 0, 5, 0));
 
         accountGegevens = new JButton("Accountgegevens");
         accountGegevens.addActionListener(new AccountListener());
@@ -114,7 +114,7 @@ public class InterfaceCreator {
         series.setMargin(new Insets(5, 0, 5, 0));
 
         //Adding the buttons to the panel
-        buttons.add(statistieken, c);
+        //buttons.add(statistieken, c);
         buttons.add(accountGegevens, c);
         buttons.add(profielGegevens, c);
         buttons.add(films, c);
@@ -348,19 +348,18 @@ public class InterfaceCreator {
     class ProfielButtonListener implements ActionListener   {
         @Override
         public void actionPerformed(ActionEvent e) {
-            pressButton(profielGegevens);
             replacePane(new ProfileSettingsPanel(CurrentUser.currentSubscriber, CurrentUser.currentProfile));
         }
     }
 
-    class StatistiekenListener implements ActionListener    {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            pressButton(statistieken);
-            replacePane(new JLabel("Statistieken"));
-        }
-    }
+//    class StatistiekenListener implements ActionListener    {
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            pressButton(statistieken);
+//            replacePane(new JLabel("Statistieken"));
+//        }
+//    }
 
     class AccountListener implements ActionListener {
 
@@ -372,7 +371,7 @@ public class InterfaceCreator {
     }
 
     private void setAllButtonsEnabled()  {
-        statistieken.setEnabled(true);
+        //statistieken.setEnabled(true);
         accountGegevens.setEnabled(true);
         profielGegevens.setEnabled(true);
         films.setEnabled(true);
