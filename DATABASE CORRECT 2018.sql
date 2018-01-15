@@ -50,15 +50,15 @@ CREATE TABLE	Episode(
 	LengthInMinutes int 			NOT NULL	);
 
 CREATE TABLE	SeriesSeen(
-	EpisodeID		int				NOT NULL PRIMARY KEY REFERENCES Episode (EpisodeNumber),
+	EpisodeID		int				NOT NULL FOREIGN KEY REFERENCES Episode (EpisodeNumber),
 	PercentageSeen 	int,
-	UserName		varchar(40)		NOT NULL FOREIGN KEY REFERENCES UserProfile (ProfileName)										
-												);
+	UserName		varchar(40)		NOT NULL PRIMARY KEY									
+											);
 						
 CREATE TABLE	MoviesSeen(
-	MovieNumber		int				NOT NULL PRIMARY KEY REFERENCES Movie(MovieID),
+	MovieNumber		int				NOT NULL FOREIGN KEY REFERENCES Movie(MovieID),
 	PercentageSeen 	int,
-	UserName		varchar(40)		
+	UserName		varchar(40)		NOT NULL PRIMARY KEY	
 												);
 
 CREATE TABLE	SerieAssociations(
