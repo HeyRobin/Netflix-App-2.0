@@ -2,7 +2,7 @@ package com.nfs.data;
 
 import java.util.ArrayList;
 
-public class CurrentUser {
+public class CurrentUser { // central data reg
    static public int currentSubscriber;
    static public int currentProfile;
    static public ArrayList<String[]> currentSubscribers;

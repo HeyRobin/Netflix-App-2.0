@@ -43,7 +43,7 @@ public class InterfaceCreator {
         return eastPanel;
     }
 
-    public JPanel createDropdownsAndGreeting()  {
+    public JPanel createDropdownsAndGreeting()  {       // Top left Dropsdowns
 
         //Profile dropdowns
         JPanel dropdownCombination = new JPanel(new GridBagLayout());
@@ -83,7 +83,7 @@ public class InterfaceCreator {
         return dropdownCombination;
     }
 
-    public JPanel createButtons()  {
+    public JPanel createButtons()  {        //Setting up buttons lower left.
 
         //Setting up the panel
         JPanel buttons = new JPanel(new GridBagLayout());
@@ -140,14 +140,14 @@ public class InterfaceCreator {
         return creditsPanel;
     }
 
-    public JPanel createProfielGegevens()  {
+    public JPanel createProfielGegevens()  {      //Profile tab
         JLabel hello = new JLabel("profielgegevens", JLabel.CENTER);
         JPanel helloPanel = new JPanel(new BorderLayout());
         helloPanel.add(hello, BorderLayout.NORTH);
         return helloPanel;
     }
 
-    public JPanel createAccountSettings(int subScriberID){
+    public JPanel createAccountSettings(int subScriberID){  //Setup account panel
 
         AccountSettingsPanel accountPanel = new AccountSettingsPanel(subScriberID);
 
@@ -181,7 +181,7 @@ public class InterfaceCreator {
 
         for (Profile profile : subscriber.getProfileContainer()
                 ) {
-            JButton button = new JButton(profile.getProfileName());
+            JButton button = new JButton(profile.getProfileName());  // Buttons for changing profiles
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {

@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class ChangeProfile extends JFrame {
+public class ChangeProfile extends JFrame {   //small popup to change db values.
     private int subScriberId;
     private int profielId;
 
@@ -123,7 +123,7 @@ public class ChangeProfile extends JFrame {
 
 
 
-        if(checkName(newName) && checkDateOfBirth(newDateOfBirth)) {
+        if(checkName(newName) && checkDateOfBirth(newDateOfBirth)) {  //if checks are good, run query to update db.
             con.runSQL("UPDATE UserProfile SET ProfileName = '" + newName + "', DateOfBirth = '" + newDateOfBirth + "' WHERE SubscriberID = '" + this.subScriberId + "' AND ProfileID = '" + this.profielId + "';");
 
             close();
@@ -135,7 +135,7 @@ public class ChangeProfile extends JFrame {
 
     }
 
-    public boolean checkName(String name){
+    public boolean checkName(String name){   //check if name is valid.
         if (name.getClass() != String.class){
             JOptionPane.showMessageDialog(null, "Error in name");
             return false;
@@ -161,7 +161,7 @@ public class ChangeProfile extends JFrame {
 
     }
 
-    public boolean checkDateOfBirthExt(String text) {
+    public boolean checkDateOfBirthExt(String text) {        //Check wether DOB is valid.
         if (text == null || !text.matches("\\d{4}-[01]\\d-[0-3]\\d"))
             return false;
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
